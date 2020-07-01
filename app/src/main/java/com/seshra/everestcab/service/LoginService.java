@@ -69,13 +69,6 @@ public class LoginService extends IntentService {
 
     private void handleActionLogin(String phone, String password) {
 
-
-
-
-
-
-
-
         HashMap<String, String> data = new HashMap<>();
         data.put("username", "+977"+phone);
         data.put("password", password);
