@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/mainLayout"
+    android:layout_height="match_parent">
+
+
+
+
+
+    <fragment
+        android:id="@+id/map_frag_main"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        />
+
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        >
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nav_hamburg_icon"
+        android:src="@drawable/ic_hamburg"
+        android:layout_margin="@dimen/normalMargin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/reward_icon"
+        android:src="@drawable/ic_reward"
+        android:background="@drawable/ic_circle"
+        android:layout_margin="@dimen/normalMargin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+        <ImageView
+            android:id="@+id/pickUpPin"
+            android:layout_width="32dp"
+            android:layout_height="64dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+
+        <ImageView
+            android:id="@+id/dropOffPin"
+            android:layout_width="32dp"
+            android:layout_height="64dp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/internetStatus"
+            android:textColor="@color/colorRed"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/normalMargin"
+            android:text="@string/no_internet_connection"
+            android:background="@drawable/oval_background"
+            app:layout_constraintTop_toBottomOf="@+id/pickUpPin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/serviceAvailability"
+            android:textColor="@color/colorRed"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/normalMargin"
+            android:text="@string/no_service_available"
+            android:background="@drawable/oval_background"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/pickUpPin"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normalMargin"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:indeterminate="true"
+            android:max="100"
+            android:progress="10"
+            app:layout_constraintTop_toTopOf="@id/nav_hamburg_icon"
+            app:layout_constraintBottom_toBottomOf="@id/nav_hamburg_icon"
+            app:layout_constraintLeft_toRightOf="@id/nav_hamburg_icon"
+            app:layout_constraintRight_toLeftOf="@id/reward_icon"
+            />
+
+
+
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/pickUpLocationLayout"
+            layout="@layout/layout_pickup_location"
+            android:layout_margin="@dimen/normalMargin"
+            app:layout_constraintTop_toBottomOf="@+id/reward_icon"
+            />
+
+
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/dropUpLocationLayout"
+            android:visibility="gone"
+            layout="@layout/layout_drop_location"
+            android:layout_margin="@dimen/normalMargin"
+            app:layout_constraintTop_toBottomOf="@+id/reward_icon"
+            />
+
+
+
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/selectServiceLayout"
+            layout="@layout/layout_service_type"
+            android:layout_marginLeft="@dimen/normalMargin"
+            android:layout_marginRight="@dimen/normalMargin"
+            android:layout_marginBottom="@dimen/mediumMargin"
+            app:layout_constraintBottom_toTopOf="@+id/confirmPickupLayout"
+            />
+
+
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/confirmPickupLayout"
+            layout="@layout/layout_confirm_pickup"
+            android:layout_margin="@dimen/normalMargin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/confirmDropLayout"
+            layout="@layout/layout_confirm_dropoff"
+            android:visibility="gone"
+            android:layout_margin="@dimen/normalMargin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/finalRequirementLayout"
+            layout="@layout/final_requirement_layout"
+            android:visibility="gone"
+            android:layout_margin="@dimen/normalMargin"
+            app:layout_constraintBottom_toTopOf="@id/finalConfirmLayout"
+            />
+
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/finalConfirmLayout"
+            layout="@layout/final_confirm_layout"
+            android:visibility="gone"
+            android:layout_margin="@dimen/normalMargin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</FrameLayout>

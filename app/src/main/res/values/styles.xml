@@ -1,0 +1,77 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name = "Fullscreen" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">@dimen/heading2</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="raisedButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/heading1</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+
+    <style name="ToolbarTheme" parent="Widget.AppCompat.Toolbar">
+        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
+
+    <style name="GreenText">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">@dimen/heading2</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+
+    <style name="ProfileEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/heading2</item>
+        <item name="android:inputType">text</item>
+        <item name="android:background">@drawable/rectangular_edit_text</item>
+        <item name="android:padding">@dimen/mediumMargin</item>
+    </style>
+
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorDarkGray</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="android:minHeight">24dp</item>
+        <item name="android:maxHeight">24dp</item>
+    </style>
+
+
+    <style name="SolidButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@drawable/rounded_corner_rectangle_primary</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+
+
+</resources>

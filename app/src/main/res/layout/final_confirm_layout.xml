@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <Button
+        android:id="@+id/finalConfirmBtn"
+        android:layout_width="match_parent"
+        android:text="@string/final_confirm"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        style="@style/raisedButton"
+        android:background="@drawable/oval_background_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

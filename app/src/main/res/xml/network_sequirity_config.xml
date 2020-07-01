@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+
+<!--        <domain includeSubdomains="true">easytaxinepal.com</domain>-->
+<!--        <domain includeSubdomains="true">taxi.easyassurance.com.np</domain>-->
+<!--        <domain includeSubdomains="true">206.189.128.192</domain>-->
+
+        <domain includeSubdomains="true">everestcab.com</domain>
+
+
+    </domain-config>
+</network-security-config>

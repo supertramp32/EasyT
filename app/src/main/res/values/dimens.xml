@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <dimen name="headingxxxxT">124sp</dimen>
+    <dimen name="headingxxxT">64sp</dimen>
+    <dimen name="headingxxT">40sp</dimen>
+    <dimen name="headingxT">30sp</dimen>
+    <dimen name="headingT">22sp</dimen>
+    <dimen name="heading1">20sp</dimen>
+    <dimen name="heading2">16sp</dimen>
+    <dimen name="heading3">12sp</dimen>
+    <dimen name="heading4">10sp</dimen>
+
+
+
+    <dimen name="bigMargin">18dp</dimen>
+    <dimen name="normalMargin">16dp</dimen>
+    <dimen name="mediumMargin">12dp</dimen>
+    <dimen name="largeMargin">24dp</dimen>
+    <dimen name="smallMargin">4dp</dimen>
+    <dimen name="cardRadius">8dp</dimen>
+    <dimen name="extraLargeMargin">64dp</dimen>
+    <dimen name="exxtraLarge">104dp</dimen>
+
+</resources>

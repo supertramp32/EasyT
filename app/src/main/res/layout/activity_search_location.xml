@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/root"
+    tools:context=".locations.SearchLocationActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/topCardList"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:id="@+id/backBtn"
+                android:src="@drawable/ic_back"
+                android:layout_margin="@dimen/mediumMargin"
+                app:layout_constraintTop_toTopOf="@+id/welcomeText"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/welcomeText"
+                />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/welcomeText"
+                android:text="@string/search"
+                style="@style/TitleText"
+                android:textStyle="normal"
+                android:textSize="@dimen/heading1"
+                android:textAllCaps="true"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/normalMargin"
+                android:layout_marginTop="@dimen/mediumMargin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/backBtn"
+                />
+
+
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchLocationInput"
+                android:hint="@string/type_a_location"
+                android:padding="@dimen/cardRadius"
+                android:textColorHint="@color/colorDarkFont"
+                android:drawablePadding="@dimen/mediumMargin"
+                android:drawableLeft="@drawable/ic_search"
+                android:layout_margin="@dimen/normalMargin"
+                android:background="@drawable/rounded_corner_textview"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/progressbar"
+                app:layout_constraintTop_toBottomOf="@+id/welcomeText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:layout_marginRight="5dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/welcomeText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/popularLocationRecyclerView"-->
+<!--        android:layout_margin="@dimen/smallMargin"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/shimmer_view_container"-->
+<!--        />-->
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:shimmer_auto_start="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/holder_address"/>
+            <include layout="@layout/holder_address"/>
+            <include layout="@layout/holder_address"/>
+            <include layout="@layout/holder_address"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/mediumMargin"
+        >
+
+        <com.seshra.everestcab.placer.PlaceHolderView
+            android:id="@+id/placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/smallMargin"
+            >
+
+        </com.seshra.everestcab.placer.PlaceHolderView>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardFavourites"
+        android:layout_margin="@dimen/mediumMargin"
+        >
+
+        <com.seshra.everestcab.placer.PlaceHolderView
+            android:id="@+id/favPlaceHolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+        </com.seshra.everestcab.placer.PlaceHolderView>
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/popularLocationText"
+        android:text="@string/popular_locations"
+        android:textSize="@dimen/heading2"
+        android:textColor="@color/colorDarkGray"
+        android:layout_marginTop="@dimen/normalMargin"
+        android:paddingTop="@dimen/smallMargin"
+        android:paddingBottom="@dimen/smallMargin"
+        android:paddingLeft="@dimen/normalMargin"
+        android:background="@drawable/rounded_corner_textview"
+        app:layout_constraintTop_toBottomOf="@+id/cardFavourites"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/popularRecyclerView"
+        />
+
+
+</LinearLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckUserPhoneActivity">
+
+
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/taxiRunning"
+        />
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:id="@+id/backBtn"
+        android:src="@drawable/ic_back"
+        android:layout_margin="@dimen/mediumMargin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+
+    <ProgressBar
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_marginRight="5dp"
+        android:indeterminate="true"
+        android:max="100"
+        android:progress="20"
+        app:layout_constraintTop_toTopOf="@id/backBtn"
+        app:layout_constraintLeft_toRightOf="@id/backBtn"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/backBtn"
+        />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/enterMobileText"
+        android:text="@string/enter_mobile_number"
+        android:textSize="@dimen/heading1"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="@dimen/normalMargin"
+        android:layout_marginLeft="@dimen/normalMargin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backBtn"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/enterMobileTextNext"
+        android:text="@string/enter_10_digit_mobile_number_to_create_an_account_or_login"
+        android:textSize="@dimen/heading2"
+        android:layout_marginLeft="@dimen/normalMargin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterMobileText"
+        />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputUserPhone"
+        android:inputType="phone"
+        android:hint="9XXXXXXXXX"
+        android:background="@drawable/rounded_edit_text"
+        android:layout_margin="@dimen/normalMargin"
+        app:layout_constraintTop_toBottomOf="@id/enterMobileTextNext"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkPhoneBtn"
+        android:text="@string/proceed"
+        android:textSize="@dimen/heading1"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorAccent"
+        android:layout_margin="@dimen/normalMargin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

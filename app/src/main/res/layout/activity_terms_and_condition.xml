@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarTerms"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/toolbarText"
+            android:text="@string/terms_and_condition"
+            android:textSize="@dimen/heading1"
+            android:textColor="@color/colorWhite"
+            android:gravity="left|center_vertical"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:visibility="visible"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_marginRight="5dp"
+        android:indeterminate="true"
+        android:max="100"
+        android:progress="10"
+        android:layout_margin="@dimen/mediumMargin"
+        app:layout_constraintTop_toBottomOf="@id/toolbarTerms"
+        />
+
+
+    <TextView
+    android:id="@+id/termsAndConditionText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:layout_margin="@dimen/smallMargin"
+        android:scrollbars = "vertical"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+    app:layout_constraintBottom_toBottomOf="parent"
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

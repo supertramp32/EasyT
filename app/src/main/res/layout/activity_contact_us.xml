@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/root"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_contact_us"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            android:theme="@style/ToolbarTheme"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/toolbarText"
+                android:text="@string/about_us"
+                android:textSize="@dimen/heading1"
+                android:textColor="@color/colorWhite"
+                android:gravity="left|center_vertical"
+                />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:id="@+id/shadow_view_contact_us"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_contact_us" />
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways|snap" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/map"
+                layout="@layout/layout_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/first_view"
+                layout="@layout/card_template_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/cardRadius"
+                app:layout_constraintTop_toBottomOf="@+id/map"
+
+                />
+
+<!--            <include-->
+<!--                android:id="@+id/second_view"-->
+<!--                layout="@layout/card_template_two"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="@dimen/cardRadius"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/first_view" />-->
+
+<!--            <include-->
+<!--                android:id="@+id/footer_view"-->
+<!--                layout="@layout/activity_contact_us_footer"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:layout_margin="@dimen/cardRadius"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/second_view" />-->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

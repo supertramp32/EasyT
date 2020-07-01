@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <Button
+        android:id="@+id/confirmDropOffBtn"
+        android:layout_width="match_parent"
+        android:text="@string/confirm_drop_off"
+        android:layout_height="match_parent"
+        style="@style/raisedButton"
+        android:background="@drawable/oval_background_button_red"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/guidelinePick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:cardCornerRadius="@dimen/smallMargin"-->
+<!--        android:elevation="@dimen/smallMargin"-->
+<!--        android:layout_marginRight="@dimen/smallMargin"-->
+<!--        android:layout_marginLeft="@dimen/smallMargin"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/confirmDropOffBtn"-->
+<!--        app:layout_constraintLeft_toRightOf="@+id/guidelinePick"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/confirmDropOffBtn"-->
+<!--        >-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="@string/skip"-->
+<!--            android:textColor="@color/colorAccent"-->
+<!--            android:textSize="@dimen/heading2"-->
+<!--            android:textStyle="bold"-->
+<!--            android:gravity="center"-->
+<!--            />-->
+
+<!--    </androidx.cardview.widget.CardView>-->
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guidelinePick"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:id="@+id/bottom_sheet_driver"
+    android:background="@color/colorGray"
+    tools:context=".DriverWaitingActivity">
+
+    <ProgressBar
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_marginRight="5dp"
+        android:indeterminate="true"
+        android:max="100"
+        android:progress="10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardDriverDetails"
+        app:cardCornerRadius="@dimen/normalMargin"
+        android:elevation="@dimen/mediumMargin"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/driverSearchText"
+                style="@style/TitleText"
+                android:padding="@dimen/smallMargin"
+                android:layout_margin="@dimen/mediumMargin"
+                android:textSize="@dimen/headingT"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="@string/driver_search_text"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:shimmer_auto_start="true"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/driverSearchText"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/item_driver_details_shimmer"/>
+
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <include
+                android:layout_height="150dp"
+                android:layout_width="match_parent"
+                android:id="@+id/driverLayout"
+                layout="@layout/item_driver_details"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/driverSearchText"/>
+
+
+
+
+
+<!--            <ProgressBar-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                style="?android:attr/progressBarStyleHorizontal"-->
+<!--                android:id="@+id/driverSearchProgress"-->
+<!--                android:indeterminate="true"-->
+<!--                android:layout_margin="@dimen/mediumMargin"-->
+<!--                android:max="100"-->
+<!--                android:progress="45"-->
+<!--                android:visibility="visible"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/driverSearchText"-->
+<!--                />-->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardTripDetails"
+        app:cardCornerRadius="@dimen/smallMargin"
+        android:elevation="@dimen/smallMargin"
+        android:padding="@dimen/mediumMargin"
+        android:layout_marginTop="@dimen/cardRadius"
+        app:layout_constraintTop_toBottomOf="@+id/cardDriverDetails"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tripDetailText"
+                android:text="@string/trip_details"
+                android:layout_margin="@dimen/mediumMargin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/driverSearchPickLocation"
+                android:gravity="center"
+                android:drawableLeft="@drawable/ic_loc_e"
+                android:drawablePadding="@dimen/smallMargin"
+                android:layout_marginTop="@dimen/largeMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                android:layout_marginRight="@dimen/normalMargin"
+                app:layout_constraintTop_toBottomOf="@id/tripDetailText"
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:id="@+id/viewPickandDrop"
+                android:background="@color/colorGray"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/driverSearchPickLocation"
+                app:layout_constraintTop_toBottomOf="@+id/driverSearchPickLocation"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/driverSearchDropLocation"
+                android:gravity="center"
+                android:drawableLeft="@drawable/ic_loc"
+                android:drawablePadding="@dimen/smallMargin"
+                android:layout_marginTop="@dimen/mediumMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                android:layout_marginBottom="@dimen/mediumMargin"
+                android:layout_marginRight="@dimen/normalMargin"
+                app:layout_constraintTop_toBottomOf="@+id/viewPickandDrop"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardBookingDetails"
+        app:cardCornerRadius="@dimen/smallMargin"
+        android:elevation="@dimen/smallMargin"
+        android:layout_marginTop="@dimen/cardRadius"
+        app:layout_constraintTop_toBottomOf="@+id/cardTripDetails"
+        >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/mediumMargin">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bookingDetailsText"
+                android:text="@string/booking_details"
+                android:layout_margin="@dimen/mediumMargin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/serviceTypeImg"
+                android:src="@drawable/ic_car"
+                android:layout_marginTop="@dimen/largeMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bookingDetailsText"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/easy_taxi"
+                android:textSize="@dimen/heading2"
+                android:id="@+id/serviceTypeName"
+                android:layout_marginLeft="@dimen/largeMargin"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/serviceTypeImg"
+                app:layout_constraintBottom_toBottomOf="@id/serviceTypeImg"
+                app:layout_constraintTop_toTopOf="@+id/serviceTypeImg"
+                />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:id="@+id/viewBookingDetails"
+                android:background="@color/colorGray"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/serviceTypeImg"
+                app:layout_constraintTop_toBottomOf="@+id/serviceTypeName"
+                />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/paymentTypeImg"
+                android:src="@drawable/ic_payment"
+                android:layout_marginTop="@dimen/smallMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                android:layout_marginBottom="@dimen/mediumMargin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewBookingDetails"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Cash"
+                android:textSize="@dimen/heading2"
+                android:id="@+id/paymentTypeName"
+                android:layout_marginLeft="@dimen/largeMargin"
+                app:layout_constraintLeft_toRightOf="@id/paymentTypeImg"
+                app:layout_constraintBottom_toBottomOf="@id/paymentTypeImg"
+                app:layout_constraintTop_toTopOf="@+id/paymentTypeImg"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/heading2"
+                android:id="@+id/paymentAmount"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/largeMargin"
+                app:layout_constraintLeft_toRightOf="@id/paymentTypeName"
+                app:layout_constraintBottom_toBottomOf="@id/paymentTypeImg"
+                app:layout_constraintTop_toTopOf="@+id/paymentTypeImg"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/smallMargin"
+        android:elevation="@dimen/smallMargin"
+        android:id="@+id/cancelRideCard"
+        android:layout_marginTop="@dimen/cardRadius"
+        android:layout_marginBottom="@dimen/smallMargin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardBookingDetails"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/manageRideText"
+                android:text="@string/manage_ride"
+                android:layout_marginLeft="@dimen/mediumMargin"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancelRide"
+                android:text="@string/cancel_ride"
+                android:drawableLeft="@drawable/ic_cancel"
+                android:drawablePadding="@dimen/mediumMargin"
+                android:textColor="@color/colorRed"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/manageRideText"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

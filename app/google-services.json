@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "716241468501",
+    "firebase_url": "https://everest-cab-7da16.firebaseio.com",
+    "project_id": "everest-cab-7da16",
+    "storage_bucket": "everest-cab-7da16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716241468501:android:4b224ba0bb7f3410e2e8dc",
+        "android_client_info": {
+          "package_name": "com.seshra.everestcab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716241468501-ia5su4ap4hk1ascsf9kp15q7mds9ev7d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYfaubJMal_yjiUfAsbMG1GMHm9EyRnFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716241468501-ia5su4ap4hk1ascsf9kp15q7mds9ev7d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarReciept"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/toolbarText"
+            android:text="@string/cash_to_pay"
+            android:textAllCaps="true"
+            android:textSize="@dimen/heading1"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/profileTopCardView"
+        app:cardCornerRadius="@dimen/cardRadius"
+        android:elevation="@dimen/cardRadius"
+        android:layout_marginTop="@dimen/extraLargeMargin"
+        android:layout_marginLeft="@dimen/mediumMargin"
+        android:layout_marginRight="@dimen/mediumMargin"
+        app:layout_constraintTop_toBottomOf="@id/toolbarReciept"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+
+
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:shimmer_auto_start="true"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/driverSearchText"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/item_shimmer"/>
+                    <include layout="@layout/item_shimmer"/>
+                    <include layout="@layout/item_shimmer"/>
+                    <include layout="@layout/item_shimmer"/>
+                    <include layout="@layout/item_shimmer"/>
+
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/recieptLayout"
+                android:visibility="gone"
+                android:padding="@dimen/mediumMargin"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/verifyDriverText"
+                    android:text="@string/verify_with_driver"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/heading3"
+                    android:layout_marginTop="@dimen/mediumMargin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/serviceType"
+                    android:text="TAXI"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/heading2"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    app:layout_constraintTop_toBottomOf="@+id/verifyDriverText"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/receiptTotalAmount"
+                    android:textSize="@dimen/headingxT"
+                    tools:text="Rs. 150"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:layout_marginTop="@dimen/normalMargin"
+                    app:layout_constraintTop_toBottomOf="@id/serviceType"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/receiptPickUpLocation"
+                    tools:text="Baneswor"
+                    android:textSize="@dimen/heading3"
+                    android:drawablePadding="@dimen/mediumMargin"
+                    android:drawableLeft="@drawable/ic_loc_e"
+                    android:layout_margin="@dimen/mediumMargin"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/receiptTotalAmount"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/receiptDropOffLocation"
+                    tools:text="Koteswor"
+                    android:textSize="@dimen/heading3"
+                    android:drawablePadding="@dimen/mediumMargin"
+                    android:drawableLeft="@drawable/ic_loc"
+                    android:layout_margin="@dimen/mediumMargin"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/receiptPickUpLocation"
+                    />
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recieptFinishBtn"
+        android:text="@string/rate_driver_and_finish"
+        android:textSize="@dimen/heading1"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorAccent"
+        android:layout_margin="@dimen/normalMargin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vGuide1"
+        app:layout_constraintGuide_percent="0.2"
+        android:orientation="vertical"
+        />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vGuide2"
+        app:layout_constraintGuide_percent="0.8"
+        android:orientation="vertical"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

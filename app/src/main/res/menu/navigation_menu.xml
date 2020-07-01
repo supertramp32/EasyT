@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/sdfs">
+
+
+        <item android:title="@string/your_trips"
+            android:id="@+id/nav_your_trips"
+            android:icon="@drawable/ic_car"
+            />
+
+        <item android:title="@string/notifications"
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/ic_notification"
+            />
+
+
+
+<!--        <item android:title="@string/help_for_blood"-->
+<!--            android:id="@+id/nav_help_for_blood"-->
+<!--            android:icon="@drawable/ic_help"-->
+<!--            />-->
+
+
+
+        <item android:title="@string/about_us"
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_about"
+            />
+
+        <item android:title="@string/contact_us"
+            android:id="@+id/nav_contact_us"
+            android:icon="@drawable/ic_contact"
+            />
+
+
+<!--        <item android:title="@string/easy_pay"-->
+<!--            android:id="@+id/nav_easy_pay"-->
+<!--            android:icon="@drawable/ic_payment"-->
+<!--            />-->
+
+        <item android:title="@string/language"
+            android:id="@+id/nav_language"
+            android:icon="@drawable/ic_language"
+            />
+
+
+
+
+        <item android:title="@string/terms_and_condition"
+            android:id="@+id/nav_terms"
+            android:icon="@drawable/ic_terms"
+            />
+
+
+
+        <item android:title="@string/privacy_policy"
+            android:id="@+id/nav_privacy_policy"
+            android:icon="@drawable/ic_privacy"
+            />
+
+
+        <item android:title="Log out"
+            android:id="@+id/nav_log_out"
+            android:icon="@drawable/ic_about"
+            />
+
+
+    </group>
+
+
+
+
+
+
+</menu>

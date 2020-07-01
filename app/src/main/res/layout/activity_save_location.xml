@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SaveLocationActivity">
+
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:id="@+id/closeBtn"
+        android:src="@drawable/ic_close"
+        android:layout_margin="@dimen/mediumMargin"
+        app:layout_constraintTop_toTopOf="@+id/saveLocationText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/saveLocationText"
+        />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveLocationText"
+        android:text="@string/save_location"
+        style="@style/TitleText"
+        android:textSize="@dimen/heading1"
+        android:textAllCaps="true"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/normalMargin"
+        android:layout_marginTop="@dimen/mediumMargin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/closeBtn"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/topCardList"
+        app:cardCornerRadius="@dimen/cardRadius"
+        android:elevation="@dimen/cardRadius"
+        android:layout_marginLeft="@dimen/normalMargin"
+        android:layout_marginRight="@dimen/normalMargin"
+        android:layout_marginTop="@dimen/largeMargin"
+        app:layout_constraintTop_toBottomOf="@+id/saveLocationText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        >
+
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+
+
+         <include
+             android:id="@+id/map"
+             layout="@layout/layout_map"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             app:layout_constraintTop_toTopOf="parent" />
+
+
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/saveLocationName"
+             android:gravity="center"
+             android:padding="@dimen/mediumMargin"
+             android:drawableLeft="@drawable/ic_loc"
+             android:drawablePadding="@dimen/smallMargin"
+             style="@style/TitleText"
+             app:layout_constraintTop_toBottomOf="@+id/map"
+             />
+
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveLocationTitle"
+        android:hint="@string/name_your_location"
+        android:background="@drawable/rounded_edit_text"
+        android:layout_margin="@dimen/normalMargin"
+        app:layout_constraintTop_toBottomOf="@+id/topCardList"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveLocationBtn"
+        android:text="@string/save"
+        android:textSize="@dimen/heading1"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorLightGray"
+        android:layout_marginLeft="@dimen/normalMargin"
+        android:layout_marginRight="@dimen/normalMargin"
+        android:layout_marginTop="@dimen/largeMargin"
+        app:layout_constraintTop_toBottomOf="@+id/saveLocationTitle"
+        />
+
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_margin="@dimen/normalMargin"
+        android:indeterminate="true"
+        android:max="100"
+        android:progress="10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

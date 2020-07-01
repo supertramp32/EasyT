@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SaveLocationActivity">
+
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:id="@+id/closeBtn"
+        android:src="@drawable/ic_close"
+        android:layout_margin="@dimen/mediumMargin"
+        app:layout_constraintTop_toTopOf="@+id/saveLocationText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/saveLocationText"
+        />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveLocationText"
+        android:text="Help with Blood"
+        style="@style/TitleText"
+        android:textSize="@dimen/heading1"
+        android:textAllCaps="true"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/normalMargin"
+        android:layout_marginTop="@dimen/mediumMargin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/closeBtn"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/topCardList"
+        app:cardCornerRadius="@dimen/cardRadius"
+        android:elevation="@dimen/cardRadius"
+        android:layout_marginLeft="@dimen/normalMargin"
+        android:layout_marginRight="@dimen/normalMargin"
+        android:layout_marginTop="@dimen/largeMargin"
+        app:layout_constraintTop_toBottomOf="@+id/saveLocationText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:id="@+id/imgBlood"
+                android:src="@drawable/blood"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/saveUserName"
+                android:hint="Full Name"
+                android:layout_marginTop="@dimen/mediumMargin"
+                android:padding="@dimen/mediumMargin"
+                android:drawableLeft="@drawable/ic_account_name"
+                android:drawablePadding="@dimen/smallMargin"
+                android:background="@drawable/rounded_edit_text"
+                style="@style/TitleText"
+                app:layout_constraintTop_toBottomOf="@+id/imgBlood"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/saveUserPhone"
+                android:hint="Phone Number"
+                android:drawableLeft="@drawable/ic_phone"
+                android:drawablePadding="@dimen/smallMargin"
+                android:layout_marginTop="@dimen/smallMargin"
+                style="@style/TitleText"
+                android:background="@drawable/rounded_edit_text"
+                app:layout_constraintTop_toBottomOf="@+id/saveUserName"
+                />
+
+
+
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/userBloodGroup"
+                style="@android:style/Widget.Spinner.DropDown"
+                android:padding="@dimen/smallMargin"
+                android:layout_marginTop="@dimen/smallMargin"
+                app:layout_constraintTop_toBottomOf="@+id/saveUserPhone"
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/saveUserRemarks"
+                android:hint="Remarks"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="@dimen/smallMargin"
+                android:layout_marginTop="@dimen/smallMargin"
+                style="@style/TitleText"
+                android:background="@drawable/rounded_edit_text"
+                app:layout_constraintTop_toBottomOf="@+id/userBloodGroup"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveInfo"
+        android:text="Submit"
+        android:textSize="@dimen/heading1"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorLightGray"
+        android:layout_marginLeft="@dimen/normalMargin"
+        android:layout_marginRight="@dimen/normalMargin"
+        android:layout_marginTop="@dimen/largeMargin"
+        app:layout_constraintTop_toBottomOf="@+id/topCardList"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

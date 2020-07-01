@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:id="@+id/topCardList"
+    android:elevation="@dimen/cardRadius"
+    android:layout_marginTop="@dimen/cardRadius"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/mediumMargin"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/generalImage"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/generalTitle"
+        android:textStyle="bold"
+        android:textSize="@dimen/heading2"
+        tools:text="This is title"
+        android:layout_margin="@dimen/normalMargin"
+        app:layout_constraintTop_toBottomOf="@+id/generalImage"
+    />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/generalDescription"
+        android:textSize="@dimen/heading3"
+        tools:text="This is title"
+        android:layout_marginLeft="@dimen/normalMargin"
+        android:layout_marginRight="@dimen/normalMargin"
+        app:layout_constraintTop_toBottomOf="@+id/generalDate"
+        />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/generalDate"
+        android:textSize="@dimen/heading3"
+        tools:text="2019/12/08"
+        android:layout_marginLeft="@dimen/normalMargin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/generalTitle"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/generalApplyCode"
+        android:text="@string/apply_promo"
+        android:visibility="visible"
+        android:textSize="@dimen/heading3"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/oval_background_button_red"
+        android:paddingLeft="@dimen/normalMargin"
+        android:paddingRight="@dimen/normalMargin"
+        android:layout_marginTop="@dimen/cardRadius"
+        android:layout_marginRight="@dimen/normalMargin"
+        app:layout_constraintTop_toBottomOf="@+id/generalDescription"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
