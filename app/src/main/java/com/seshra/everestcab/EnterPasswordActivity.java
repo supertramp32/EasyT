@@ -145,4 +145,6 @@ public class EnterPasswordActivity extends AppCompatActivity implements View.OnC
         LocalBroadcastManager.getInstance(getApplicationContext())
                 .unregisterReceiver(broadcastReceiver);
     }
+
+
 }

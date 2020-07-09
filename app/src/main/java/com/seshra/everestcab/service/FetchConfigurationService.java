@@ -102,7 +102,7 @@ public class FetchConfigurationService extends IntentService {
         data.put("merchant_id", "136");
         data.put("login_type", "PHONE");
         data.put("package_name", "" + BuildConfig.APPLICATION_ID);
-        data.put("player_id","UUID");
+        data.put("player_id",UUID);
         data.put("apk_version", BuildConfig.VERSION_NAME);
         data.put("device", "1");  // that is for android
         data.put("operating_system", "" + Build.VERSION.SDK_INT);
