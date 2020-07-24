@@ -28,7 +28,7 @@
     <string name="final_confirm">बूक गर्नुहोस </string>
     <string name="contactUs">सम्पर्क</string>
     <string name="label_contact_address">ठेगाना</string>
-    <string name="easyTaxiEmail">easytaxinepal@gmail.com</string>
+    <string name="easyTaxiEmail">everestCabNepal@gmail.com</string>
     <string name="email">ई-मेल</string>
     <string name="label_contact_subject">विषय</string>
     <string name="message">सन्देश</string>
@@ -37,9 +37,9 @@
 
     <string name="report_issue">रिपोर्ट गर्नुहोस्</string>
     <string name="send_email">ई-मेल पठाउनुहोस्</string>
-    <string name="labe_easy_taxi">Easy Taxi Nepal</string>
+    <string name="labe_easy_taxi">Everest Cab Nepal</string>
     <string name="driver_search_text">तपाईंको लागि चालक खोज्दै</string>
-    <string name="easy_taxi">Easy Taxi</string>
+    <string name="easy_taxi">Everest Cab</string>
     <string name="help_for_blood">Help for Blood</string>
     <string name="select_language">भाषा छनोट गर्नुस</string>
     <string name="cancel">रद्द गर्नुहोस्</string>
@@ -111,7 +111,7 @@
     <string name="share_details">विवरण सेयर गर्नुहोस्</string>
     <string name="error_logging">तपाईमा लग इन गर्न मिलेन </string>
     <string name="enter_your_password">तपाईको पासवर्ड टाईप गर्नुहोस्</string>
-    <string name="enter_the_password_you_set_for_easy_taxi">Easy taxiको लागि तपाईंले सेट गर्नुभएको पासवर्ड टाईप गर्नुहोस्</string>
+    <string name="enter_the_password_you_set_for_easy_taxi">Everest Cab को लागि तपाईंले सेट गर्नुभएको पासवर्ड टाईप गर्नुहोस्</string>
     <string name="forgot_password">पासवर्ड भुल्नु भयो?</string>
     <string name="error">error</string>
     <string name="error_confirm">Couldn\'t confirm your ride.</string>

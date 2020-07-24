@@ -60,7 +60,7 @@
                 android:id="@+id/shimmer_view_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:shimmer_auto_start="true"
                 android:layout_gravity="center"
                 app:layout_constraintTop_toBottomOf="@+id/driverSearchText"
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/driverLayout"
                 layout="@layout/item_driver_details"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@+id/driverSearchText"/>
 
 
@@ -147,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/driverSearchPickLocation"
                 android:gravity="center"
+                tools:text="Baneswor, Kathmandu"
                 android:drawableLeft="@drawable/ic_loc_e"
                 android:drawablePadding="@dimen/smallMargin"
                 android:layout_marginTop="@dimen/largeMargin"
@@ -174,6 +175,7 @@
                 android:id="@+id/driverSearchDropLocation"
                 android:gravity="center"
                 android:drawableLeft="@drawable/ic_loc"
+                tools:text="Panga, Kirtipur"
                 android:drawablePadding="@dimen/smallMargin"
                 android:layout_marginTop="@dimen/mediumMargin"
                 android:layout_marginLeft="@dimen/normalMargin"

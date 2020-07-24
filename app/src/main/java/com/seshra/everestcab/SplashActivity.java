@@ -76,7 +76,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-        Glide.with(this).asGif().load(R.drawable.flash)
+        Glide.with(this).asGif().load(R.drawable.flash_one)
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE)).listener(new RequestListener<GifDrawable>() {
             @Override
             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {

@@ -2490,7 +2490,7 @@ View.OnClickListener,
                 R.drawable.car);
 
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap
-                (Bitmap.createScaledBitmap(icon, 80,80, false)));
+                (Bitmap.createScaledBitmap(icon, 60,60, false)));
 
 
         tempMarker = mGoogleMap.addMarker(markerOptions);
