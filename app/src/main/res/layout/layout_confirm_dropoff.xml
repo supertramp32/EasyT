@@ -8,13 +8,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/confirmDropOffBtn"
         android:layout_width="match_parent"
         android:text="@string/confirm_drop_off"
         android:layout_height="match_parent"
         style="@style/raisedButton"
-        android:background="@drawable/oval_background_button_red"
+        android:background="@drawable/oval_background_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/guidelinePick"
         app:layout_constraintBottom_toBottomOf="parent"

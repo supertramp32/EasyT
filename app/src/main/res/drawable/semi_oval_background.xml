@@ -6,7 +6,8 @@
                 android:color="@color/colorPrimary" />
 
             <corners
-                android:radius="8dp"
+                android:bottomRightRadius="8dp"
+                android:topRightRadius="8dp"
                 />
             <padding
                 android:top="12dp"

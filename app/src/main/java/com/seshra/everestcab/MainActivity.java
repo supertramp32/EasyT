@@ -153,7 +153,7 @@ View.OnClickListener,
     TextInputEditText inputPromoCode;
     TextInputLayout promoCodeLayout;
 
-    TextView estimatedTime;
+//    TextView estimatedTime;
 
     TextView pickLocationName;
 
@@ -185,7 +185,8 @@ View.OnClickListener,
 
     Location targetLocation;
 
-    ImageView pickUpPin, dropOffPin,rewardIcon;
+    ImageView pickUpPin, dropOffPin;
+//    ImageView rewardIcon;
 
     ArrayList<LatLng> markerPoints = new ArrayList<LatLng>();
     Marker marker11;
@@ -216,8 +217,9 @@ View.OnClickListener,
 
 //    ImageView scheduler;
 
-    View confirmDropLayout,selectServiceLayout, confirmPickLayout, pickUpLocationLayout, dropOffLocationLayout;
+    View confirmDropLayout, confirmPickLayout, pickUpLocationLayout, dropOffLocationLayout;
     View finalConfirmLayout, finalRequirementsLayout;
+//    View selectServiceLayout;
 
 
 
@@ -460,7 +462,7 @@ View.OnClickListener,
 
                                 serviceAvailability.setVisibility(View.GONE);
                                 if(modelConfirm.getData()!=null){
-                                    estimatedTime.setText(modelConfirm.getData().getEta());
+//                                    estimatedTime.setText(modelConfirm.getData().getEta());
 
 //                                    if(driverImage==null) {
 //                                        new DownloadTaxiImage(MainActivity.this).execute(modelConfirm.getData());
@@ -627,7 +629,7 @@ View.OnClickListener,
             detailsText = findViewById(R.id.detailsText);
             inputPromoCode = findViewById(R.id.inputPromoCode);
             promoCodeLayout = findViewById(R.id.promoCodeLayout);
-            rewardIcon = findViewById(R.id.reward_icon);
+//            rewardIcon = findViewById(R.id.reward_icon);
 
 
             estBill = findViewById(R.id.serviceEstimatedBill);
@@ -641,7 +643,7 @@ View.OnClickListener,
             pickUpLocationLayout = findViewById(R.id.pickUpLocationLayout);
             confirmDropLayout = findViewById(R.id.confirmDropLayout);
             dropOffLocationLayout = findViewById(R.id.dropUpLocationLayout);
-            selectServiceLayout = findViewById(R.id.selectServiceLayout);
+//            selectServiceLayout = findViewById(R.id.selectServiceLayout);
 
             yahoo = findViewById(R.id.finalConfirmBtn);
             progressBar = findViewById(R.id.progressbar);
@@ -650,7 +652,7 @@ View.OnClickListener,
             finalRequirementsLayout = findViewById(R.id.finalRequirementLayout);
 
             serviceAvailability = findViewById(R.id.serviceAvailability);
-            estimatedTime = findViewById(R.id.serviceTypeEst);
+//            estimatedTime = findViewById(R.id.serviceTypeEst);
 
             confirmBtn = findViewById(R.id.confirmPickupBtn);
             sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -705,7 +707,7 @@ View.OnClickListener,
             inputPromoCode.setOnClickListener(this);
             dDropLocationName.setOnClickListener(this);
             yahoo.setOnClickListener(this);
-            rewardIcon.setOnClickListener(this);
+//            rewardIcon.setOnClickListener(this);
             pickLocationName.setOnClickListener(this);
 
 
@@ -995,7 +997,7 @@ View.OnClickListener,
 
                             pickUpLocationLayout.setVisibility(View.GONE);
                             confirmPickLayout.setVisibility(View.GONE);
-                            selectServiceLayout.setVisibility(View.GONE);
+//                            selectServiceLayout.setVisibility(View.GONE);
 //
                             confirmDropLayout.setVisibility(View.VISIBLE);
                             dropOffLocationLayout.setVisibility(View.VISIBLE);
@@ -1084,9 +1086,9 @@ View.OnClickListener,
                     yahoo.setClickable(false);
                     break;
 
-                case R.id.reward_icon:
-                    startActivity(new Intent(MainActivity.this, NotificationsActivity.class));
-                    break;
+//                case R.id.reward_icon:
+//                    startActivity(new Intent(MainActivity.this, NotificationsActivity.class));
+//                    break;
 
 
             }
@@ -1700,7 +1702,7 @@ View.OnClickListener,
                         confirmBtn.setClickable(true);
                         confirmPickLayout.setVisibility(View.VISIBLE);
                         finalRequirementsLayout.setVisibility(View.GONE);
-                        selectServiceLayout.setVisibility(View.VISIBLE);
+//                        selectServiceLayout.setVisibility(View.VISIBLE);
                         pickAddressText.setText(pickDropLocationNames.get(0));
                         pickDropLocationNames.remove(0);
                         dropOffPin.setVisibility(View.GONE);

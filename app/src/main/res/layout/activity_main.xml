@@ -30,26 +30,27 @@
 
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:id="@+id/nav_hamburg_icon"
+        android:background="@drawable/semi_oval_background"
         android:src="@drawable/ic_hamburg"
-        android:layout_margin="@dimen/normalMargin"
+        android:layout_marginTop="@dimen/normalMargin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/reward_icon"
-        android:src="@drawable/ic_reward"
-        android:background="@drawable/ic_circle"
-        android:layout_margin="@dimen/normalMargin"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/reward_icon"-->
+<!--        android:src="@drawable/ic_reward"-->
+<!--        android:background="@drawable/ic_circle"-->
+<!--        android:layout_margin="@dimen/normalMargin"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        />-->
 
         <ImageView
             android:id="@+id/pickUpPin"
@@ -116,7 +117,7 @@
             app:layout_constraintTop_toTopOf="@id/nav_hamburg_icon"
             app:layout_constraintBottom_toBottomOf="@id/nav_hamburg_icon"
             app:layout_constraintLeft_toRightOf="@id/nav_hamburg_icon"
-            app:layout_constraintRight_toLeftOf="@id/reward_icon"
+            app:layout_constraintRight_toRightOf="parent"
             />
 
 
@@ -126,8 +127,10 @@
             android:layout_width="match_parent"
             android:id="@+id/pickUpLocationLayout"
             layout="@layout/layout_pickup_location"
-            android:layout_margin="@dimen/normalMargin"
-            app:layout_constraintTop_toBottomOf="@+id/reward_icon"
+            android:layout_marginTop="@dimen/largeMargin"
+            android:layout_marginRight="@dimen/normalMargin"
+            android:layout_marginLeft="@dimen/normalMargin"
+            app:layout_constraintTop_toBottomOf="@+id/nav_hamburg_icon"
             />
 
 
@@ -137,22 +140,24 @@
             android:id="@+id/dropUpLocationLayout"
             android:visibility="gone"
             layout="@layout/layout_drop_location"
-            android:layout_margin="@dimen/normalMargin"
-            app:layout_constraintTop_toBottomOf="@+id/reward_icon"
-            />
-
-
-
-        <include
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/selectServiceLayout"
-            layout="@layout/layout_service_type"
+            android:layout_marginTop="@dimen/largeMargin"
             android:layout_marginLeft="@dimen/normalMargin"
             android:layout_marginRight="@dimen/normalMargin"
-            android:layout_marginBottom="@dimen/mediumMargin"
-            app:layout_constraintBottom_toTopOf="@+id/confirmPickupLayout"
+            app:layout_constraintTop_toBottomOf="@+id/nav_hamburg_icon"
             />
+
+
+
+<!--        <include-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:id="@+id/selectServiceLayout"-->
+<!--            layout="@layout/layout_service_type"-->
+<!--            android:layout_marginLeft="@dimen/normalMargin"-->
+<!--            android:layout_marginRight="@dimen/normalMargin"-->
+<!--            android:layout_marginBottom="@dimen/mediumMargin"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/confirmPickupLayout"-->
+<!--            />-->
 
 
         <include

@@ -8,7 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/confirmPickupBtn"
             android:layout_width="match_parent"
             android:text="@string/confirm_pickup"
@@ -19,41 +19,6 @@
             app:layout_constraintRight_toLeftOf="@+id/guidelinePick"
             app:layout_constraintBottom_toBottomOf="parent"
             />
-
-<!--    <ProgressBar-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:id="@+id/pickUpLocationProgress"-->
-<!--        android:visibility="visible"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/confirmPickupBtn"-->
-<!--        app:layout_constraintLeft_toLeftOf="@+id/confirmPickupBtn"-->
-<!--        app:layout_constraintRight_toRightOf="@+id/confirmPickupBtn"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/confirmPickupBtn"-->
-<!--        />-->
-
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        app:cardCornerRadius="@dimen/smallMargin"-->
-<!--        android:elevation="@dimen/smallMargin"-->
-<!--        android:layout_marginRight="@dimen/smallMargin"-->
-<!--        android:layout_marginLeft="@dimen/smallMargin"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/confirmPickupBtn"-->
-<!--        app:layout_constraintLeft_toRightOf="@+id/guidelinePick"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/confirmPickupBtn"-->
-<!--        >-->
-
-<!--&lt;!&ndash;        <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:scaleType="center"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/scheduler"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:src="@drawable/ic_schedule"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_gravity="center_horizontal"&ndash;&gt;-->
-<!--&lt;!&ndash;            />&ndash;&gt;-->
-
-<!--    </androidx.cardview.widget.CardView>-->
 
 
         <androidx.constraintlayout.widget.Guideline

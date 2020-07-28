@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/smallMargin"
-    android:elevation="@dimen/smallMargin"
-    >
+        >
 
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirmPickCard"
+        app:cardCornerRadius="@dimen/cardRadius"
+        android:elevation="@dimen/cardRadius"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/mediumMargin">
+        android:padding="@dimen/normalMargin">
 
 
         <TextView
@@ -20,7 +29,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/pickLocationName"
             android:gravity="center"
-            android:drawableLeft="@drawable/ic_loc_e"
+            android:drawableLeft="@drawable/ic_loc"
             android:drawablePadding="@dimen/smallMargin"
             style="@style/TitleText"
             android:layout_marginTop="@dimen/smallMargin"
@@ -37,21 +46,30 @@
             android:text="@string/details"
             android:gravity="center_vertical"
             android:textAllCaps="true"
+            android:visibility="gone"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/pickLocationName"
             app:layout_constraintBottom_toBottomOf="@id/pickLocationName"/>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:id="@+id/viewPickandDrop"
-            android:background="@color/colorGray"
-            android:layout_margin="@dimen/mediumMargin"
-            app:layout_constraintRight_toRightOf="@+id/detailsText"
-            app:layout_constraintLeft_toLeftOf="@+id/pickLocationName"
-            app:layout_constraintTop_toBottomOf="@+id/pickLocationName"
-            />
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/cardRadius"
+        android:elevation="@dimen/cardRadius"
+        android:layout_marginTop="@dimen/mediumMargin"
+        app:layout_constraintTop_toBottomOf="@id/confirmPickCard"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/normalMargin">
 
         <TextView
             android:layout_width="match_parent"
@@ -59,21 +77,19 @@
             android:id="@+id/dropOffLocationName"
             android:gravity="center"
             android:hint="@string/drop_text_hint"
-            android:drawableLeft="@drawable/ic_loc"
-            android:drawablePadding="@dimen/smallMargin"
-            android:layout_marginTop="@dimen/mediumMargin"
-            android:layout_marginBottom="@dimen/smallMargin"
+            android:drawableLeft="@drawable/ic_loc_e"
+            android:layout_marginTop="@dimen/smallMargin"
             style="@style/TitleText"
-            app:layout_constraintTop_toBottomOf="@id/viewPickandDrop"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             />
 
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
