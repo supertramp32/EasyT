@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/toolbarText"
-            android:text="@string/cash_to_pay"
+            android:text="@string/ride_finished"
             android:textAllCaps="true"
             android:textSize="@dimen/heading1"
             android:textColor="@color/colorWhite"
@@ -28,6 +28,14 @@
     </androidx.appcompat.widget.Toolbar>
 
 
+    <include layout="@layout/layout_drop_location"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/locationLayout"
+        app:layout_constraintTop_toBottomOf="@id/toolbarReciept"
+        android:layout_margin="@dimen/mediumMargin"
+        ></include>
+
 
     <androidx.cardview.widget.CardView
         android:layout_height="wrap_content"
@@ -35,10 +43,10 @@
         android:id="@+id/profileTopCardView"
         app:cardCornerRadius="@dimen/cardRadius"
         android:elevation="@dimen/cardRadius"
-        android:layout_marginTop="@dimen/extraLargeMargin"
+        android:layout_marginTop="@dimen/mediumMargin"
         android:layout_marginLeft="@dimen/mediumMargin"
         android:layout_marginRight="@dimen/mediumMargin"
-        app:layout_constraintTop_toBottomOf="@id/toolbarReciept"
+        app:layout_constraintTop_toBottomOf="@id/locationLayout"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,11 +58,12 @@
 
 
 
+
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_view_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:shimmer_auto_start="true"
                 android:layout_gravity="center"
                 app:layout_constraintTop_toBottomOf="@+id/driverSearchText"
@@ -81,20 +90,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/recieptLayout"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:padding="@dimen/mediumMargin"
                 >
+
+
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/verifyDriverText"
-                    android:text="@string/verify_with_driver"
+                    android:text="@string/ride_finished"
                     android:textAlignment="center"
-                    android:textSize="@dimen/heading3"
+                    style="@style/TitleText"
+                    android:textColor="@color/colorDarkFont"
+                    android:textSize="@dimen/heading1"
                     android:layout_marginTop="@dimen/mediumMargin"
                     app:layout_constraintTop_toTopOf="parent"
-                    />
+                   />
 
 
 

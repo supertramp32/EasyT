@@ -182,6 +182,10 @@
     <string name="cancel_ride">Cancel Ride</string>
     <string name="ride_active">Ride is in Progress.</string>
     <string name="go_to_ride">Go to ride?</string>
+    <string name="select_ride_type">Select Ride Type</string>
+    <string name="fixed_ride">Fixed Ride</string>
+    <string name="metered_ride">Metered Ride</string>
+    <string name="ride_finished">Ride Finished</string>
 
 
 </resources>

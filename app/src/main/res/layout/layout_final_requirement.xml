@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="@dimen/cardRadius"
+    android:elevation="@dimen/smallMargin">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/mediumMargin"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectRideTypeText"
+        android:text="@string/select_ride_type"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/smallMargin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mediumMargin"
+        app:layout_constraintTop_toBottomOf="@id/selectRideTypeText"
+        >
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fixedRideBtn"
+            android:text="@string/fixed_ride"
+            android:textSize="@dimen/heading2"
+            android:textStyle="normal"
+            android:checked="true"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/serviceEstimatedBill"
+            tools:text="Nrs 500"
+            android:textSize="@dimen/heading1"
+            android:textColor="@color/colorDarkFont"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/normalMargin"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/cardRadius"
+            android:background="@color/colorDarkGray"
+            />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/metereRideBtn"
+            android:text="@string/metered_ride"
+            android:textSize="@dimen/heading2"
+            android:textStyle="normal"
+            android:layout_marginTop="@dimen/cardRadius"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/estimatedPriceMetered"
+            tools:text="Nrs 500"
+            android:textSize="@dimen/heading1"
+            android:textColor="@color/colorDarkFont"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/normalMargin"
+            />
+
+    </RadioGroup>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

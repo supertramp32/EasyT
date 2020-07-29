@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarReciept"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/toolbarText"
+            android:text="@string/ride_finished"
+            android:textAllCaps="true"
+            android:textSize="@dimen/heading1"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <include layout="@layout/layout_drop_location"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/locationLayout"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/toolbarReciept"
+        android:layout_margin="@dimen/normalMargin"
+        ></include>
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/recieptCard"
+        android:visibility="gone"
+        app:cardCornerRadius="@dimen/cardRadius"
+        android:elevation="@dimen/cardRadius"
+        android:layout_margin="@dimen/normalMargin"
+        app:layout_constraintTop_toBottomOf="@id/locationLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/mediumMargin"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rideFinishedText"
+                android:text="@string/ride_finished"
+                android:textSize="@dimen/heading1"
+                android:textColor="@color/colorDarkFont"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/normalMargin"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:id="@+id/driverImg"
+                android:src="@drawable/user"
+                android:layout_margin="@dimen/mediumMargin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rideFinishedText"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/driverName"
+                android:textSize="@dimen/heading2"
+                android:textStyle="bold"
+                tools:text="Rawbin Shrestha"
+                android:layout_marginTop="@dimen/smallMargin"
+                android:layout_marginLeft="@dimen/mediumMargin"
+                app:layout_constraintLeft_toRightOf="@id/driverImg"
+                app:layout_constraintTop_toTopOf="@+id/driverImg"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="5"
+                android:id="@+id/driverRating"
+                android:textSize="@dimen/heading2"
+                android:drawableRight="@drawable/ic_star"
+                android:textColor="@color/colorDarkGray"
+                android:drawablePadding="@dimen/smallMargin"
+                android:layout_marginTop="@dimen/smallMargin"
+                android:layout_marginLeft="@dimen/mediumMargin"
+                app:layout_constraintLeft_toRightOf="@+id/driverName"
+                app:layout_constraintTop_toTopOf="@+id/driverImg"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/driverCarDetails"
+                android:text="Ba 2 Kha 1515"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/mediumMargin"
+                app:layout_constraintLeft_toRightOf="@+id/driverImg"
+                app:layout_constraintTop_toBottomOf="@+id/driverName"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/driverCarModel"
+                android:text="Tata Nano"
+                android:layout_marginLeft="@dimen/mediumMargin"
+                app:layout_constraintLeft_toRightOf="@+id/driverImg"
+                app:layout_constraintTop_toBottomOf="@+id/driverCarDetails"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ridetypeText"
+                android:text="@string/metered_ride"
+                android:textSize="@dimen/heading1"
+                android:textColor="@color/colorDarkFont"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/normalMargin"
+                app:layout_constraintTop_toBottomOf="@+id/rideFinishedText"
+                app:layout_constraintBottom_toTopOf="@id/recieptFinishBtn"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rideestBill"
+                tools:text="NRs 500"
+                android:textSize="@dimen/headingxT"
+                android:textColor="@color/colorDarkFont"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/cardRadius"
+                android:layout_marginLeft="@dimen/normalMargin"
+                app:layout_constraintTop_toBottomOf="@+id/ridetypeText"
+                />
+
+
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recieptFinishBtn"
+                android:text="@string/rate_driver_and_finish"
+                style="@style/raisedButton"
+                android:background="@drawable/oval_background_button"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBarReciept"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

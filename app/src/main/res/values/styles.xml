@@ -14,7 +14,7 @@
     </style>
 
     <style name="TitleText">
-        <item name="android:maxLines">1</item>
+        <item name="android:maxLines">2</item>
         <item name="android:textSize">@dimen/heading2</item>
         <item name="android:textStyle">bold</item>
     </style>

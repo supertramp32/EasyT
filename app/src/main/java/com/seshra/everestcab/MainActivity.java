@@ -42,7 +42,6 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -109,8 +108,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -150,8 +147,8 @@ View.OnClickListener,
     String pickLat, pickLon, dropLat, dropLon, picLoc , dropLoc;
 
 
-    TextInputEditText inputPromoCode;
-    TextInputLayout promoCodeLayout;
+//    TextInputEditText inputPromoCode;
+//    TextInputLayout promoCodeLayout;
 
 //    TextView estimatedTime;
 
@@ -244,7 +241,7 @@ View.OnClickListener,
 
 
 
-    TextView estBill;
+    TextView estBillFixed, estBillMetered;
 
     private LatLng PICK_LOCATION, DROP_LOCATION, CURRENT_LOCATION;
 
@@ -360,9 +357,9 @@ View.OnClickListener,
 
 
                                     if (!sharedPreferences.getString(IntentKeys.PROMO_CODE, "null").equals("null")) {
-                                        inputPromoCode.setText(sharedPreferences.getString(IntentKeys.PROMO_CODE, "null"));
-                                        inputPromoCode.setImeActionLabel(getResources().getString(R.string.applying_promo), KeyEvent.KEYCODE_ENTER);
-                                        viewModel.applyPromoCode(modelCheckOut.getData().getId(), inputPromoCode.getText().toString());
+//                                        inputPromoCode.setText(sharedPreferences.getString(IntentKeys.PROMO_CODE, "null"));
+//                                        inputPromoCode.setImeActionLabel(getResources().getString(R.string.applying_promo), KeyEvent.KEYCODE_ENTER);
+//                                        viewModel.applyPromoCode(modelCheckOut.getData().getId(), inputPromoCode.getText().toString());
 
                                     }
                                 } else {
@@ -506,20 +503,20 @@ View.OnClickListener,
                             if(modelResultCheck.getResult().equals("1")){
 
 
-                                promoCodeLayout.setHint(getResources().getString(R.string.promo_applied));
-                                inputPromoCode.clearFocus();
+//                                promoCodeLayout.setHint(getResources().getString(R.string.promo_applied));
+//                                inputPromoCode.clearFocus();
 
                                 afterCouponRate.setVisibility(View.VISIBLE);
-                                estBill.setText(modelResultCheck.getData().getEstimate_bill());
-                                estBill.setTextColor(getResources().getColor(R.color.colorRed));
-                                estBill.setBackground(getResources().getDrawable(R.drawable.text_strike_through));
+                                estBillFixed.setText(modelResultCheck.getData().getEstimate_bill());
+                                estBillFixed.setTextColor(getResources().getColor(R.color.colorRed));
+                                estBillFixed.setBackground(getResources().getDrawable(R.drawable.text_strike_through));
                                 afterCouponRate.setText(modelResultCheck.getData().getDiscounted_amout());
 
                             }else {
 
-                                promoCodeLayout.setHint(getResources().getString(R.string.promo));
-                                inputPromoCode.clearFocus();
-                                inputPromoCode.setText("");
+//                                promoCodeLayout.setHint(getResources().getString(R.string.promo));
+//                                inputPromoCode.clearFocus();
+//                                inputPromoCode.setText("");
 
                                 afterCouponRate.setVisibility(View.GONE);
 
@@ -582,11 +579,12 @@ View.OnClickListener,
             pickAddressText.setText(modelCheckOut.getData().getPickup_location());
             dDropLocationName.setText(modelCheckOut.getData().getDrop_location());
 
-            estBill.setText("" + modelCheckOut.getData().getEstimate_bill());
+            estBillFixed.setText("" + modelCheckOut.getData().getEstimate_bill());
+            estBillMetered.setText("" + modelCheckOut.getData().getEstimate_bill());
 
 
 
-        }
+    }
 
 
         @Override
@@ -627,12 +625,13 @@ View.OnClickListener,
             confirmDropBtn = findViewById(R.id.confirmDropOffBtn);
 //            scheduler = findViewById(R.id.scheduler);
             detailsText = findViewById(R.id.detailsText);
-            inputPromoCode = findViewById(R.id.inputPromoCode);
-            promoCodeLayout = findViewById(R.id.promoCodeLayout);
+//            inputPromoCode = findViewById(R.id.inputPromoCode);
+//            promoCodeLayout = findViewById(R.id.promoCodeLayout);
 //            rewardIcon = findViewById(R.id.reward_icon);
 
 
-            estBill = findViewById(R.id.serviceEstimatedBill);
+            estBillFixed = findViewById(R.id.serviceEstimatedBill);
+            estBillMetered = findViewById(R.id.estimatedPriceMetered);
 
 //            imageLayout = findViewById(R.id.image_layout);
 
@@ -704,7 +703,7 @@ View.OnClickListener,
             confirmDropBtn.setOnClickListener(this);
 //            scheduler.setOnClickListener(this);
             detailsText.setOnClickListener(this);
-            inputPromoCode.setOnClickListener(this);
+//            inputPromoCode.setOnClickListener(this);
             dDropLocationName.setOnClickListener(this);
             yahoo.setOnClickListener(this);
 //            rewardIcon.setOnClickListener(this);
@@ -1062,11 +1061,11 @@ View.OnClickListener,
                     openDialog(1);
                     break;
 
-                case R.id.inputPromoCode:
-
-                    createPromoDialog();
-//                    openDialog(2);
-                    break;
+//                case R.id.inputPromoCode:
+//
+//                    createPromoDialog();
+////                    openDialog(2);
+//                    break;
 
                 case R.id.dropOffLocationName:
                     if(pickDropLocationNames.size()<3) {
@@ -1647,7 +1646,7 @@ View.OnClickListener,
 
                         return "";
                     }
-                } catch (IOException e1) {
+                } catch (Exception e1) {
                     Log.e("LocationSampleActivity",
                             "IO Exception in getFromLocation()");
                     e1.printStackTrace();
@@ -1782,11 +1781,13 @@ View.OnClickListener,
                         finalRequirementsLayout.setVisibility(View.GONE);
                         finalConfirmLayout.setVisibility(View.GONE);
 
-                        promoCodeLayout.setHint(getResources().getString(R.string.promo));
-                        inputPromoCode.clearFocus();
-                        inputPromoCode.setText("");
-                        estBill.setTextColor(getResources().getColor(R.color.colorDarkGray));
-                        estBill.setBackground(null);
+//                        promoCodeLayout.setHint(getResources().getString(R.string.promo));
+//                        inputPromoCode.clearFocus();
+//                        inputPromoCode.setText("");
+
+
+//                        estBill.setTextColor(getResources().getColor(R.color.colorDarkGray));
+//                        estBill.setBackground(null);
 
                         afterCouponRate.setVisibility(View.GONE);
 
@@ -2565,10 +2566,10 @@ View.OnClickListener,
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                inputPromoCode.setText(promoInput.getText().toString());
-                viewModel.applyPromoCode(modelCheckOut.getData().getId(),promoInput.getText().toString());
-                promoCodeLayout.setHint(getResources().getString(R.string.applying_promo));
+//
+//                inputPromoCode.setText(promoInput.getText().toString());
+//                viewModel.applyPromoCode(modelCheckOut.getData().getId(),promoInput.getText().toString());
+//                promoCodeLayout.setHint(getResources().getString(R.string.applying_promo));
                 dialog.dismiss();
 
 

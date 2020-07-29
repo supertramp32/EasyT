@@ -88,7 +88,7 @@ public class AboutUsActivity extends AppCompatActivity implements OnMapReadyCall
             public void onClick(View v) {
                 try {
                     Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto",
-                            "easytaxinepal@gmail.com" ,null ));
+                            "everestCab@gmail.com" ,null ));
                     emailIntent.putExtra(Intent.EXTRA_SUBJECT, "" + AboutUsActivity.this.getResources().getString(R.string.report_issue));
                     emailIntent.putExtra(Intent.EXTRA_TEXT, "");
                     startActivity(Intent.createChooser(emailIntent, "" + AboutUsActivity.this.getResources().getString(R.string.send_email)));

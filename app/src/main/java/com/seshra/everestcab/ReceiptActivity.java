@@ -2,6 +2,7 @@ package com.seshra.everestcab;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -16,10 +17,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.seshra.everestcab.models.ModelResultCheck;
 import com.seshra.everestcab.models.ModelSpecificTripDetails;
 import com.seshra.everestcab.service.FetchSpecificTripDetailService;
@@ -34,7 +38,7 @@ public class ReceiptActivity extends AppCompatActivity {
     private static final String TAG = "Reciept Activity";
     ReceiptActivityViewModel viewModel;
 
-//    ProgressBar progressBar;
+    ProgressBar progressBar;
 
     ModelSpecificTripDetails specificTripDetails;
 
@@ -45,10 +49,15 @@ public class ReceiptActivity extends AppCompatActivity {
     TextView  estFare, serviceType ,tripType;
     TextView pickLocation, dropLocation;
 
+    ImageView driverImage;
+    TextView driverName, driverVehicleNumber, driverRating, driverVehicleType;
 
     Button finishRide;
 
     String bookingId;
+
+    CardView recieptCard;
+    View locationViews;
 
 
 
@@ -87,13 +96,13 @@ public class ReceiptActivity extends AppCompatActivity {
     };
 
 
-    ShimmerFrameLayout shimmerFrameLayout;
-    ConstraintLayout constraintLayout;
+//    ShimmerFrameLayout shimmerFrameLayout;
+//    ConstraintLayout constraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_final_receipt);
+        setContentView(R.layout.activity_reciept);
 
 
         initViews();
@@ -127,22 +136,23 @@ public class ReceiptActivity extends AppCompatActivity {
     private void initViews() {
 
 
-//        mapImg = findViewById(R.id.receiptMapImg);
-//        driverImg = findViewById(R.id.receiptDriverImg);
-//        date = findViewById(R.id.receiptDate);
-        estFare = findViewById(R.id.receiptTotalAmount);
-        serviceType = findViewById(R.id.serviceType);
-//        paymentType = findViewById(R.id.receiptPaymentType);
-        pickLocation = findViewById(R.id.receiptPickUpLocation);
-        dropLocation = findViewById(R.id.receiptDropOffLocation);
-//        driverName = findViewById(R.id.receiptDriverName);
-//        driverEmail = findViewById(R.id.receiptDriverEmail);
-//        driverRating = findViewById(R.id.receiptDriverRating);
-//        progressBar = findViewById(R.id.recieptProgressBar);
+        progressBar = findViewById(R.id.progressBarReciept);
+
+        estFare = findViewById(R.id.rideestBill);
+        serviceType = findViewById(R.id.ridetypeText);
+        pickLocation = findViewById(R.id.pickLocationName);
+        dropLocation = findViewById(R.id.dropOffLocationName);
         finishRide = findViewById(R.id.recieptFinishBtn);
 
-        shimmerFrameLayout = findViewById(R.id.shimmer_view_container);
-        constraintLayout = findViewById(R.id.recieptLayout);
+        driverImage = findViewById(R.id.driverImg);
+        driverName = findViewById(R.id.driverName);
+        driverRating = findViewById(R.id.driverRating);
+        driverVehicleNumber = findViewById(R.id.driverCarDetails);
+        driverVehicleType = findViewById(R.id.driverCarModel);
+
+        recieptCard = findViewById(R.id.recieptCard);
+        locationViews = findViewById(R.id.locationLayout);
+
 
 
 
@@ -182,25 +192,21 @@ public class ReceiptActivity extends AppCompatActivity {
 
     private void populateViews(ModelSpecificTripDetails specificTripDetails) {
 
+        progressBar.setVisibility(View.GONE);
+        recieptCard.setVisibility(View.VISIBLE);
+        locationViews.setVisibility(View.VISIBLE);
+
+        Glide.with(ReceiptActivity.this).load(specificTripDetails.getData()
+                .getHolder_driver().getData().getCircular_image()).into(driverImage);
+        driverName.setText(specificTripDetails.getData().getHolder_driver().getData().getHighlighted_text());
+        driverRating.setText(specificTripDetails.getData().getHolder_driver().getData().getRating());
 
 
-
-        shimmerFrameLayout.stopShimmer();
-        shimmerFrameLayout.setVisibility(View.GONE);
-        constraintLayout.setVisibility(View.VISIBLE);
-
-//        Glide.with(ReceiptActivity.this).load(specificTripDetails.getData()
-//                .getHolder_driver().getData().getCircular_image()).into(driverImg);
-//
-//
-//        date.setText(specificTripDetails.getData().getHolder_booking_description().getData().getHighlighted_left_text());
         estFare.setText("NPR. "+specificTripDetails.getData().getHolder_metering().getData().getText_one());
         serviceType.setText(specificTripDetails.getData().getHolder_booking_description().getData().getSmall_left_text());
-//        paymentType.setText(specificTripDetails.getData().getHolder_booking_description().getData().getHighlighted_right_text());
         pickLocation.setText(specificTripDetails.getData().getHolder_pickdrop_location().getData().getPick_text());
         dropLocation.setText(specificTripDetails.getData().getHolder_pickdrop_location().getData().getDrop_text());
 //
-//        driverName.setText(specificTripDetails.getData().getHolder_driver().getData().getHighlighted_text());
 //        driverEmail.setText(specificTripDetails.getData().getHolder_driver().getData().getSmall_text());
 //        driverRating.setText(specificTripDetails.getData().getHolder_driver().getData().getRating());
 
