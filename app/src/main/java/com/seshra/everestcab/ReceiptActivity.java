@@ -78,7 +78,7 @@ public class ReceiptActivity extends AppCompatActivity {
                 if(modelResultCheck.getResult().equals("1")) {
 
                     specificTripDetails = SingletonGson.getInstance().fromJson("" + result, ModelSpecificTripDetails.class);
-                    populateViews(specificTripDetails);
+                    populateViews();
 
 
 
@@ -190,7 +190,7 @@ public class ReceiptActivity extends AppCompatActivity {
 
 
 
-    private void populateViews(ModelSpecificTripDetails specificTripDetails) {
+    private void populateViews() {
 
         progressBar.setVisibility(View.GONE);
         recieptCard.setVisibility(View.VISIBLE);
@@ -217,31 +217,31 @@ public class ReceiptActivity extends AppCompatActivity {
     private void ShowDialogForRateUser() {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_rate_us, null);
+        View dialogView = inflater.inflate(R.layout.dialog_rate, null);
         EditText comments = dialogView.findViewById(R.id.comments);
         RatingBar rating_bar = dialogView.findViewById(R.id.rating_bar);
-        Button ll_submit_rating = dialogView.findViewById(R.id.ll_submit_rating);
+        Button ll_submit_rating = dialogView.findViewById(R.id.ratingFinish);
+
+        ImageView driverImage = dialogView.findViewById(R.id.driverImg);
+        TextView driverName = dialogView.findViewById(R.id.driverName);
+        TextView driverRating = dialogView.findViewById(R.id.driverRating);
+        TextView driverVehicleNumber = dialogView.findViewById(R.id.driverCarDetails);
+        TextView driverVehicleType = dialogView.findViewById(R.id.driverCarModel);
+
+        Glide.with(ReceiptActivity.this).load(specificTripDetails.getData()
+                .getHolder_driver().getData().getCircular_image()).into(driverImage);
+        driverName.setText(specificTripDetails.getData().getHolder_driver().getData().getHighlighted_text());
+        driverRating.setText(specificTripDetails.getData().getHolder_driver().getData().getRating());
+
         ll_submit_rating.setOnClickListener((View view) -> {
             try {
 
 
+                progressBar.setVisibility(View.VISIBLE);
                 ll_submit_rating.setClickable(false);
-
-
-
-
 
                 viewModel.rateDriver(bookingId,rating_bar.getRating(),comments.getText().toString());
 
-
-
-//                HashMap<String, String> data = new HashMap<>();
-//                data.put("booking_id", "" + getIntent().getExtras().getString("" + IntentKeys.BOOKING_ID));
-//                data.put("rating", "" + rating_bar.getRating());
-//                data.put("comment", "" + comments.getText().toString());
-//                apiManager._post(API_S.Tags.RATE_USER, API_S_NEW.Endpoints.RATE_DRIVER, data, sessionManager);
-//                hideKeyboard();
-//                alertDialog.hide();
             } catch (Exception e) {
                 Toast.makeText(ReceiptActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 // Snackbar.make(fareActivityRoot, "" + e.getMessage(), Snackbar.LENGTH_SHORT).show();

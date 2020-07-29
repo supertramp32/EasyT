@@ -90,13 +90,12 @@
         app:layout_constraintTop_toBottomOf="@+id/topCardList"
         />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/saveLocationBtn"
         android:text="@string/save"
         android:textSize="@dimen/heading1"
-        android:textColor="@color/colorWhite"
         android:background="@color/colorLightGray"
         android:layout_marginLeft="@dimen/normalMargin"
         android:layout_marginRight="@dimen/normalMargin"

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="@dimen/cardRadius"
+    android:elevation="@dimen/cardRadius"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:id="@+id/driverImg"
+        android:src="@drawable/user"
+        android:layout_margin="@dimen/mediumMargin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/driverName"
+        android:textSize="@dimen/heading2"
+        android:textStyle="bold"
+        tools:text="Rawbin Shrestha"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_marginLeft="@dimen/mediumMargin"
+        app:layout_constraintLeft_toRightOf="@id/driverImg"
+        app:layout_constraintTop_toTopOf="@+id/driverImg"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="5"
+        android:id="@+id/driverRating"
+        android:textSize="@dimen/heading2"
+        android:drawableRight="@drawable/ic_star"
+        android:textColor="@color/colorDarkGray"
+        android:drawablePadding="@dimen/smallMargin"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_marginLeft="@dimen/mediumMargin"
+        app:layout_constraintLeft_toRightOf="@+id/driverName"
+        app:layout_constraintTop_toTopOf="@+id/driverImg"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/driverCarDetails"
+        android:text="Ba 2 Kha 1515"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/mediumMargin"
+        app:layout_constraintLeft_toRightOf="@+id/driverImg"
+        app:layout_constraintTop_toBottomOf="@+id/driverName"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/driverCarModel"
+        android:text="Tata Nano"
+        android:layout_marginLeft="@dimen/mediumMargin"
+        app:layout_constraintLeft_toRightOf="@+id/driverImg"
+        app:layout_constraintTop_toBottomOf="@+id/driverCarDetails"
+        />
+
+
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/largeMargin"
+        android:rating="3"
+        android:numStars="5"
+        android:stepSize="1"
+        android:theme="@style/RatingBar"
+        app:layout_constraintTop_toBottomOf="@id/driverImg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+    <EditText
+        android:id="@+id/comments"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_edit_text"
+        android:padding="10dp"
+        android:singleLine="false"
+        app:layout_constraintTop_toBottomOf="@id/rating_bar"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ratingFinish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normalMargin"
+        android:text="@string/finish_ride"
+        android:textAllCaps="true"
+        android:background="@drawable/oval_background_button"
+        style="@style/raisedButton"
+        app:layout_constraintTop_toBottomOf="@id/comments"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

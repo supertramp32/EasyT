@@ -186,6 +186,7 @@
     <string name="fixed_ride">Fixed Ride</string>
     <string name="metered_ride">Metered Ride</string>
     <string name="ride_finished">Ride Finished</string>
+    <string name="finish_ride">Finish Ride</string>
 
 
 </resources>
