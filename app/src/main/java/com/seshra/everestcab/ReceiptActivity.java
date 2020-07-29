@@ -11,6 +11,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.InsetDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -250,7 +253,11 @@ public class ReceiptActivity extends AppCompatActivity {
         });
         dialogBuilder.setView(dialogView);
 
+
         AlertDialog alertDialog = dialogBuilder.create();
+        ColorDrawable back = new ColorDrawable(Color.TRANSPARENT);
+        InsetDrawable inset = new InsetDrawable(back, 20);
+        alertDialog.getWindow().setBackgroundDrawable(inset);
         alertDialog.show();
     }
 

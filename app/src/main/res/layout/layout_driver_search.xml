@@ -60,7 +60,7 @@
                 android:id="@+id/shimmer_view_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:shimmer_auto_start="true"
                 android:layout_gravity="center"
                 app:layout_constraintTop_toBottomOf="@+id/driverSearchText"
@@ -83,26 +83,12 @@
                 android:layout_width="match_parent"
                 android:id="@+id/driverLayout"
                 layout="@layout/item_driver_details"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/driverSearchText"/>
 
 
 
 
-
-<!--            <ProgressBar-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                style="?android:attr/progressBarStyleHorizontal"-->
-<!--                android:id="@+id/driverSearchProgress"-->
-<!--                android:indeterminate="true"-->
-<!--                android:layout_margin="@dimen/mediumMargin"-->
-<!--                android:max="100"-->
-<!--                android:progress="45"-->
-<!--                android:visibility="visible"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/driverSearchText"-->
-<!--                />-->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

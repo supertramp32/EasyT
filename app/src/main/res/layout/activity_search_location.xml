@@ -69,6 +69,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
 
+
+
             <ProgressBar
                 android:id="@+id/progressbar"
                 android:layout_width="20dp"
@@ -162,6 +164,9 @@
 
         </com.seshra.everestcab.placer.PlaceHolderView>
     </androidx.cardview.widget.CardView>
+
+
+
 
 
     <TextView

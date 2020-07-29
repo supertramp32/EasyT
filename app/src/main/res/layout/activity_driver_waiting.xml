@@ -37,39 +37,6 @@
 
 
 
-
-    <!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/driverWaitingSos"-->
-<!--        android:text="@string/emergency"-->
-<!--        android:textSize="@dimen/heading2"-->
-<!--        android:visibility="gone"-->
-<!--        android:textColor="@color/colorRed"-->
-<!--        android:drawableLeft="@drawable/ic_sos"-->
-<!--        android:drawablePadding="@dimen/smallMargin"-->
-<!--        android:layout_marginRight="@dimen/normalMargin"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        />-->
-
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/driverWaitingContactUs"-->
-<!--        android:text="@string/contact_us"-->
-<!--        android:textSize="@dimen/heading2"-->
-<!--        android:visibility="gone"-->
-<!--        android:drawableLeft="@drawable/ic_phone"-->
-<!--        android:drawablePadding="@dimen/smallMargin"-->
-<!--        android:layout_margin="@dimen/normalMargin"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/driverWaitingSos"-->
-<!--        />-->
-
-
     <include layout="@layout/layout_driver_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
