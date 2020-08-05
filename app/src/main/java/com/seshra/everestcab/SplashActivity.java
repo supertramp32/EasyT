@@ -74,39 +74,47 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-
-
-        Glide.with(this).asGif().load(R.drawable.flash_one)
-                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE)).listener(new RequestListener<GifDrawable>() {
+        final Handler mHandler = new Handler();
+        mHandler.postDelayed(new Runnable() {
             @Override
-            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
-               checkFlow();//do your stuff
-                return false;
+            public void run() {
+               checkFlow();
             }
+        }, 1000);
 
-            @Override
-            public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
-                resource.setLoopCount(1);
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(200);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        while(true) {
-                            if(!resource.isRunning()) {
-                                checkFlow();//do your stuff
-                                break;
-                            }
-                        }
-                    }
-                }).start();
-                return false;
-            }
-        }).into(splashImage);
 
+
+//        Glide.with(this).asGif().load(R.drawable.flash_one)
+//                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE)).listener(new RequestListener<GifDrawable>() {
+//            @Override
+//            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+//               checkFlow();//do your stuff
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+//                resource.setLoopCount(1);
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            Thread.sleep(200);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        while(true) {
+//                            if(!resource.isRunning()) {
+//                                checkFlow();//do your stuff
+//                                break;
+//                            }
+//                        }
+//                    }
+//                }).start();
+//                return false;
+//            }
+//        }).into(splashImage);
+//
 
 
 

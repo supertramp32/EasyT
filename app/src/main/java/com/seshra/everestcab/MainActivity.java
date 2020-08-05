@@ -1789,7 +1789,7 @@ View.OnClickListener,
 //                        estBill.setTextColor(getResources().getColor(R.color.colorDarkGray));
 //                        estBill.setBackground(null);
 
-                        afterCouponRate.setVisibility(View.GONE);
+//                        afterCouponRate.setVisibility(View.GONE);
 
 
                         if (polyline != null) {
