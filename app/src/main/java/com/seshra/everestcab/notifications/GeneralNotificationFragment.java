@@ -91,16 +91,7 @@ public class GeneralNotificationFragment extends Fragment {
         initRecyclerView();
         initViewModel();
 
-        swiperefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
 
-                recyclerView.setAdapter(null);
-                viewModel.getGeneralNotifications();
-
-
-            }
-        });
 
 
         return view;

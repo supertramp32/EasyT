@@ -80,7 +80,7 @@ public class FetchTermsAndConditionService extends IntentService {
 
         HashMap<String, String> data = new HashMap<>();
         data.put("slug", slug);
-        data.put("country_id", "227");
+        data.put("merchant_id", "136");
         SessionManager sessionManager = new SessionManager(getApplicationContext());
 
         AndroidNetworking.post("" + url)
