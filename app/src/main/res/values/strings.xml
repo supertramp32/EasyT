@@ -51,7 +51,7 @@
     <string name="work">work</string>
     <string name="alert">Alert</string>
     <string name="edit_number">Edit Number</string>
-    <string name="otp_text">Verify its you. \nWe\'ve sent a 4-digit code to </string>
+    <string name="otp_text">Verify yourself. \nWe\'ve sent a 4-digit code to </string>
     <string name="password_hint">Your password needs to be at least 8 characters long.</string>
     <string name="rate_driver">Rate Driver</string>
     <string name="driver_details">Driver Details</string>
@@ -95,7 +95,7 @@
     <string name="request_otp">Request OTP</string>
     <string name="enter_valid_number">Enter a valid 10 digit phone.</string>
     <string name="enter_mobile_number">Enter your mobile number</string>
-    <string name="enter_10_digit_mobile_number_to_create_an_account_or_login">Enter 10 digit mobile number to create an account or login</string>
+    <string name="enter_10_digit_mobile_number_to_create_an_account_or_login">Enter your 10 digit mobile number to create an account or login</string>
     <string name="proceed">Continue</string>
     <string name="error_registration">Error occurred during registration..</string>
     <string name="error_password_recover">Error occurred during password recovery..</string>
@@ -113,7 +113,7 @@
     <string name="share_details">Share Details</string>
     <string name="error_logging">Error Logging you in..</string>
     <string name="enter_your_password">Enter your password</string>
-    <string name="enter_the_password_you_set_for_easy_taxi">Enter the password you set for Everest Cab</string>
+    <string name="enter_the_password_you_set_for_easy_taxi">Enter the password of your account</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="error">error</string>
     <string name="error_confirm">Couldn\'t confirm your ride.</string>
@@ -187,6 +187,7 @@
     <string name="metered_ride">Metered Ride</string>
     <string name="ride_finished">Ride Finished</string>
     <string name="finish_ride">Finish Ride</string>
+    <string name="enter_code_enter">Enter the code and enter</string>
 
 
 </resources>

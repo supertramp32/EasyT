@@ -123,37 +123,6 @@ public class CheckUserPhoneActivity extends AppCompatActivity implements View.On
         taxiRunning = findViewById(R.id.taxiRunning);
 
 
-        Glide.with(this).asGif().load(R.drawable.flash_one)
-                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE)).listener(new RequestListener<GifDrawable>() {
-            @Override
-            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
-
-                return false;
-            }
-
-            @Override
-            public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
-                resource.setLoopCount(1);
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(200);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        while(true) {
-                            if(!resource.isRunning()) {
-
-                                break;
-                            }
-                        }
-                    }
-                }).start();
-                return false;
-            }
-        }).into(taxiRunning);
-
 
         inputPhone = findViewById(R.id.inputUserPhone);
         checkPhone = findViewById(R.id.checkPhoneBtn);

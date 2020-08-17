@@ -99,7 +99,7 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
 
 
 
-        changePhone.setOnClickListener(this);
+//        changePhone.setOnClickListener(this);
         back.setOnClickListener(this);
         checkOtp.setOnClickListener(this);
 
@@ -113,10 +113,10 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
 
         switch (v.getId()){
 
-            case R.id.editMobileNumber:
-                startActivity(new Intent(OTPActivity.this, CheckUserPhoneActivity.class));
-                finish();
-                break;
+//            case R.id.editMobileNumber:
+//                startActivity(new Intent(OTPActivity.this, CheckUserPhoneActivity.class));
+//                finish();
+//                break;
 
             case R.id.backBtn:
                 startActivity(new Intent(OTPActivity.this, CheckUserPhoneActivity.class));

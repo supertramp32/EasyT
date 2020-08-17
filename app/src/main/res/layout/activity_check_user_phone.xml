@@ -7,6 +7,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorGray"
     tools:context=".CheckUserPhoneActivity">
 
 
@@ -53,9 +54,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="wrap_content"
         android:id="@+id/enterMobileText"
         android:text="@string/enter_mobile_number"
-        android:textSize="@dimen/heading1"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
+        style="@style/DarkTextStyle"
         android:layout_marginTop="@dimen/normalMargin"
         android:layout_marginLeft="@dimen/normalMargin"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -66,22 +65,26 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/enterMobileTextNext"
+        style="@style/LightTextStyle"
         android:text="@string/enter_10_digit_mobile_number_to_create_an_account_or_login"
-        android:textSize="@dimen/heading2"
+        android:layout_marginTop="@dimen/cardRadius"
         android:layout_marginLeft="@dimen/normalMargin"
+        android:layout_marginRight="@dimen/normalMargin"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterMobileText"
         />
 
 
-    <EditText
+    <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/inputUserPhone"
         android:inputType="phone"
-        android:hint="9XXXXXXXXX"
         android:background="@drawable/rounded_edit_text"
-        android:layout_margin="@dimen/normalMargin"
+        android:layout_marginRight="@dimen/normalMargin"
+        android:layout_marginLeft="@dimen/normalMargin"
+        android:layout_marginTop="@dimen/largeMargin"
         app:layout_constraintTop_toBottomOf="@id/enterMobileTextNext"
         />
 

@@ -20,6 +20,21 @@
     </style>
 
 
+    <style name="DarkTextStyle">
+        <item name="android:maxLines">2</item>
+        <item name="android:textSize">@dimen/heading1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorDarkFont</item>
+    </style>
+
+    <style name="LightTextStyle">
+        <item name="android:maxLines">2</item>
+        <item name="android:textSize">@dimen/heading2</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/indicator_unselected</item>
+    </style>
+
+
     <style name="raisedButton" parent="Widget.AppCompat.Button.Colored">
         <item name="android:layout_height">48dp</item>
         <item name="android:textColor">@color/colorDarkFont</item>
