@@ -121,27 +121,7 @@ public class SaveLocationActivity extends AppCompatActivity implements OnMapRead
 
 
         closeBtn.setOnClickListener(this);
-        saveLocationTitle.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(count>0){
-                    saveLocation.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                }else {
-                    saveLocation.setBackgroundColor(getResources().getColor(R.color.colorLightGray));
-
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
 
         saveLocation.setOnClickListener(this);

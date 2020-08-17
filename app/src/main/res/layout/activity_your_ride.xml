@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:navigationIcon="?attr/homeAsUpIndicator"
-        android:theme="@style/ToolbarTheme"
+        android:theme="@style/ToolbarThemeGray"
         app:layout_constraintTop_toTopOf="parent"
         >
 
@@ -21,8 +21,8 @@
             android:layout_height="match_parent"
             android:id="@+id/toolbarText"
             android:text="@string/your_trips"
-            android:textSize="@dimen/heading1"
-            android:textColor="@color/colorWhite"
+            style="@style/DarkTextStyle"
+            android:textAllCaps="true"
             android:gravity="left|center_vertical"
             />
 
@@ -35,8 +35,8 @@
         android:id="@+id/tabLayoutYourRides"
         app:tabMode="fixed"
         app:tabGravity="fill"
-        android:elevation="4dp"
-        app:tabSelectedTextColor="@color/colorPrimary"
+        android:background="@color/colorGray"
+        app:tabSelectedTextColor="@color/colorDarkFont"
         app:layout_constraintTop_toBottomOf="@+id/toolbarYourRide"
         app:layout_constraintBottom_toTopOf="@+id/viewPager"
         app:layout_constraintLeft_toLeftOf="parent"
