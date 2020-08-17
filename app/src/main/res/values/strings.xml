@@ -87,7 +87,7 @@
     <string name="ride_accepted">Accepted</string>
     <string name="driver_arrived">Arrived</string>
     <string name="ride_started">Started</string>
-    <string name="rate_driver_and_finish">Rate driver and finish</string>
+    <string name="rate_driver_and_finish">Finish and Rate Driver</string>
     <string name="error_cancel_ride">Couldn\'t cancel your ride.</string>
     <string name="name">Name</string>
     <string name="check_internet">Check internet connection...</string>
@@ -106,7 +106,7 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="finish">Finish</string>
     <string name="booking_cancel">Booking Cancelled</string>
-    <string name="booking_details">Booking Details</string>
+    <string name="booking_details">Payment Details</string>
     <string name="manage_ride">Manage Ride</string>
     <string name="status">Status:</string>
     <string name="contact_driver">Contact Driver</string>
@@ -185,9 +185,10 @@
     <string name="select_ride_type">Select Ride Type</string>
     <string name="fixed_ride">Fixed Ride</string>
     <string name="metered_ride">Metered Ride</string>
-    <string name="ride_finished">Ride Finished</string>
+    <string name="ride_finished">Ride Finished !!!</string>
     <string name="finish_ride">Finish Ride</string>
     <string name="enter_code_enter">Enter the code and enter</string>
+    <string name="ride_complete">Ride Complete</string>
 
 
 </resources>

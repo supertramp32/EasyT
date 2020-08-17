@@ -2,53 +2,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorGray"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarReciept"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:theme="@style/ToolbarTheme"
-        app:layout_constraintTop_toTopOf="parent"
-        >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/toolbarText"
-            android:text="@string/ride_finished"
-            android:textAllCaps="true"
-            android:textSize="@dimen/heading1"
-            android:textColor="@color/colorWhite"
-            android:gravity="center"
-            />
-
-    </androidx.appcompat.widget.Toolbar>
-
-
-
-    <include layout="@layout/layout_drop_location"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/locationLayout"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/toolbarReciept"
-        android:layout_margin="@dimen/normalMargin"
-        ></include>
 
     <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:id="@+id/recieptCard"
         android:visibility="gone"
         app:cardCornerRadius="@dimen/cardRadius"
         android:elevation="@dimen/cardRadius"
-        android:layout_margin="@dimen/normalMargin"
-        app:layout_constraintTop_toBottomOf="@id/locationLayout"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/largeMargin"
+        android:layout_marginLeft="@dimen/mediumMargin"
+        android:layout_marginRight="@dimen/mediumMargin"
+        app:layout_constraintTop_toTopOf="parent"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,9 +34,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/rideFinishedText"
                 android:text="@string/ride_finished"
-                android:textSize="@dimen/heading1"
-                android:textColor="@color/colorDarkFont"
-                android:textStyle="bold"
+                style="@style/DarkTextStyle"
+                android:textSize="@dimen/headingT"
                 android:gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/normalMargin"
                 app:layout_constraintTop_toTopOf="parent"
@@ -75,7 +46,8 @@
                 android:layout_height="65dp"
                 android:id="@+id/driverImg"
                 android:src="@drawable/user"
-                android:layout_margin="@dimen/mediumMargin"
+                android:layout_marginTop="@dimen/bigMargin"
+                android:layout_marginLeft="@dimen/mediumMargin"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rideFinishedText"
                 />
@@ -132,47 +104,71 @@
                 />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/ridetypeText"
-                android:text="@string/metered_ride"
-                android:textSize="@dimen/heading1"
-                android:textColor="@color/colorDarkFont"
-                android:gravity="center_horizontal"
-                android:layout_marginLeft="@dimen/normalMargin"
-                app:layout_constraintTop_toBottomOf="@+id/rideFinishedText"
-                app:layout_constraintBottom_toTopOf="@id/recieptFinishBtn"
-                />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rideestBill"
-                tools:text="NRs 500"
-                android:textSize="@dimen/headingxT"
+                android:id="@+id/recieptRideFinishedText"
+                android:text="@string/ride_complete"
                 android:textColor="@color/colorDarkFont"
                 android:textStyle="bold"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="@dimen/cardRadius"
-                android:layout_marginLeft="@dimen/normalMargin"
-                app:layout_constraintTop_toBottomOf="@+id/ridetypeText"
+                android:layout_marginTop="@dimen/normalMargin"
+                app:layout_constraintLeft_toRightOf="@id/vGuide1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/driverCarModel"
                 />
 
 
 
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recieptFinishBtn"
-                android:text="@string/rate_driver_and_finish"
-                style="@style/raisedButton"
-                android:background="@drawable/oval_background_button"
-                android:layout_margin="@dimen/normalMargin"
+            <View
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="@dimen/smallMargin"
+                android:layout_marginLeft="@dimen/smallMargin"
+                android:layout_marginRight="@dimen/smallMargin"
+                android:layout_marginBottom="@dimen/normalMargin"
+                app:layout_constraintRight_toLeftOf="@id/vGuide"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recieptRideFinishedText"
                 />
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:background="@color/colorPrimary"
+                android:layout_margin="@dimen/smallMargin"
+                app:layout_constraintLeft_toRightOf="@id/vGuide"
+                app:layout_constraintRight_toLeftOf="@id/vGuide1"
+                app:layout_constraintTop_toBottomOf="@id/recieptRideFinishedText"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:background="@color/colorPrimary"
+                android:layout_margin="@dimen/smallMargin"
+                app:layout_constraintLeft_toRightOf="@id/vGuide1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recieptRideFinishedText"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/vGuide"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.33"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/vGuide1"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.66"
+                />
 
 
 
@@ -181,6 +177,215 @@
 
 
     </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recieptTripDetails"
+        android:visibility="gone"
+        app:cardCornerRadius="@dimen/cardRadius"
+        android:elevation="@dimen/smallMargin"
+        android:padding="@dimen/mediumMargin"
+        android:layout_margin="@dimen/mediumMargin"
+        app:layout_constraintTop_toBottomOf="@+id/recieptCard"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tripDetailText"
+                android:text="@string/trip_details"
+                style="@style/DarkTextStyle"
+                android:layout_margin="@dimen/mediumMargin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recieptPickLocation"
+                android:gravity="center"
+                tools:text="Baneswor, Kathmandu"
+                android:drawableLeft="@drawable/ic_loc"
+                android:drawablePadding="@dimen/smallMargin"
+                android:layout_marginTop="@dimen/largeMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                android:layout_marginRight="@dimen/normalMargin"
+                app:layout_constraintTop_toBottomOf="@id/tripDetailText"
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:id="@+id/viewPickandDrop"
+                android:background="@color/colorGray"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/recieptPickLocation"
+                app:layout_constraintTop_toBottomOf="@+id/recieptPickLocation"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recieptDropLocation"
+                android:gravity="center"
+                android:drawableLeft="@drawable/ic_loc_e"
+                tools:text="Panga, Kirtipur"
+                android:drawablePadding="@dimen/smallMargin"
+                android:layout_marginTop="@dimen/mediumMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                android:layout_marginBottom="@dimen/mediumMargin"
+                android:layout_marginRight="@dimen/normalMargin"
+                app:layout_constraintTop_toBottomOf="@+id/viewPickandDrop"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recieptBookingDetails"
+        app:cardCornerRadius="@dimen/cardRadius"
+        android:visibility="gone"
+        android:elevation="@dimen/smallMargin"
+        android:layout_margin="@dimen/mediumMargin"
+        app:layout_constraintTop_toBottomOf="@+id/recieptTripDetails"
+        >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/mediumMargin">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bookingDetailsText"
+                android:text="@string/booking_details"
+                style="@style/DarkTextStyle"
+                android:layout_margin="@dimen/mediumMargin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/serviceTypeImg"
+                android:src="@drawable/ic_car"
+                android:layout_marginTop="@dimen/largeMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bookingDetailsText"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/easy_taxi"
+                android:textSize="@dimen/heading2"
+                android:id="@+id/serviceTypeName"
+                android:layout_marginLeft="@dimen/largeMargin"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/serviceTypeImg"
+                app:layout_constraintBottom_toBottomOf="@id/serviceTypeImg"
+                app:layout_constraintTop_toTopOf="@+id/serviceTypeImg"
+                />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:id="@+id/viewBookingDetails"
+                android:background="@color/colorGray"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/serviceTypeImg"
+                app:layout_constraintTop_toBottomOf="@+id/serviceTypeName"
+                />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/paymentTypeImg"
+                android:src="@drawable/ic_payment"
+                android:layout_marginTop="@dimen/smallMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                android:layout_marginBottom="@dimen/mediumMargin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewBookingDetails"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cash"
+                android:textSize="@dimen/heading2"
+                android:id="@+id/paymentTypeName"
+                android:layout_marginLeft="@dimen/largeMargin"
+                app:layout_constraintLeft_toRightOf="@id/paymentTypeImg"
+                app:layout_constraintBottom_toBottomOf="@id/paymentTypeImg"
+                app:layout_constraintTop_toTopOf="@+id/paymentTypeImg"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/heading2"
+                android:id="@+id/paymentAmount"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/largeMargin"
+                app:layout_constraintLeft_toRightOf="@id/paymentTypeName"
+                app:layout_constraintBottom_toBottomOf="@id/paymentTypeImg"
+                app:layout_constraintTop_toTopOf="@+id/paymentTypeImg"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recieptFinishBtn"
+                    android:text="@string/rate_driver_and_finish"
+                    style="@style/raisedButton"
+        android:visibility="gone"
+                    android:background="@drawable/oval_background_button"
+                    android:layout_margin="@dimen/normalMargin"
+        android:padding="@dimen/normalMargin"
+                    app:layout_constraintTop_toBottomOf="@+id/recieptBookingDetails"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
 
     <ProgressBar
         android:layout_width="wrap_content"
@@ -191,5 +396,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
+
+
+
+    <!--    <include layout="@layout/layout_drop_location"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:id="@+id/locationLayout"-->
+    <!--        android:visibility="gone"-->
+    <!--        android:layout_margin="@dimen/normalMargin"-->
+    <!--        ></include>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,7 +49,7 @@ public class ReceiptActivity extends AppCompatActivity {
 //    TextView date, estFare, serviceType, paymentType;
 //    TextView pickLocation, dropLocation, driverName, driverEmail, driverRating;
 
-    TextView  estFare, serviceType ,tripType;
+    TextView  estFare;
     TextView pickLocation, dropLocation;
 
     ImageView driverImage;
@@ -59,8 +59,7 @@ public class ReceiptActivity extends AppCompatActivity {
 
     String bookingId;
 
-    CardView recieptCard;
-    View locationViews;
+    CardView recieptCard, recieptLocation,receiptBookingDetails;
 
 
 
@@ -141,10 +140,9 @@ public class ReceiptActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBarReciept);
 
-        estFare = findViewById(R.id.rideestBill);
-        serviceType = findViewById(R.id.ridetypeText);
-        pickLocation = findViewById(R.id.pickLocationName);
-        dropLocation = findViewById(R.id.dropOffLocationName);
+        estFare = findViewById(R.id.paymentAmount);
+        pickLocation = findViewById(R.id.recieptPickLocation);
+        dropLocation = findViewById(R.id.recieptDropLocation);
         finishRide = findViewById(R.id.recieptFinishBtn);
 
         driverImage = findViewById(R.id.driverImg);
@@ -154,7 +152,8 @@ public class ReceiptActivity extends AppCompatActivity {
         driverVehicleType = findViewById(R.id.driverCarModel);
 
         recieptCard = findViewById(R.id.recieptCard);
-        locationViews = findViewById(R.id.locationLayout);
+        recieptLocation = findViewById(R.id.recieptTripDetails);
+        receiptBookingDetails = findViewById(R.id.recieptBookingDetails);
 
 
 
@@ -197,7 +196,9 @@ public class ReceiptActivity extends AppCompatActivity {
 
         progressBar.setVisibility(View.GONE);
         recieptCard.setVisibility(View.VISIBLE);
-        locationViews.setVisibility(View.VISIBLE);
+        recieptLocation.setVisibility(View.VISIBLE);
+        receiptBookingDetails.setVisibility(View.VISIBLE);
+        finishRide.setVisibility(View.VISIBLE);
 
         Glide.with(ReceiptActivity.this).load(specificTripDetails.getData()
                 .getHolder_driver().getData().getCircular_image()).into(driverImage);
@@ -206,7 +207,6 @@ public class ReceiptActivity extends AppCompatActivity {
 
 
         estFare.setText("NPR. "+specificTripDetails.getData().getHolder_metering().getData().getText_one());
-        serviceType.setText(specificTripDetails.getData().getHolder_booking_description().getData().getSmall_left_text());
         pickLocation.setText(specificTripDetails.getData().getHolder_pickdrop_location().getData().getPick_text());
         dropLocation.setText(specificTripDetails.getData().getHolder_pickdrop_location().getData().getDrop_text());
 //
