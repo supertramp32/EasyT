@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/selectRideTypeText"
         android:text="@string/select_ride_type"
-        android:textStyle="bold"
+        style="@style/DarkTextStyle"
         android:layout_marginLeft="@dimen/smallMargin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/serviceEstimatedBill"
             tools:text="Nrs 500"
-            android:textSize="@dimen/heading1"
+            android:textSize="@dimen/heading2"
             android:textColor="@color/colorDarkFont"
             android:textStyle="bold"
             android:layout_marginLeft="@dimen/normalMargin"
@@ -55,9 +55,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
             android:layout_marginTop="@dimen/cardRadius"
-            android:background="@color/colorDarkGray"
+            android:background="@color/colorFaintGray"
             />
 
         <RadioButton
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/estimatedPriceMetered"
             tools:text="Nrs 500"
-            android:textSize="@dimen/heading1"
+            android:textSize="@dimen/heading2"
             android:textColor="@color/colorDarkFont"
             android:textStyle="bold"
             android:layout_marginLeft="@dimen/normalMargin"
