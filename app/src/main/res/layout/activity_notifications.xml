@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:navigationIcon="?attr/homeAsUpIndicator"
-        android:theme="@style/ToolbarTheme"
+        android:theme="@style/ToolbarThemeGray"
         app:layout_constraintTop_toTopOf="parent"
         >
 
@@ -24,29 +24,29 @@
             android:layout_height="match_parent"
             android:id="@+id/toolbarText"
             android:text="@string/notifications"
-            android:textSize="@dimen/heading1"
-            android:textColor="@color/colorWhite"
+            style="@style/DarkTextStyle"
+            android:textAllCaps="true"
             android:gravity="left|center_vertical"
             />
 
     </androidx.appcompat.widget.Toolbar>
 
 
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tabLayoutNotifications"
-        app:tabMode="fixed"
-        app:tabGravity="fill"
-        android:elevation="4dp"
-        app:tabSelectedTextColor="@color/colorPrimary"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarNotifications"
-        app:layout_constraintBottom_toTopOf="@+id/viewPager"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        >
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/tabLayoutNotifications"-->
+<!--        app:tabMode="fixed"-->
+<!--        app:tabGravity="fill"-->
+<!--        android:elevation="4dp"-->
+<!--        app:tabSelectedTextColor="@color/colorPrimary"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/toolbarNotifications"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/viewPager"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        >-->
 
-    </com.google.android.material.tabs.TabLayout>
+<!--    </com.google.android.material.tabs.TabLayout>-->
 
 
 
@@ -55,7 +55,7 @@
         android:layout_height="0dp"
         android:id="@+id/viewPager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayoutNotifications">
+        app:layout_constraintTop_toBottomOf="@+id/toolbarNotifications">
 
     </androidx.viewpager.widget.ViewPager>
 

@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayout;
 public class NotificationsActivity extends AppCompatActivity {
 
 
-    TabLayout tabLayout;
+//    TabLayout tabLayout;
     ViewPager viewPager;
 
     private Toolbar toolbar;
@@ -25,7 +25,7 @@ public class NotificationsActivity extends AppCompatActivity {
 
         viewPager = findViewById(R.id.viewPager);
 
-        tabLayout =findViewById(R.id.tabLayoutNotifications);
+//        tabLayout =findViewById(R.id.tabLayoutNotifications);
 
         toolbar = findViewById(R.id.toolbarNotifications);
         setSupportActionBar(toolbar);
@@ -37,12 +37,12 @@ public class NotificationsActivity extends AppCompatActivity {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new GeneralNotificationFragment(), "General");
-        adapter.addFragment(new CampaignNotificationFragment(), "Campaigns");
+//        adapter.addFragment(new CampaignNotificationFragment(), "Campaigns");
 
         viewPager.setCurrentItem(0);
 
         viewPager.setAdapter(adapter);
 
-        tabLayout.setupWithViewPager(viewPager);
+//        tabLayout.setupWithViewPager(viewPager);
     }
 }
