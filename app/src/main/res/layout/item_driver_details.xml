@@ -70,106 +70,214 @@
         />
 
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/driverCarStatus"
-        tools:text="Coming over there"
+        android:id="@+id/driverStatusAccepted"
+        android:text="@string/on_the_way"
+        android:textColor="@color/colorDarkFont"
         android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginRight="@dimen/mediumMargin"
-        app:layout_constraintTop_toBottomOf="@+id/driverImg"
-        app:layout_constraintRight_toRightOf="parent"
-        />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/driverCarStatusText"
-        android:text="@string/status"
-        android:textStyle="bold"
-        android:layout_marginRight="@dimen/mediumMargin"
-        app:layout_constraintTop_toBottomOf="@+id/driverImg"
-        app:layout_constraintRight_toLeftOf="@id/driverCarStatus"
-        />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/viewDriverDetails"
-        android:background="@color/colorGray"
-        android:layout_marginTop="@dimen/cardRadius"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/driverCarStatus"
-        />
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/contact_driver"
-        android:id="@+id/contactDriver"
-        android:gravity="center"
-        android:drawableLeft="@drawable/ic_phone"
-        android:drawablePadding="@dimen/smallMargin"
-        android:padding="@dimen/mediumMargin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewDriverDetails"
-        app:layout_constraintRight_toLeftOf="@id/guideVDriver"
-        />
-
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerShare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:shimmer_auto_start="true"
-        android:layout_gravity="center"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewDriverDetails"
-        app:layout_constraintLeft_toRightOf="@+id/guideVDriver"        >
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/share_details"
-        android:gravity="center"
-        android:drawableLeft="@drawable/ic_send"
-        android:drawablePadding="@dimen/smallMargin"
-        android:padding="@dimen/mediumMargin"
-
-        />
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/share_details"
-        android:id="@+id/shareDetails"
-        android:gravity="center"
         android:visibility="gone"
-        android:drawableLeft="@drawable/ic_send"
-        android:drawablePadding="@dimen/smallMargin"
-        android:padding="@dimen/mediumMargin"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewDriverDetails"
-        app:layout_constraintLeft_toRightOf="@+id/guideVDriver"
+        android:layout_marginTop="@dimen/normalMargin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/vGuide"
+        app:layout_constraintTop_toBottomOf="@+id/driverCarModel"
+        />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/driverStatusArrived"
+        android:text="@string/on_ride"
+        android:textColor="@color/colorDarkFont"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/normalMargin"
+        app:layout_constraintLeft_toRightOf="@id/vGuide"
+        app:layout_constraintRight_toLeftOf="@id/vGuide1"
+        app:layout_constraintTop_toBottomOf="@+id/driverCarModel"
+        />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/barrier"
+        app:barrierDirection="bottom"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/cardRadius"
+        app:layout_constraintTop_toBottomOf="@id/driverCarModel"
+        app:constraint_referenced_ids="driverStatusAccepted,driverStatusArrived"
         />
 
     <View
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:id="@+id/viewDriverD"
-        android:background="@color/colorGray"
-        app:layout_constraintBottom_toBottomOf="@id/contactDriver"
-        app:layout_constraintTop_toBottomOf="@+id/viewDriverDetails"
-        app:layout_constraintLeft_toLeftOf="@id/guideVDriver"
-        app:layout_constraintRight_toRightOf="@+id/guideVDriver"
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_marginLeft="@dimen/smallMargin"
+        android:layout_marginRight="@dimen/smallMargin"
+        android:layout_marginBottom="@dimen/normalMargin"
+        app:layout_constraintRight_toLeftOf="@id/vGuide"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrier"
         />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:id="@+id/rideProgressView"
+        android:background="@color/colorGray"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_marginLeft="@dimen/smallMargin"
+        android:layout_marginRight="@dimen/smallMargin"
+        android:layout_marginBottom="@dimen/normalMargin"
+        app:layout_constraintLeft_toRightOf="@id/vGuide"
+        app:layout_constraintRight_toLeftOf="@id/vGuide1"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:background="@color/colorGray"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_marginLeft="@dimen/smallMargin"
+        android:layout_marginRight="@dimen/smallMargin"
+        android:layout_marginBottom="@dimen/normalMargin"
+        app:layout_constraintLeft_toRightOf="@id/vGuide1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vGuide"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vGuide1"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66"
+        />
+
+
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/driverCarStatus"-->
+<!--        tools:text="Coming over there"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textAllCaps="true"-->
+<!--        android:textColor="@color/colorPrimary"-->
+<!--        android:layout_marginRight="@dimen/mediumMargin"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/driverImg"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        />-->
+
+
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/driverCarStatusText"-->
+<!--        android:text="@string/status"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_marginRight="@dimen/mediumMargin"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/driverImg"-->
+<!--        app:layout_constraintRight_toLeftOf="@id/driverCarStatus"-->
+<!--        />-->
+<!--    -->
+<!--    -->
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:id="@+id/viewDriverDetails"-->
+<!--        android:background="@color/colorGray"-->
+<!--        android:layout_marginTop="@dimen/cardRadius"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/driverCarStatus"-->
+<!--        />-->
+
+
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/contact_driver"-->
+<!--        android:id="@+id/contactDriver"-->
+<!--        android:gravity="center"-->
+<!--        android:drawableLeft="@drawable/ic_phone"-->
+<!--        android:drawablePadding="@dimen/smallMargin"-->
+<!--        android:padding="@dimen/mediumMargin"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/viewDriverDetails"-->
+<!--        app:layout_constraintRight_toLeftOf="@id/guideVDriver"-->
+<!--        />-->
+
+
+<!--    <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--        android:id="@+id/shimmerShare"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="visible"-->
+<!--        app:shimmer_auto_start="true"-->
+<!--        android:layout_gravity="center"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/viewDriverDetails"-->
+<!--        app:layout_constraintLeft_toRightOf="@+id/guideVDriver"        >-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="@string/share_details"-->
+<!--        android:gravity="center"-->
+<!--        android:drawableLeft="@drawable/ic_send"-->
+<!--        android:drawablePadding="@dimen/smallMargin"-->
+<!--        android:padding="@dimen/mediumMargin"-->
+
+<!--        />-->
+
+<!--    </com.facebook.shimmer.ShimmerFrameLayout>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/share_details"-->
+<!--        android:id="@+id/shareDetails"-->
+<!--        android:gravity="center"-->
+<!--        android:visibility="gone"-->
+<!--        android:drawableLeft="@drawable/ic_send"-->
+<!--        android:drawablePadding="@dimen/smallMargin"-->
+<!--        android:padding="@dimen/mediumMargin"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/viewDriverDetails"-->
+<!--        app:layout_constraintLeft_toRightOf="@+id/guideVDriver"-->
+<!--        />-->
+
+<!--    <View-->
+<!--        android:layout_width="1dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:id="@+id/viewDriverD"-->
+<!--        android:background="@color/colorGray"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/contactDriver"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/viewDriverDetails"-->
+<!--        app:layout_constraintLeft_toLeftOf="@id/guideVDriver"-->
+<!--        app:layout_constraintRight_toRightOf="@+id/guideVDriver"-->
+<!--        />-->
 
 
     <androidx.constraintlayout.widget.Guideline

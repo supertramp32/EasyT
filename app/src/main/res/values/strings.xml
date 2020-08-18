@@ -67,7 +67,7 @@
     <string name="submit">Submit</string>
     <string name="driver_cancelled_request">Driver cancelled your request..</string>
     <string name="emergency">Emergency</string>
-    <string name="driver_found_text">Partner assigned to you</string>
+    <string name="driver_found_text">Ride Partner Assigned</string>
     <string name="error_sharing_details">Ride details couldn\'t be shared at the moment.</string>
     <string name="fareDetailText">Fare Details</string>
     <string name="fareText">Total Fare</string>
@@ -189,6 +189,12 @@
     <string name="finish_ride">Finish Ride</string>
     <string name="enter_code_enter">Enter the code and enter</string>
     <string name="ride_complete">Ride Complete</string>
+    <string name="call">Call</string>
+    <string name="share">Share</string>
+    <string name="on_the_way">On the Way</string>
+    <string name="on_ride">On Ride</string>
+    <string name="ride_is_started">Ride Started</string>
+    <string name="driver_is_arrived">Partner Arrived</string>
 
 
 </resources>

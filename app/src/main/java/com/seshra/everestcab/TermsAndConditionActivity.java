@@ -53,7 +53,6 @@ public class TermsAndConditionActivity extends AppCompatActivity {
 
             }else {
                 Toast.makeText(TermsAndConditionActivity.this,getResources().getString(R.string.erro_fetching_data),Toast.LENGTH_LONG).show();
-
             }
 
 

@@ -37,7 +37,76 @@
 
 
 
-    <include layout="@layout/layout_driver_search" />
+    <include layout="@layout/layout_driver_search"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/driverWaitCall"
+        android:layout_margin="@dimen/mediumMargin"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/driverWaitCall"
+        android:text="@string/call"
+        android:enabled="false"
+        android:drawableLeft="@drawable/ic_phone_black"
+        style="@style/raisedButton"
+        android:background="@drawable/oval_background_button_gray"
+        android:layout_marginLeft="@dimen/mediumMargin"
+        android:layout_marginRight="@dimen/smallMargin"
+        android:layout_marginBottom="@dimen/mediumMargin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/vGuide"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/driverWaitCancel"
+        android:text="@string/cancel"
+        android:drawableLeft="@drawable/ic_cancel_black"
+        style="@style/raisedButton"
+        android:enabled="false"
+        android:background="@drawable/oval_background_button_red"
+        android:layout_marginLeft="@dimen/smallMargin"
+        android:layout_marginRight="@dimen/mediumMargin"
+        android:layout_marginBottom="@dimen/mediumMargin"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/vGuide"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/driverWaitShare"
+        android:text="@string/share"
+        android:drawableLeft="@drawable/ic_send"
+        style="@style/raisedButton"
+        android:visibility="gone"
+        android:enabled="false"
+        android:background="@drawable/oval_background_button_gray"
+        android:layout_marginLeft="@dimen/smallMargin"
+        android:layout_marginRight="@dimen/mediumMargin"
+        android:layout_marginBottom="@dimen/mediumMargin"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/vGuide"
+        />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vGuide"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

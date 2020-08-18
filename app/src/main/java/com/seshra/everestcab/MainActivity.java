@@ -818,25 +818,25 @@ View.OnClickListener,
                     startActivity(new Intent(MainActivity.this, YourRideActivity.class));
                     break;
 
-                case R.id.nav_contact_us:
-                    drawerLayout.closeDrawers();
-                    try {
-                        String[] addresses = {"easytaxinepal@gmail.com"};
-//                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "" + sessionmanager.getAppConfig().getData().getCustomer_support().getMail(), null));
-                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-                        emailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
-                        emailIntent.putExtra(Intent.EXTRA_EMAIL, addresses);
-//                        emailIntent.setType("message/rfc822");
-                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "" + MainActivity.this.getResources().getString(R.string.report_issue));
-                        emailIntent.putExtra(Intent.EXTRA_TEXT, "User Phone:"+sessionManager.getUserDetails().get(SessionManager.USER_PHONE)
-                        +("\n User Device:"+ Build.MODEL));
-                        startActivity(Intent.createChooser(emailIntent, "" + MainActivity.this.getResources().getString(R.string.send_email)));
-//                     emailIntent.setType("text/plain");
-
-                    } catch (Exception e) {
-                        Snackbar.make(drawerLayout, "" + e.getMessage(), Snackbar.LENGTH_SHORT).show();
-                    }
-                    break;
+//                case R.id.nav_contact_us:
+//                    drawerLayout.closeDrawers();
+//                    try {
+//                        String[] addresses = {"easytaxinepal@gmail.com"};
+////                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "" + sessionmanager.getAppConfig().getData().getCustomer_support().getMail(), null));
+//                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+//                        emailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
+//                        emailIntent.putExtra(Intent.EXTRA_EMAIL, addresses);
+////                        emailIntent.setType("message/rfc822");
+//                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "" + MainActivity.this.getResources().getString(R.string.report_issue));
+//                        emailIntent.putExtra(Intent.EXTRA_TEXT, "User Phone:"+sessionManager.getUserDetails().get(SessionManager.USER_PHONE)
+//                        +("\n User Device:"+ Build.MODEL));
+//                        startActivity(Intent.createChooser(emailIntent, "" + MainActivity.this.getResources().getString(R.string.send_email)));
+////                     emailIntent.setType("text/plain");
+//
+//                    } catch (Exception e) {
+//                        Snackbar.make(drawerLayout, "" + e.getMessage(), Snackbar.LENGTH_SHORT).show();
+//                    }
+//                    break;
 
                 case R.id.nav_notification:
                     drawerLayout.closeDrawers();

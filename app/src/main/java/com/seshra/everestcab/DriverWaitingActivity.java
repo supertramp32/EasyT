@@ -30,6 +30,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -132,16 +133,16 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
     //    ModelRideInfo modelRideInfo;
     TempRideInfo tempRideInfo;
 
-    CardView cancelRideCard;
+    Button cancelRideBtn;
 
 
     DriverWaitingActivityViewModel viewModel;
     ShimmerFrameLayout shimmerFrameLayout;
-    ShimmerFrameLayout shareRideShimmer;
+//    ShimmerFrameLayout shareRideShimmer;
 
     View driverLayout;
 
-    TextView cancelRide;
+//    TextView cancelRide;
 
 
     static String bookingId;
@@ -175,7 +176,7 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
 
                                 setStatusAccordingToRideInfo(getResources().getString(R.string.ride_accepted));
 
-                                cancelRideCard.setVisibility(View.VISIBLE);
+                                cancelRideBtn.setVisibility(View.VISIBLE);
 
 
                                 //start tracking driver
@@ -205,7 +206,7 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
 
                             setStatusAccordingToRideInfo(getResources().getString(R.string.driver_arrived));
 //                            shakeItBaby();
-                            cancelRideCard.setVisibility(View.GONE);
+                            cancelRideBtn.setVisibility(View.GONE);
 
                             trackingHandler.removeCallbacksAndMessages(null);
 
@@ -214,12 +215,12 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
 
                                 viewModel.callRideInfoApi("" + checkBookingStatusModel.getData().getBooking_id());
 
-                            shareRideShimmer.stopShimmer();
-                            shareRideShimmer.setVisibility(View.GONE);
+//                            shareRideShimmer.stopShimmer();
+//                            shareRideShimmer.setVisibility(View.GONE);
                             setStatusAccordingToRideInfo(getResources().getString(R.string.ride_started));
 //                            shakeItBaby();
                             shareDetails.setVisibility(View.VISIBLE);
-                            cancelRideCard.setVisibility(View.GONE);
+                            cancelRideBtn.setVisibility(View.GONE);
 
 
                             autoCancelHandler.removeCallbacksAndMessages(null);
@@ -233,7 +234,7 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
                         }else if (Integer.parseInt(checkBookingStatusModel.getData().getBooking_status()) == STATUS.END) {
 
 
-                            cancelRideCard.setVisibility(View.GONE);
+                            cancelRideBtn.setVisibility(View.GONE);
 //                            mCheckBookingHandler.removeCallbacksAndMessages(mCheckBookingRunnable);
 //                            autoCancelHandler.removeCallbacksAndMessages(autoCancelRunnable);
 //                            trackingHandler.removeCallbacksAndMessages(trackingRunnable);
@@ -350,7 +351,7 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
-                                    cancelRide.setClickable(true);
+                                    cancelRideBtn.setClickable(true);
                                 }
                             });
 
@@ -437,7 +438,7 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
                                     Toast.makeText(getApplicationContext(), modelResultCheck.getMessage(),
                                             Toast.LENGTH_LONG).show();
                                 }else {
-                                cancelRide.setClickable(true);
+                                cancelRideBtn.setClickable(true);
                                 progressBar.setVisibility(View.GONE);
 
                                 Toast.makeText(getApplicationContext(), modelResultCheck.getMessage(),
@@ -470,7 +471,10 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
 
 
     ImageView driverImage;
-    TextView driverName,driverRating,driverCarDetails,contactDriver,shareDetails,driverStatus;
+    TextView driverName,driverRating,driverCarDetails,driverStatusAccepted, driverStatusStarted;
+
+    Button contactDriver,shareDetails;
+    View rideProgressView;
 
 
     CardView cardDriverDetails;
@@ -499,14 +503,16 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
         driverImage = findViewById(R.id.driverImg);
         driverCarDetails = findViewById(R.id.driverCarDetails);
         driverCarModel = findViewById(R.id.driverCarModel);
-        contactDriver = findViewById(R.id.contactDriver);
-        shareDetails = findViewById(R.id.shareDetails);
+        contactDriver = findViewById(R.id.driverWaitCall);
+        shareDetails = findViewById(R.id.driverWaitShare);
         pickLocation = findViewById(R.id.driverSearchPickLocation);
         dropLocation = findViewById(R.id.driverSearchDropLocation);
-        driverStatus = findViewById(R.id.driverCarStatus);
+        driverStatusAccepted = findViewById(R.id.driverStatusAccepted);
+        driverStatusStarted = findViewById(R.id.driverStatusArrived);
 
-        cancelRide = findViewById(R.id.cancelRide);
-        cancelRideCard = findViewById(R.id.cancelRideCard);
+        rideProgressView = findViewById(R.id.rideProgressView);
+
+        cancelRideBtn = findViewById(R.id.driverWaitCancel);
 
 //        cancelRideCard.setVisibility(View.GONE);
 
@@ -514,7 +520,7 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
         emergency = findViewById(R.id.driverWaitingSos);
 
         shimmerFrameLayout = findViewById(R.id.shimmer_view_container);
-        shareRideShimmer = findViewById(R.id.shimmerShare);
+//        shareRideShimmer = findViewById(R.id.shimmerShare);
         driverLayout = findViewById(R.id.driverLayout);
 
         cardDriverDetails = findViewById(R.id.cardDriverDetails);
@@ -601,12 +607,12 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
 
 
 
-        cancelRide.setOnClickListener(new View.OnClickListener() {
+        cancelRideBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 shakeItBaby();
-                cancelRide.setClickable(false);
+                cancelRideBtn.setClickable(false);
                 try {
 
                     progressBar.setVisibility(View.VISIBLE);
@@ -844,7 +850,6 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
     private void setViewAccordingToRideInfo(TempRideInfo modelRideInfo) throws Exception {
 
 
-        driverSearchText.setText(getString(R.string.driver_found_text));
 
         if (modelRideInfo.getData().getBooking_status() == STATUS.USER_CONCELLED ||
                 modelRideInfo.getData().getBooking_status() == STATUS.DRIVER_CANCELLED ||
@@ -1040,10 +1045,47 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
 
     private void setStatusAccordingToRideInfo(String status) {
 
+        switch (status){
+            case "Accepted":
+                driverSearchText.setText(getString(R.string.driver_found_text));
+                driverSearchText.setTextColor(getResources().getColor(R.color.colorDarkFont));
+                driverStatusAccepted.setVisibility(View.VISIBLE);
+                driverStatusStarted.setVisibility(View.GONE);
+                contactDriver.setBackground(getResources().getDrawable(R.drawable.oval_background_button));
+                contactDriver.setEnabled(true);
+                cancelRideBtn.setEnabled(true);
+                break;
 
 
-        driverStatus.setText("");
-        driverStatus.setText(status);
+            case "Arrived":
+                driverSearchText.setText(getString(R.string.driver_is_arrived));
+                driverSearchText.setTextColor(getResources().getColor(R.color.colorDarkFont));
+                driverStatusAccepted.setVisibility(View.VISIBLE);
+                driverStatusStarted.setVisibility(View.GONE);
+                contactDriver.setEnabled(true);
+                contactDriver.setBackground(getResources().getDrawable(R.drawable.oval_background_button));
+                cancelRideBtn.setVisibility(View.GONE);
+                shareDetails.setVisibility(View.VISIBLE);
+                break;
+
+
+            case "Started":
+                driverSearchText.setText(getString(R.string.ride_is_started));
+                driverSearchText.setTextColor(getResources().getColor(R.color.colorDarkFont));
+                driverStatusAccepted.setVisibility(View.GONE);
+                driverStatusStarted.setVisibility(View.VISIBLE);
+                contactDriver.setEnabled(true);
+                shareDetails.setEnabled(true);
+                shareDetails.setVisibility(View.VISIBLE);
+                contactDriver.setBackground(getResources().getDrawable(R.drawable.oval_background_button));
+                shareDetails.setBackground(getResources().getDrawable(R.drawable.oval_background_button));
+                rideProgressView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                break;
+
+        }
+
+//        driverStatus.setText("");
+//        driverStatus.setText(status);
 
 
 
@@ -1078,7 +1120,7 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
 
             if(!bookingId.equals("null")) {
 //                callRideInfoAPI(bookingId);
-                cancelRideCard.setVisibility(View.VISIBLE);
+                cancelRideBtn.setVisibility(View.VISIBLE);
                 checkBookingStatus(bookingId);
                 checkAutoCancelStatus(bookingId);
             }
