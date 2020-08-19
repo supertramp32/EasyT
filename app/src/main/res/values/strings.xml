@@ -195,6 +195,7 @@
     <string name="on_ride">On Ride</string>
     <string name="ride_is_started">Ride Started</string>
     <string name="driver_is_arrived">Partner Arrived</string>
+    <string name="nrs_only">NRs. Only</string>
 
 
 </resources>

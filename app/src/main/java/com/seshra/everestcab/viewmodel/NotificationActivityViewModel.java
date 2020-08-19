@@ -7,18 +7,16 @@ import androidx.lifecycle.AndroidViewModel;
 
 import com.seshra.everestcab.data.AppRepository;
 
-public class CampaignNotificationViewModel extends AndroidViewModel {
+public class NotificationActivityViewModel extends AndroidViewModel {
 
     AppRepository appRepository;
 
-    public CampaignNotificationViewModel(@NonNull Application application) {
+    public NotificationActivityViewModel(@NonNull Application application) {
         super(application);
         appRepository = AppRepository.getOurInstance(application);
     }
 
-    public void getCampaignNotification() {
-        appRepository.getCampaignNotification();
+    public void getGeneralNotifications() {
+        appRepository.getGeneralNotifications();
     }
-
-
 }

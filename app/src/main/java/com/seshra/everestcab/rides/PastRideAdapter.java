@@ -197,10 +197,7 @@ public class PastRideAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             rideDropLocation.setText(pastRidesData.getDrop_location());
             ridePaymentType.setText(pastRidesData.getPayment_method());
 
-            String rideAmount = pastRidesData.getValue_text();
-            String[] separated = rideAmount.split(" ");
-
-            ridePaymentAmount.setText(separated[0] + "\n" + separated[1]);
+            ridePaymentAmount.setText(pastRidesData.getValue_text());
             rideStatus.setText(pastRidesData.getStatus_text());
 
             itemView.setOnClickListener(new View.OnClickListener() {

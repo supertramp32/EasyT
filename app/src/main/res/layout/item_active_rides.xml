@@ -104,12 +104,24 @@
         android:id="@+id/activeRidePaymentAmount"
         android:text="Rs 100"
         style="@style/DarkTextStyle"
-        android:layout_marginRight="@dimen/mediumMargin"
+        android:layout_marginRight="@dimen/normalMargin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
+ <TextView
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:id="@+id/activeRidePaymentDomination"
+     android:text="@string/nrs_only"
+     style="@style/LightTextStyle"
+     android:textSize="@dimen/heading4"
+     android:layout_marginRight="@dimen/mediumMargin"
+     app:layout_constraintTop_toBottomOf="@id/activeRidePaymentAmount"
+     app:layout_constraintLeft_toLeftOf="@id/activeRidePaymentAmount"
+     app:layout_constraintRight_toRightOf="parent"
+     />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
