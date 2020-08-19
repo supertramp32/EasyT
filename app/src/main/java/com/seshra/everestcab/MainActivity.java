@@ -27,6 +27,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.InsetDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -2523,67 +2525,70 @@ View.OnClickListener,
 
 
 
-    private void showErrorConfirmRideDialog(String dialog_message) {
+//    private void showErrorConfirmRideDialog(String dialog_message) {
+//
+//        new AlertDialog.Builder(MainActivity.this)
+//                .setTitle(getResources().getString(R.string.error_booking))
+//                .setMessage(dialog_message)
+//
+//                // Specifying a listener allows you to take an action before dismissing the dialog.
+//                // The dialog is automatically dismissed when a dialog button is clicked.
+//                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        startActivity(new Intent(getApplicationContext(), MainActivity.class)
+//                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                        );
+//                    }
+//
+//                })
+//
+//                .setIcon(android.R.drawable.ic_dialog_alert)
+//                .setCancelable(false)
+//                .show();
+//
+//
+//    }
 
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle(getResources().getString(R.string.error_booking))
-                .setMessage(dialog_message)
 
-                // Specifying a listener allows you to take an action before dismissing the dialog.
-                // The dialog is automatically dismissed when a dialog button is clicked.
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
 
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class)
+
+    public void showErrorConfirmRideDialog(String message){
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_error_booking, null);
+
+        TextView dialogMessage = dialogView.findViewById(R.id.dialogMessage);
+        Button dialogPositiveBtn = dialogView.findViewById(R.id.dialogPositiveBtn);
+
+        dialogMessage.setText(message);
+
+        dialogPositiveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         );
-                    }
-
-                })
-
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setCancelable(false)
-                .show();
-
-
-    }
-
-
-    private void createPromoDialog() {
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
-        dialog.setContentView(R.layout.promo_layout);
-
-        EditText promoInput =  dialog.findViewById(R.id.inputPromo);
-        TextView cancel =  dialog.findViewById(R.id.cancel_btn);
-        TextView apply = dialog.findViewById(R.id.apply_btn);
-
-
-        apply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//
-//                inputPromoCode.setText(promoInput.getText().toString());
-//                viewModel.applyPromoCode(modelCheckOut.getData().getId(),promoInput.getText().toString());
-//                promoCodeLayout.setHint(getResources().getString(R.string.applying_promo));
-                dialog.dismiss();
-
-
             }
         });
 
 
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        dialogBuilder.setView(dialogView);
 
-        dialog.show();
+
+        AlertDialog alertDialog = dialogBuilder.create();
+        ColorDrawable back = new ColorDrawable(Color.TRANSPARENT);
+        InsetDrawable inset = new InsetDrawable(back, 20);
+        alertDialog.getWindow().setBackgroundDrawable(inset);
+        alertDialog.setCancelable(false);
+        alertDialog.show();
+
+
 
     }
 
