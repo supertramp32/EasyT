@@ -35,10 +35,10 @@ public class TripDetailActivity extends AppCompatActivity {
 
 
     ImageView mapImg, driverImg;
-    TextView date, estFare, serviceType, paymentType;
+    TextView date, estFare, time;
     TextView pickLocation, dropLocation, driverName, driverEmail, driverRating;
 
-    TextView billTotal, billDistance, billDuration;
+    TextView  billDistance, billDuration;
 
     TripDetailActivityViewModel viewModel;
     RatingBar ratingBar;
@@ -52,9 +52,6 @@ public class TripDetailActivity extends AppCompatActivity {
 
     ImageView backBtn;
 
-    RecyclerView recyclerView;
-
-    BillDetailsAdapter billDetailsAdapter;
 
 
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -97,9 +94,7 @@ public class TripDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_detail);
 
-        recyclerView = findViewById(R.id.tripDetailRecycler);
 
-        initRecyclerView();
         initViews();
         initViewModel();
 
@@ -131,18 +126,16 @@ public class TripDetailActivity extends AppCompatActivity {
         mapImg = findViewById(R.id.tripDetailMapImg);
         driverImg = findViewById(R.id.tripDetailDriverImg);
         date = findViewById(R.id.tripDetailDate);
+        time = findViewById(R.id.tripDetailTime);
         estFare = findViewById(R.id.tripDetailPaymentAmount);
-        serviceType = findViewById(R.id.tripDetailServiceType);
-        paymentType = findViewById(R.id.tripDetailPaymentType);
         pickLocation = findViewById(R.id.tripDetailPickUpLocation);
         dropLocation = findViewById(R.id.tripDetailDropLocation);
         driverName = findViewById(R.id.tripDetailDriverName);
 //        driverEmail = findViewById(R.id.tripDetailDriverEmail);
         driverRating = findViewById(R.id.tripDetailDriverRating);
 
-        billTotal = findViewById(R.id.billTotalFare);
-        billDistance = findViewById(R.id.billTotalDistance);
-        billDuration = findViewById(R.id.billTotalDuration);
+        billDistance = findViewById(R.id.tripDetailTotalDistance);
+        billDuration = findViewById(R.id.tripDetailTotalDuration);
 
         backBtn = findViewById(R.id.backBtn);
 
@@ -199,9 +192,13 @@ public class TripDetailActivity extends AppCompatActivity {
                 .getHolder_driver().getData().getCircular_image()).into(driverImg);
 
 
-        date.setText(specificTripDetails.getData().getHolder_booking_description().getData().getHighlighted_left_text());
+        String dateTime = specificTripDetails.getData().getHolder_booking_description().getData().getHighlighted_left_text();
+        String[] datet = dateTime.split(" ");
+
+        date.setText(datet[0]);
+        time.setText(datet[1]);
+
         estFare.setText("NPR. "+specificTripDetails.getData().getHolder_metering().getData().getText_one());
-        serviceType.setText(specificTripDetails.getData().getHolder_booking_description().getData().getSmall_left_text());
 //        paymentType.setText(specificTripDetails.getData().getHolder_booking_description().getData().getHighlighted_right_text());
         pickLocation.setText(specificTripDetails.getData().getHolder_pickdrop_location().getData().getPick_text());
         dropLocation.setText(specificTripDetails.getData().getHolder_pickdrop_location().getData().getDrop_text());
@@ -216,14 +213,8 @@ public class TripDetailActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        billTotal.setText("NPR." +specificTripDetails.getData().getHolder_metering().getData().getText_one());
         billDistance.setText(specificTripDetails.getData().getHolder_metering().getData().getText_two());
         billDuration.setText(specificTripDetails.getData().getHolder_metering().getData().getText_three());
-//
-//        billDetailsAdapter = new BillDetailsAdapter(specificTripDetails.getData().getHolder_receipt().getData(),
-//                TripDetailActivity.this);
-//        recyclerView.setAdapter(billDetailsAdapter);
-
 
 
     }
@@ -260,12 +251,5 @@ public class TripDetailActivity extends AppCompatActivity {
                 .unregisterReceiver(broadcastReceiver);
     }
 
-    private void initRecyclerView() {
-       LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
-    }
 
     }

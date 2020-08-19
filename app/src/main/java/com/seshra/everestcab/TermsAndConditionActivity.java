@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.seshra.everestcab.models.ModelResultCheck;
 import com.seshra.everestcab.models.ModelTermsAndCondition;
 import com.seshra.everestcab.service.FetchTermsAndConditionService;
 import com.seshra.everestcab.utils.SingletonGson;
@@ -33,29 +34,35 @@ public class TermsAndConditionActivity extends AppCompatActivity {
 
             progressBar.setVisibility(View.GONE);
 
-            String result = intent.getStringExtra(FetchTermsAndConditionService.TERMS_MESSAGE_KEY);
+            try {
 
-            if(!result.equals("0")) {
+                String result = intent.getStringExtra(FetchTermsAndConditionService.TERMS_MESSAGE_KEY);
 
-                ModelTermsAndCondition modelTermsAndCondition =
-                        SingletonGson.getInstance().fromJson("" + result, ModelTermsAndCondition.class);
+                if (!result.equals("0")) {
 
-                if(modelTermsAndCondition.getResult().equals("1")) {
+                    ModelResultCheck modelResultCheck =
+                            SingletonGson.getInstance().fromJson("" + result, ModelResultCheck.class);
+
+                    if (modelResultCheck.getResult().equals("1")) {
+
+                        ModelTermsAndCondition modelTermsAndCondition =
+                                SingletonGson.getInstance().fromJson("" + result, ModelTermsAndCondition.class);
+
+                        termsText.setText(Html.fromHtml("" + modelTermsAndCondition.getData().getDescription()));
 
 
-                    termsText.setText(Html.fromHtml("" + modelTermsAndCondition.getData().getDescription()));
+                    } else {
+                        Toast.makeText(TermsAndConditionActivity.this, modelResultCheck.getMessage(), Toast.LENGTH_LONG).show();
+                    }
 
-
-
-                }else {
-                    Toast.makeText(TermsAndConditionActivity.this,modelTermsAndCondition.getMessage(),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(TermsAndConditionActivity.this, getResources().getString(R.string.erro_fetching_data), Toast.LENGTH_LONG).show();
                 }
 
-            }else {
-                Toast.makeText(TermsAndConditionActivity.this,getResources().getString(R.string.erro_fetching_data),Toast.LENGTH_LONG).show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-
         }
     };
 

@@ -67,13 +67,16 @@
             android:text="@string/metered_ride"
             android:textSize="@dimen/heading2"
             android:textStyle="normal"
+            android:enabled="false"
             android:layout_marginTop="@dimen/cardRadius"
             />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/estimatedPriceMetered"
-            tools:text="Nrs 500"
+            android:text="N/A"
+            android:enabled="false"
             android:textSize="@dimen/heading2"
             android:textColor="@color/colorDarkFont"
             android:textStyle="bold"

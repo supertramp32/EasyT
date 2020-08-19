@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.seshra.everestcab.models.ModelResultCheck;
 import com.seshra.everestcab.models.ModelTermsAndCondition;
 import com.seshra.everestcab.service.FetchTermsAndConditionService;
 import com.seshra.everestcab.utils.SingletonGson;
@@ -39,17 +40,22 @@ public class PrivacyPolicyActivity extends AppCompatActivity {
 
                 if (!result.equals("0")) {
 
-                    ModelTermsAndCondition modelTermsAndCondition =
-                            SingletonGson.getInstance().fromJson("" + result, ModelTermsAndCondition.class);
+                    ModelResultCheck modelResultCheck =
+                            SingletonGson.getInstance().fromJson("" + result, ModelResultCheck.class);
 
-                    if (modelTermsAndCondition.getResult().equals("1")) {
+
+
+                    if (modelResultCheck.getResult().equals("1")) {
+
+                        ModelTermsAndCondition modelTermsAndCondition =
+                                SingletonGson.getInstance().fromJson("" + result, ModelTermsAndCondition.class);
 
 
                         termsText.setText(Html.fromHtml("" + modelTermsAndCondition.getData().getDescription()));
 
 
                     } else {
-                        Toast.makeText(PrivacyPolicyActivity.this, modelTermsAndCondition.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(PrivacyPolicyActivity.this, modelResultCheck.getMessage(), Toast.LENGTH_LONG).show();
                     }
 
                 } else {

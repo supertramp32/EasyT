@@ -46,9 +46,8 @@
         android:layout_height="match_parent"
         android:id="@+id/root"
         android:visibility="gone"
+        android:background="@color/colorGray"
         >
-
-
 
 
 
@@ -73,268 +72,342 @@
             />
 
 
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tripDetailDate"
-        style="@style/TitleText"
-        tools:text = "2010/01/12"
-        android:layout_margin="@dimen/mediumMargin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripDetailMapImg"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tripDetailServiceType"
-        tools:text="Taxi"
-        android:textSize="@dimen/heading2"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        android:layout_marginLeft="@dimen/mediumMargin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripDetailDate"
-        />
-
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/tripDetailPaymentAmountText"-->
-<!--        android:text="Est fare:"-->
-<!--        android:textSize="@dimen/heading2"-->
-<!--        android:textAllCaps="true"-->
-<!--        android:drawablePadding="@dimen/mediumMargin"-->
-<!--        android:layout_marginTop="@dimen/mediumMargin"-->
-<!--        android:layout_marginRight="@dimen/mediumMargin"-->
-<!--        app:layout_constraintRight_toLeftOf="@id/tripDetailPaymentAmount"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tripDetailMapImg"-->
-<!--        />-->
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tripDetailPaymentAmount"
-        tools:text="Rs 100"
-        android:textSize="@dimen/heading2"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        android:drawablePadding="@dimen/mediumMargin"
-        android:layout_marginTop="@dimen/mediumMargin"
-        android:layout_marginRight="@dimen/mediumMargin"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripDetailMapImg"
-        />
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tripDetailPaymentType"
-        tools:text="Cash"
-        android:textSize="@dimen/heading2"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
-        android:drawablePadding="@dimen/mediumMargin"
-        android:layout_marginRight="@dimen/mediumMargin"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripDetailPaymentAmount"
-        />
-
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tripDetailPickUpLocation"
-        tools:text="Baneswor"
-        android:textSize="@dimen/heading3"
-        android:drawablePadding="@dimen/mediumMargin"
-        android:drawableLeft="@drawable/ic_loc_e"
-        android:layout_margin="@dimen/largeMargin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripDetailServiceType"
-        />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tripDetailDropLocation"
-        tools:text="Koteswor"
-        android:textSize="@dimen/heading3"
-        android:drawablePadding="@dimen/mediumMargin"
-        android:drawableLeft="@drawable/ic_loc"
-        android:layout_marginTop="@dimen/mediumMargin"
-        android:layout_marginLeft="@dimen/largeMargin"
-        android:layout_marginRight="@dimen/largeMargin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripDetailPickUpLocation"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tripDetailsDriverText"
-        android:text="@string/driver_details"
-        android:textSize="@dimen/heading2"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        android:layout_marginTop="@dimen/largeMargin"
-        android:layout_marginLeft="@dimen/mediumMargin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripDetailDropLocation"
-        />
-
-
-
-
-
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:id="@+id/tripDetailDriverImg"
-        android:src="@drawable/user"
-        android:layout_margin="@dimen/normalMargin"
-        app:layout_constraintTop_toBottomOf="@+id/tripDetailsDriverText"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="---------------------"
-        android:id="@+id/tripDetailDriverName"
-        android:textSize="@dimen/heading3"
-        android:textColor="@color/colorDarkGray"
-        android:layout_marginLeft="@dimen/cardRadius"
-        app:layout_constraintLeft_toRightOf="@id/tripDetailDriverImg"
-        app:layout_constraintTop_toTopOf="@+id/tripDetailDriverImg"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="---"
-        android:id="@+id/tripDetailDriverRating"
-        android:textSize="@dimen/heading3"
-        android:textColor="@color/colorDarkGray"
-        android:layout_marginLeft="@dimen/cardRadius"
-        app:layout_constraintLeft_toRightOf="@+id/tripDetailDriverImg"
-        app:layout_constraintTop_toBottomOf="@+id/tripDetailDriverName"
-        />
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rateDriverText"
-        android:text="@string/you_rated"
-        android:textSize="@dimen/heading3"
-        android:textStyle="bold"
-        android:layout_marginRight="@dimen/mediumMargin"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tripDetailDriverName"
-        app:layout_constraintRight_toRightOf="parent"
-        />
-
-
-    <RatingBar
-        android:id="@+id/rating_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginRight="@dimen/mediumMargin"
-        android:rating="3"
-        android:numStars="5"
-        android:stepSize="1"
-        style="?android:attr/ratingBarStyleSmall"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rateDriverText"/>
-
-
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/billDetailText"-->
-<!--            android:text="@string/bill_details"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textColor="@color/colorPrimary"-->
-<!--            android:layout_margin="@dimen/mediumMargin"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/tripDetailDriverImg"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--            />-->
-
-
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:id="@+id/billMeterImg"
-            android:src="@drawable/ic_gauge"
-            android:layout_margin="@dimen/normalMargin"
-            app:layout_constraintTop_toBottomOf="@id/tripDetailDriverImg"
-            app:layout_constraintLeft_toLeftOf="parent"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/billTotalFare"
-            tools:text="@string/about_us"
-            android:textSize="@dimen/heading2"
-            android:textStyle="bold"
-            android:layout_marginLeft="@dimen/mediumMargin"
-            app:layout_constraintTop_toTopOf="@id/billMeterImg"
-            app:layout_constraintBottom_toBottomOf="@id/billMeterImg"
-            app:layout_constraintLeft_toRightOf="@id/billMeterImg"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/billTotalDistance"
-            tools:text="@string/about_us"
-            android:textSize="@dimen/heading2"
-            android:textStyle="bold"
-            android:layout_marginLeft="@dimen/mediumMargin"
-            app:layout_constraintTop_toTopOf="@id/billMeterImg"
-            app:layout_constraintBottom_toBottomOf="@id/billMeterImg"
-            app:layout_constraintLeft_toRightOf="@id/billTotalFare"
-            app:layout_constraintRight_toLeftOf="@id/billTotalDuration"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/billTotalDuration"
-            tools:text="@string/about_us"
-            android:textSize="@dimen/heading2"
-            android:textStyle="bold"
-            android:layout_marginRight="@dimen/mediumMargin"
-            app:layout_constraintTop_toTopOf="@id/billMeterImg"
-            app:layout_constraintBottom_toBottomOf="@id/billMeterImg"
-            app:layout_constraintRight_toRightOf="parent"
-            />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tripDetailRecycler"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tripDetailBasics"
+            app:cardCornerRadius="@dimen/mediumMargin"
+            android:elevation="@dimen/cardRadius"
             android:layout_margin="@dimen/mediumMargin"
-            app:layout_constraintTop_toBottomOf="@id/billMeterImg"
+            app:layout_constraintTop_toBottomOf="@+id/tripDetailMapImg"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/cardRadius"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tripDetailDate"
+                    style="@style/GreenText"
+                    tools:text = "2010/01/12"
+                    android:layout_margin="@dimen/cardRadius"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tripDetailTime"
+                    tools:text="@string/ride_fare"
+                    android:textColor="@color/colorDarkFont"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/cardRadius"
+                    android:layout_marginLeft="@dimen/mediumMargin"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tripDetailDate"
+                    />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tripDetailPayment"
+                    android:text="NRs."
+                    style="@style/GreenText"
+                    android:layout_marginRight="@dimen/smallMargin"
+                    app:layout_constraintRight_toLeftOf="@id/tripDetailPaymentAmount"
+                    app:layout_constraintTop_toTopOf="@id/tripDetailPaymentAmount"
+                    app:layout_constraintBottom_toBottomOf="@id/tripDetailPaymentAmount"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tripDetailPaymentAmount"
+                    android:text="100"
+                    style="@style/GreenText"
+                    android:textSize="@dimen/heading1"
+                    android:layout_margin="@dimen/cardRadius"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tripDetailType"
+                    android:text="@string/ride_fare"
+                    android:textColor="@color/colorDarkFont"
+                    android:drawablePadding="@dimen/mediumMargin"
+                    android:layout_marginRight="@dimen/mediumMargin"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tripDetailPaymentAmount"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tripDetailLocation"
+            app:cardCornerRadius="@dimen/mediumMargin"
+            android:elevation="@dimen/cardRadius"
+            android:layout_margin="@dimen/mediumMargin"
+            app:layout_constraintTop_toBottomOf="@+id/tripDetailBasics"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/cardRadius">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tripDetailText"
+                    android:text="@string/trip_details"
+                    style="@style/DarkTextStyle"
+                    android:layout_margin="@dimen/cardRadius"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tripDetailPickUpLocation"
+                    android:gravity="center"
+                    tools:text="Baneswor, Kathmandu"
+                    android:drawableLeft="@drawable/ic_loc"
+                    android:drawablePadding="@dimen/smallMargin"
+                    android:layout_marginTop="@dimen/mediumMargin"
+                    android:layout_marginLeft="@dimen/normalMargin"
+                    android:layout_marginRight="@dimen/normalMargin"
+                    app:layout_constraintTop_toBottomOf="@id/tripDetailText"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    />
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:id="@+id/viewPickandDrop"
+                    android:background="@color/colorGray"
+                    android:layout_margin="@dimen/normalMargin"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@+id/tripDetailPickUpLocation"
+                    app:layout_constraintTop_toBottomOf="@+id/tripDetailPickUpLocation"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tripDetailDropLocation"
+                    android:gravity="center"
+                    android:drawableLeft="@drawable/ic_loc_e"
+                    tools:text="Panga, Kirtipur"
+                    android:drawablePadding="@dimen/smallMargin"
+                    android:layout_marginTop="@dimen/mediumMargin"
+                    android:layout_marginLeft="@dimen/normalMargin"
+                    android:layout_marginBottom="@dimen/mediumMargin"
+                    android:layout_marginRight="@dimen/normalMargin"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPickandDrop"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tripDetailDriver"
+            app:cardCornerRadius="@dimen/mediumMargin"
+            android:elevation="@dimen/cardRadius"
+            android:layout_margin="@dimen/mediumMargin"
+            app:layout_constraintTop_toBottomOf="@+id/tripDetailLocation"
+            >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/cardRadius"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tripDetailsDriverText"
+                android:text="@string/driver_details"
+                style="@style/DarkTextStyle"
+                android:layout_margin="@dimen/cardRadius"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/tripDetailDriverImg"
+                android:src="@drawable/user"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintTop_toBottomOf="@+id/tripDetailsDriverText"
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="---------------------"
+                android:id="@+id/tripDetailDriverName"
+                android:textSize="@dimen/heading3"
+                android:textColor="@color/colorDarkGray"
+                android:layout_marginLeft="@dimen/cardRadius"
+                app:layout_constraintLeft_toRightOf="@id/tripDetailDriverImg"
+                app:layout_constraintTop_toTopOf="@+id/tripDetailDriverImg"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="---"
+                android:id="@+id/tripDetailDriverRating"
+                android:textSize="@dimen/heading3"
+                android:textColor="@color/colorDarkGray"
+                android:layout_marginLeft="@dimen/cardRadius"
+                app:layout_constraintLeft_toRightOf="@+id/tripDetailDriverImg"
+                app:layout_constraintTop_toBottomOf="@+id/tripDetailDriverName"
+                />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rateDriverText"
+                android:text="@string/you_rated"
+                android:textSize="@dimen/heading3"
+                android:textStyle="bold"
+                android:layout_marginRight="@dimen/mediumMargin"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tripDetailDriverName"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
+
+            <RatingBar
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="@dimen/mediumMargin"
+                android:rating="3"
+                android:numStars="5"
+                android:stepSize="1"
+                style="?android:attr/ratingBarStyleSmall"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rateDriverText"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tripDistanceText"
+                android:text="@string/distance_travelled"
+                android:textColor="@color/colorDarkFont"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tripDetailDriverImg"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tripDetailTotalDistance"
+                tools:text="@string/about_us"
+                android:textColor="@color/colorDarkFont"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/smallMargin"
+                app:layout_constraintTop_toTopOf="@id/tripDistanceText"
+                app:layout_constraintBottom_toBottomOf="@id/tripDistanceText"
+                app:layout_constraintLeft_toRightOf="@id/tripDistanceText"
+                />
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tripDurationText"
+                android:text="@string/ride_duration"
+                android:textColor="@color/colorDarkFont"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/normalMargin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tripDetailTotalDistance"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tripDetailTotalDuration"
+                tools:text="@string/about_us"
+                android:textColor="@color/colorDarkFont"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/smallMargin"
+                app:layout_constraintTop_toTopOf="@id/tripDurationText"
+                app:layout_constraintBottom_toBottomOf="@id/tripDurationText"
+                app:layout_constraintLeft_toRightOf="@id/tripDurationText"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/continuePersonalInfo"
+            android:text="@string/back_to_dashboard"
+            style="@style/raisedButton"
+            android:background="@drawable/oval_background_button"
+            android:layout_margin="@dimen/normalMargin"
             app:layout_constraintBottom_toBottomOf="parent"
-             />
+            />
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

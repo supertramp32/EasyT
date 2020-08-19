@@ -196,6 +196,10 @@
     <string name="ride_is_started">Ride Started</string>
     <string name="driver_is_arrived">Partner Arrived</string>
     <string name="nrs_only">NRs. Only</string>
+    <string name="ride_fare">Ride Fare</string>
+    <string name="distance_travelled">Distance Travelled:</string>
+    <string name="ride_duration">Ride Duration:</string>
+    <string name="back_to_dashboard">Back To Dashboard</string>
 
 
 </resources>

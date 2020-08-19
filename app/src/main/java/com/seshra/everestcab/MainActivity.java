@@ -225,7 +225,6 @@ View.OnClickListener,
     BottomSheetDialog dialog;
 
     TextView detailsText;
-    TextView afterCouponRate;
 
     SharedPreferences sharedPreferences;
 
@@ -506,11 +505,11 @@ View.OnClickListener,
 //                                promoCodeLayout.setHint(getResources().getString(R.string.promo_applied));
 //                                inputPromoCode.clearFocus();
 
-                                afterCouponRate.setVisibility(View.VISIBLE);
+//                                afterCouponRate.setVisibility(View.VISIBLE);
                                 estBillFixed.setText(modelResultCheck.getData().getEstimate_bill());
                                 estBillFixed.setTextColor(getResources().getColor(R.color.colorRed));
                                 estBillFixed.setBackground(getResources().getDrawable(R.drawable.text_strike_through));
-                                afterCouponRate.setText(modelResultCheck.getData().getDiscounted_amout());
+//                                afterCouponRate.setText(modelResultCheck.getData().getDiscounted_amout());
 
                             }else {
 
@@ -518,7 +517,7 @@ View.OnClickListener,
 //                                inputPromoCode.clearFocus();
 //                                inputPromoCode.setText("");
 
-                                afterCouponRate.setVisibility(View.GONE);
+//                                afterCouponRate.setVisibility(View.GONE);
 
 //                                estBill.setText(modelResultCheck.getData().getEstimate_bill());
 //                                estBill.setTextColor(getResources().getColor(R.color.colorRed));
@@ -580,7 +579,7 @@ View.OnClickListener,
             dDropLocationName.setText(modelCheckOut.getData().getDrop_location());
 
             estBillFixed.setText("" + modelCheckOut.getData().getEstimate_bill());
-            estBillMetered.setText("" + modelCheckOut.getData().getEstimate_bill());
+//            estBillMetered.setText("" + modelCheckOut.getData().getEstimate_bill());
 
 
 
@@ -615,7 +614,7 @@ View.OnClickListener,
             sessionManager = new SessionManager(this);
             dropOffPin = findViewById(R.id.dropOffPin);
 
-            afterCouponRate = findViewById(R.id.serviceEstimatedBillAfterCoupon);
+//            afterCouponRate = findViewById(R.id.serviceEstimatedBillAfterCoupon);
             drawerLayout = findViewById(R.id.drawer_layout);
             navigationView = findViewById(R.id.navigation_view);
             navIcon = findViewById(R.id.nav_hamburg_icon);
