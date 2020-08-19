@@ -201,6 +201,8 @@
     <string name="ride_duration">Ride Duration:</string>
     <string name="back_to_dashboard">Back To Dashboard</string>
     <string name="ok_">OK</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="total_balance">Total Balance</string>
 
 
 </resources>

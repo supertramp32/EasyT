@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -51,10 +52,10 @@ import static android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION;
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     SessionManager sessionManager;
-    EditText username, email;
+    TextView username, email;
     ImageView userImage;
     TextView phone;
-    ImageView backBtn, save;
+//    ImageView backBtn, save;
 
     boolean firstLoad = true;
 
@@ -75,7 +76,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     TextView totalTrips, walletBalance;
 
-    ProgressBar progressBar;
+//    ProgressBar progressBar;
 
 
 
@@ -96,7 +97,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     String result = intent.getStringExtra(EditProfileService.PROFILE_EDIT_MESSAGE_KEY);
                     if (!result.equals("0")) {
-                        progressBar.setVisibility(View.GONE);
+//                        progressBar.setVisibility(View.GONE);
 
                         ModelEditProfile modelEditProfile = SingletonGson.getInstance()
                                 .fromJson("" + result, ModelEditProfile.class);
@@ -113,7 +114,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                             } else {
 
-                                save.setClickable(true);
+//                                save.setClickable(true);
 
                                 Toast.makeText(ProfileActivity.this, modelEditProfile.getMessage(), Toast.LENGTH_LONG).show();
 
@@ -126,8 +127,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 
                     } else {
-                        progressBar.setVisibility(View.GONE);
-                        save.setClickable(true);
+//                        progressBar.setVisibility(View.GONE);
+//                        save.setClickable(true);
                         Toast.makeText(ProfileActivity.this, getResources().getString(R.string.error), Toast.LENGTH_LONG).show();
                     }
 
@@ -166,15 +167,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private void initViews() {
 
         username = findViewById(R.id.profileUserName);
-        phone = findViewById(R.id.profileUserPhone);
-        email= findViewById(R.id.profileUserEmail);
+        phone = findViewById(R.id.profilePhone);
+        email= findViewById(R.id.profileEmail);
         userImage = findViewById(R.id.profileUserImage);
-        backBtn = findViewById(R.id.profileBackBtn);
-        save = findViewById(R.id.profileSaveBtn);
+//        backBtn = findViewById(R.id.profileBackBtn);
+//        save = findViewById(R.id.profileSaveBtn);
 //        genderGroup = findViewById(R.id.genderGroup);
-        totalTrips = findViewById(R.id.profileUserRides);
-        walletBalance = findViewById(R.id.profileUserYears);
-        progressBar = findViewById(R.id.progressBar);
+        totalTrips = findViewById(R.id.profileTotalRides);
+        walletBalance = findViewById(R.id.profileTotalBalance);
+//        progressBar = findViewById(R.id.progressBar);
 //        genderSpinner = findViewById(R.id.profileGenderSpinner);
 
 
@@ -184,9 +185,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 //        //Setting the ArrayAdapter data on the Spinner
 //        genderSpinner.setAdapter(aa);
 
-
-        backBtn.setOnClickListener(this);
-        save.setOnClickListener(this);
+//
+//        backBtn.setOnClickListener(this);
+//        save.setOnClickListener(this);
         mCompressor = new FileCompressor(this);
         userImage.setOnClickListener(this);
 
@@ -199,6 +200,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         username.setText(sessionManager.getUserDetails().get(SessionManager.USER_FIRST_NAME)+" "
                 +sessionManager.getUserDetails().get(SessionManager.USER_LAST_NAME));
+
+
+        String userImg = sessionManager.getUserDetails().get(SessionManager.USER_IMAGE);
+        Log.d("UserImage:",userImg);
 
         Glide.with(ProfileActivity.this).load(sessionManager.getUserDetails().get(SessionManager.USER_IMAGE))
                 .into(userImage);
@@ -229,48 +234,48 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         switch (v.getId()){
 
-            case R.id.profileBackBtn:
-                onBackPressed();
-                break;
-
-
-            case R.id.profileSaveBtn:
-
-
-                save.setClickable(false);
-
-                if(validateFields()){
-
-
-                    progressBar.setVisibility(View.VISIBLE);
-
-
-//                    int selectedId = genderGroup.getCheckedRadioButtonId();
-//                    gender = findViewById(selectedId);
-
-
+//            case R.id.profileBackBtn:
+//                onBackPressed();
+//                break;
 //
-                    if(mImageUri==null)
-                    viewModel.editProfile(username.getText().toString().trim(),
-                            email.getText().toString(),
-                            "Male","",type);
-                    else
-                        viewModel.editProfile(username.getText().toString(),
-                                email.getText().toString(),
-                                "Male",mImageUri.toString(),type);
+//
+//            case R.id.profileSaveBtn:
+//
+//
+//                save.setClickable(false);
+//
+//                if(validateFields()){
+//
+//
+//                    progressBar.setVisibility(View.VISIBLE);
+//
+//
+////                    int selectedId = genderGroup.getCheckedRadioButtonId();
+////                    gender = findViewById(selectedId);
+//
+//
+////
+//                    if(mImageUri==null)
+//                    viewModel.editProfile(username.getText().toString().trim(),
+//                            email.getText().toString(),
+//                            "Male","",type);
+//                    else
+//                        viewModel.editProfile(username.getText().toString(),
+//                                email.getText().toString(),
+//                                "Male",mImageUri.toString(),type);
+//
+//                    findViewById(R.id.root).requestFocus();
+//
+//                    hideKeyboard(ProfileActivity.this);
+//
+//                }
+//                break;
 
-                    findViewById(R.id.root).requestFocus();
 
-                    hideKeyboard(ProfileActivity.this);
-
-                }
-                break;
-
-
-            case R.id.profileUserImage:
-
-                openDialog();
-                break;
+//            case R.id.profileUserImage:
+//
+//                openDialog();
+//                break;
 
 
         }
