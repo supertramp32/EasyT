@@ -11,15 +11,14 @@
 
 
     <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:id="@+id/splashImage"
         android:background="@drawable/logo"
-        android:scaleType="centerCrop"
-        app:layout_constraintLeft_toRightOf="@id/vGuide1"
-        app:layout_constraintRight_toLeftOf="@id/vGuide2"
-        app:layout_constraintTop_toBottomOf="@id/hGuide1"
-        app:layout_constraintBottom_toTopOf="@id/hGuide2"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
         />
 
 

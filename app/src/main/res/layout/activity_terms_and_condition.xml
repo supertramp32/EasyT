@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -15,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:navigationIcon="?attr/homeAsUpIndicator"
-        android:theme="@style/ToolbarTheme"
+        android:theme="@style/ToolbarThemeGray"
         app:layout_constraintTop_toTopOf="parent"
         >
 
@@ -24,8 +22,7 @@
             android:layout_height="match_parent"
             android:id="@+id/toolbarText"
             android:text="@string/terms_and_condition"
-            android:textSize="@dimen/heading1"
-            android:textColor="@color/colorWhite"
+            style="@style/DarkTextStyle"
             android:gravity="left|center_vertical"
             />
 
@@ -46,15 +43,25 @@
         />
 
 
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/topCardList"
+        android:elevation="@dimen/cardRadius"
+        app:cardCornerRadius="@dimen/cardRadius"
+        android:layout_margin="@dimen/mediumMargin"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        >
+
     <TextView
     android:id="@+id/termsAndConditionText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
         android:layout_margin="@dimen/smallMargin"
+        android:padding="@dimen/mediumMargin"
         android:scrollbars = "vertical"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
-    app:layout_constraintBottom_toBottomOf="parent"
     />
 
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>

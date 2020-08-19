@@ -3,6 +3,7 @@ package com.seshra.everestcab.service;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -70,8 +71,9 @@ public class GetCurrentLocationName extends IntentService {
 
 //        String url = "http://206.189.128.192:7070/reverse?format=jsonv2&lat="+lattitude+"&lon="+longitude;
 
-        String url = "http://easytaxinepal.com/nominatim/reverse?format=jsonv2&lat="+lattitude+"&lon="+longitude;
+//        String url = "http://easytaxinepal.com/nominatim/reverse?format=jsonv2&lat="+lattitude+"&lon="+longitude;
 
+        String url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat="+lattitude+"&lon="+longitude;
 
 
 
@@ -85,10 +87,13 @@ public class GetCurrentLocationName extends IntentService {
 
             try {
                 String placeName = response.getResult().getString("display_name");
+                Log.d("PlaceName",placeName);
                 sendMessage(placeName);
             } catch (JSONException e) {
                 e.printStackTrace();
                 sendMessage("0");
+                Log.d("PlaceName","Error");
+
             }
 
         }else {
