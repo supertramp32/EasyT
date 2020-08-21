@@ -149,8 +149,10 @@ public class SaveLocationActivity extends AppCompatActivity implements OnMapRead
                 break;
 
             case R.id.saveLocationBtn:
-                if(!saveLocationTitle.getText().toString().trim().isEmpty())
-                    viewModel.saveLocation(lat,lon,locationName,saveLocationTitle.getText().toString());
+                if(!saveLocationTitle.getText().toString().trim().isEmpty()) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    viewModel.saveLocation(lat, lon, locationName, saveLocationTitle.getText().toString());
+                }
                 else{
                     saveLocationTitle.setError("");
 

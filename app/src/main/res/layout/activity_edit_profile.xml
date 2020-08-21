@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    tools:context=".profile.EditProfileActivity"
+    android:background="@color/colorGray"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarEditProfile"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        android:theme="@style/ToolbarThemeGray"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/toolbarText"
+            android:text="@string/your_profile"
+            style="@style/DarkTextStyle"
+            android:textAllCaps="true"
+            android:gravity="left|center_vertical"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:cardCornerRadius="@dimen/cardRadius"
+        android:elevation="@dimen/smallMargin"
+        android:id="@+id/profileRidesCard"
+        android:layout_margin="@dimen/mediumMargin"
+        app:layout_constraintTop_toBottomOf="@id/toolbarEditProfile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/profileUserImage"
+                android:src="@drawable/user"
+                android:layout_marginTop="@dimen/bigMargin"
+                android:elevation="@dimen/normalMargin"
+                app:civ_border_width="4dp"
+                app:civ_border_color="@color/colorPrimary"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/uploadPhotoBtn"
+                android:text="@string/upload_photo"
+                style="@style/raisedButton"
+                android:background="@drawable/oval_background_button"
+                android:layout_marginTop="@dimen/normalMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                android:layout_marginRight="@dimen/smallMargin"
+                android:textSize="@dimen/heading3"
+                android:drawableLeft="@drawable/ic_upload"
+                app:layout_constraintTop_toBottomOf="@id/profileUserImage"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/vGuide"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/takePhotoBtn"
+                android:text="@string/take_photo"
+                style="@style/raisedButton"
+                android:background="@drawable/oval_background_button"
+                android:layout_marginTop="@dimen/normalMargin"
+                android:layout_marginRight="@dimen/normalMargin"
+                android:layout_marginLeft="@dimen/smallMargin"
+                android:textSize="@dimen/heading3"
+                android:drawableLeft="@drawable/ic_camera"
+                app:layout_constraintTop_toBottomOf="@id/profileUserImage"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/vGuide"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editProfileNameText"
+                android:text="@string/name"
+                android:textColor="@color/colorDarkFont"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/uploadPhotoBtn"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editProfileName"
+                android:background="@drawable/rounded_edit_text"
+                android:layout_marginTop="@dimen/smallMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                android:layout_marginRight="@dimen/normalMargin"
+                app:layout_constraintTop_toBottomOf="@id/editProfileNameText"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editProfilePhoneText"
+                android:text="@string/phone_number"
+                android:textColor="@color/colorDarkFont"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editProfileName"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editProfilePhone"
+                android:background="@drawable/rounded_edit_text"
+                android:layout_marginTop="@dimen/smallMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                android:layout_marginRight="@dimen/normalMargin"
+                app:layout_constraintTop_toBottomOf="@id/editProfilePhoneText"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editProfileEmailText"
+                android:text="@string/email"
+                android:textColor="@color/colorDarkFont"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editProfilePhone"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editProfileEmail"
+                android:background="@drawable/rounded_edit_text"
+                android:layout_marginTop="@dimen/smallMargin"
+                android:layout_marginLeft="@dimen/normalMargin"
+                android:layout_marginRight="@dimen/normalMargin"
+                app:layout_constraintTop_toBottomOf="@id/editProfileEmailText"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editProfileSave"
+                android:text="@string/save_changes"
+                style="@style/raisedButton"
+                android:background="@drawable/oval_background_button"
+                android:layout_margin="@dimen/normalMargin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editProfileProgressBar"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/vGuide"
+                app:layout_constraintGuide_percent="0.5"
+                />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

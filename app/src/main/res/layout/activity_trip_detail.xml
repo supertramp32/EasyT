@@ -396,7 +396,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/continuePersonalInfo"
+            android:id="@+id/tripBackDashBoard"
             android:text="@string/back_to_dashboard"
             style="@style/raisedButton"
             android:background="@drawable/oval_background_button"

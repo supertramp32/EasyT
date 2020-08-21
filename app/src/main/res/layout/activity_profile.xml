@@ -152,33 +152,6 @@
     </androidx.cardview.widget.CardView>
 
 
-    <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:cardCornerRadius="@dimen/cardRadius"
-        android:elevation="@dimen/smallMargin"
-        android:id="@+id/profileAddressCard"
-        android:layout_margin="@dimen/normalMargin"
-        app:layout_constraintTop_toBottomOf="@id/profileRidesCard"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/profileAddress"
-            android:layout_gravity="center_vertical"
-            android:drawableLeft="@drawable/ic_loc"
-            android:drawablePadding="@dimen/cardRadius"
-            style="@style/TitleText"
-            android:padding="@dimen/mediumMargin"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/favouriteBtn"
-            />
-
-    </androidx.cardview.widget.CardView>
 
 
 
@@ -191,7 +164,7 @@
         android:id="@+id/profileCallCard"
         android:elevation="@dimen/smallMargin"
         android:layout_margin="@dimen/normalMargin"
-        app:layout_constraintTop_toBottomOf="@id/profileAddressCard"
+        app:layout_constraintTop_toBottomOf="@id/profileRidesCard"
         >
 
         <TextView
@@ -240,6 +213,33 @@
     </androidx.cardview.widget.CardView>
 
 
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/smallMargin"
+        android:id="@+id/cardEditProfile"
+        app:cardCornerRadius="2dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/profileEdit"
+            android:background="@color/colorPrimary"
+            android:text="@string/edit_profile"
+            android:gravity="center"
+            android:padding="@dimen/largeMargin"
+            style="@style/TitleText"
+            android:textColor="@color/colorDarkFont"
+            android:textAllCaps="true"
+            />
+
+
+    </androidx.cardview.widget.CardView>
 
 
 

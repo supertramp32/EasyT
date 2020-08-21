@@ -12,104 +12,104 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-
     <application
-        android:name="com.seshra.everestcab.service.MyApplication"
+        android:name=".service.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/app_logo"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_sequirity_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<!--        <service-->
-<!--            android:name=".service.FetchRecieptService"-->
-<!--            android:exported="false"></service>-->
+        <activity android:name=".profile.EditProfileActivity"></activity>
+        <!-- <service -->
+        <!-- android:name=".service.FetchRecieptService" -->
+        <!-- android:exported="false"></service> -->
         <service
-            android:name="com.seshra.everestcab.service.FetchTermsAndConditionService"
+            android:name=".service.FetchTermsAndConditionService"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.FetchPopularLocations"
+            android:name=".service.FetchPopularLocations"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.GetOTPService"
+            android:name=".service.GetOTPService"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.ApplyPromoCodeServcie"
+            android:name=".service.ApplyPromoCodeServcie"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.RateDriverService"
+            android:name=".service.RateDriverService"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.CancelRideService"
+            android:name=".service.CancelRideService"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.FetchCancelReasons"
+            android:name=".service.FetchCancelReasons"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.AutoCancelService"
+            android:name=".service.AutoCancelService"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.CheckServiceAvailabilityService"
+            android:name=".service.CheckServiceAvailabilityService"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.CheckActiveRideService"
+            android:name=".service.CheckActiveRideService"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.FetchCampaignNotification"
-            android:exported="false" />
-
-        <activity android:name="com.seshra.everestcab.ReceiptActivity" />
-
-        <service
-            android:name="com.seshra.everestcab.service.TrackRideService"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.FetchFavouriteLocationService"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.AddFavouriteLocation"
+            android:name=".service.FetchCampaignNotification"
             android:exported="false" />
 
-        <activity
-            android:name="com.seshra.everestcab.TermsAndConditionActivity"
-            android:parentActivityName="com.seshra.everestcab.MainActivity" />
-        <activity
-            android:name="com.seshra.everestcab.PrivacyPolicyActivity"
-            android:parentActivityName="com.seshra.everestcab.MainActivity" />
+        <activity android:name=".ReceiptActivity" />
 
         <service
-            android:name="com.seshra.everestcab.service.EditProfileService"
-            android:exported="false" />
-
-        <activity android:name="com.seshra.everestcab.ProfileActivity" />
-
-        <service
-            android:name="com.seshra.everestcab.service.FetchGeneralNotificationsService"
+            android:name=".service.TrackRideService"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.LogOutService"
+            android:name=".service.FetchFavouriteLocationService"
             android:exported="false" />
         <service
-            android:name="com.seshra.everestcab.service.ForgotPasswordService"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.FetchSpecificTripDetailService"
-            android:exported="false" />
-
-        <activity android:name="com.seshra.everestcab.rides.TripDetailActivity" />
-
-        <service
-            android:name="com.seshra.everestcab.service.FetchPastRideService"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.RegisterUserService"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.FetchConfigurationService"
+            android:name=".service.AddFavouriteLocation"
             android:exported="false" />
 
         <activity
-            android:name="com.seshra.everestcab.SplashActivity"
+            android:name=".TermsAndConditionActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".PrivacyPolicyActivity"
+            android:parentActivityName=".MainActivity" />
+
+        <service
+            android:name=".service.EditProfileService"
+            android:exported="false" />
+
+        <activity android:name=".profile.ProfileActivity" />
+
+        <service
+            android:name=".service.FetchGeneralNotificationsService"
+            android:exported="false" />
+        <service
+            android:name=".service.LogOutService"
+            android:exported="false" />
+        <service
+            android:name=".service.ForgotPasswordService"
+            android:exported="false" />
+        <service
+            android:name=".service.FetchSpecificTripDetailService"
+            android:exported="false" />
+
+        <activity android:name=".rides.TripDetailActivity" />
+
+        <service
+            android:name=".service.FetchPastRideService"
+            android:exported="false" />
+        <service
+            android:name=".service.RegisterUserService"
+            android:exported="false" />
+        <service
+            android:name=".service.FetchConfigurationService"
+            android:exported="false" />
+
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -117,68 +117,67 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.seshra.everestcab.CreatePasswordActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"
-            />
-        <activity android:name="com.seshra.everestcab.PersonalInfoActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"
-            />
-        <activity android:name="com.seshra.everestcab.OTPActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"
-            />
-
-        <service
-            android:name="com.seshra.everestcab.service.FetchActiveRideService"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.CallRideInfoService"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.CheckStatusService"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.ConfirmRideService"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.GetCurrentLocationName"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.CheckOutService"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.GooglePlacePickerService"
-            android:exported="false" />
-        <service
-            android:name="com.seshra.everestcab.service.LoginService"
-            android:exported="false" />
-
-        <activity android:name="com.seshra.everestcab.EnterPasswordActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"
-            />
-
-        <service
-            android:name="com.seshra.everestcab.service.CheckUserPhoneService"
-            android:exported="false" />
-
-        <activity android:name="com.seshra.everestcab.CheckUserPhoneActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"
-            />
-
-        <activity android:name="com.seshra.everestcab.HelpForBloodActivity" />
-        <activity android:name="com.seshra.everestcab.DriverWaitingActivity" />
         <activity
-            android:name="com.seshra.everestcab.notifications.NotificationsActivity"
-            android:parentActivityName="com.seshra.everestcab.MainActivity" />
+            android:name=".CreatePasswordActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
-            android:name="com.seshra.everestcab.rides.YourRideActivity"
-            android:parentActivityName="com.seshra.everestcab.MainActivity" />
-        <activity android:name="com.seshra.everestcab.SaveLocationActivity" />
-        <activity android:name="com.seshra.everestcab.locations.SearchLocationActivity" />
-        <activity android:name="com.seshra.everestcab.MainActivity" />
+            android:name=".PersonalInfoActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
-            android:name="com.seshra.everestcab.AboutUsActivity"
-            android:parentActivityName="com.seshra.everestcab.MainActivity" />
-        <activity android:name="com.seshra.everestcab.onboarding.OnboardingActivity" />
+            android:name=".OTPActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+
+        <service
+            android:name=".service.FetchActiveRideService"
+            android:exported="false" />
+        <service
+            android:name=".service.CallRideInfoService"
+            android:exported="false" />
+        <service
+            android:name=".service.CheckStatusService"
+            android:exported="false" />
+        <service
+            android:name=".service.ConfirmRideService"
+            android:exported="false" />
+        <service
+            android:name=".service.GetCurrentLocationName"
+            android:exported="false" />
+        <service
+            android:name=".service.CheckOutService"
+            android:exported="false" />
+        <service
+            android:name=".service.GooglePlacePickerService"
+            android:exported="false" />
+        <service
+            android:name=".service.LoginService"
+            android:exported="false" />
+
+        <activity
+            android:name=".EnterPasswordActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+
+        <service
+            android:name=".service.CheckUserPhoneService"
+            android:exported="false" />
+
+        <activity
+            android:name=".CheckUserPhoneActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity android:name=".HelpForBloodActivity" />
+        <activity android:name=".DriverWaitingActivity" />
+        <activity
+            android:name=".notifications.NotificationsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".rides.YourRideActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".SaveLocationActivity" />
+        <activity android:name=".locations.SearchLocationActivity" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".AboutUsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".onboarding.OnboardingActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -188,7 +187,7 @@
             android:value="DISABLE" />
 
         <service
-            android:name="com.seshra.everestcab.service.OneSignalServiceClass"
+            android:name=".service.OneSignalServiceClass"
             android:enabled="true"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE">

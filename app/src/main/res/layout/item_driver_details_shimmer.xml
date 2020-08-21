@@ -64,85 +64,97 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/driverCarStatusS"
-        android:text="Coming over there"
+        android:id="@+id/driverStatusAcceptedS"
+        android:text="@string/on_the_way"
+        android:textColor="@color/colorDarkFont"
         android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginRight="@dimen/mediumMargin"
-        app:layout_constraintTop_toBottomOf="@+id/driverImgS"
-        app:layout_constraintRight_toRightOf="parent"
-        />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/driverCarStatusText"
-        android:text="Status:"
-        android:textStyle="bold"
-        android:layout_marginRight="@dimen/mediumMargin"
-        app:layout_constraintTop_toBottomOf="@+id/driverImgS"
-        app:layout_constraintRight_toLeftOf="@+id/driverCarStatusS"
-        />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/viewDriverDetails"
-        android:background="@color/colorGray"
-        android:layout_marginTop="@dimen/cardRadius"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/driverCarStatusS"
-        />
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact Driver"
-        android:id="@+id/contactDriverS"
-        android:gravity="center"
-        android:drawableLeft="@drawable/ic_phone"
-        android:drawablePadding="@dimen/smallMargin"
-        android:padding="@dimen/mediumMargin"
+        android:visibility="visible"
+        android:layout_marginTop="@dimen/normalMargin"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewDriverDetails"
-        app:layout_constraintRight_toLeftOf="@id/guideVDriver"
+        app:layout_constraintRight_toLeftOf="@id/vGuideS"
+        app:layout_constraintTop_toBottomOf="@+id/driverImgS"
         />
 
 
-    <TextView
+    <androidx.constraintlayout.widget.Barrier
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Share Details"
-        android:id="@+id/shareDetailsS"
-        android:gravity="center"
-        android:drawableLeft="@drawable/ic_send"
-        android:drawablePadding="@dimen/smallMargin"
-        android:padding="@dimen/mediumMargin"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewDriverDetails"
-        app:layout_constraintLeft_toRightOf="@+id/guideVDriver"
+        android:id="@+id/barrierS"
+        app:barrierDirection="bottom"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/cardRadius"
+        app:layout_constraintTop_toBottomOf="@id/driverImgS"
+        app:constraint_referenced_ids="driverStatusAcceptedS"
         />
 
     <View
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:id="@+id/viewDriverD"
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_marginLeft="@dimen/smallMargin"
+        android:layout_marginRight="@dimen/smallMargin"
+        android:layout_marginBottom="@dimen/normalMargin"
+        app:layout_constraintRight_toLeftOf="@id/vGuideS"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrierS"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:id="@+id/rideProgressView"
         android:background="@color/colorGray"
-        app:layout_constraintBottom_toBottomOf="@id/contactDriverS"
-        app:layout_constraintTop_toBottomOf="@id/viewDriverDetails"
-        app:layout_constraintLeft_toLeftOf="@id/guideVDriver"
-        app:layout_constraintRight_toRightOf="@+id/guideVDriver"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_marginLeft="@dimen/smallMargin"
+        android:layout_marginRight="@dimen/smallMargin"
+        android:layout_marginBottom="@dimen/normalMargin"
+        app:layout_constraintLeft_toRightOf="@id/vGuideS"
+        app:layout_constraintRight_toLeftOf="@id/vGuide1S"
+        app:layout_constraintTop_toBottomOf="@id/barrierS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:background="@color/colorGray"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_marginLeft="@dimen/smallMargin"
+        android:layout_marginRight="@dimen/smallMargin"
+        android:layout_marginBottom="@dimen/normalMargin"
+        app:layout_constraintLeft_toRightOf="@id/vGuide1S"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierS"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideVDriver"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vGuideS"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.33"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vGuide1S"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66"
+        />
+
+
+
+
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

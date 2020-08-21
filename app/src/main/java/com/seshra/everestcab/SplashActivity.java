@@ -178,7 +178,7 @@ public class SplashActivity extends AppCompatActivity {
                     sessionManager.setLanguage("en");
 
 
-                startActivity(new Intent(SplashActivity.this, OnboardingActivity.class));
+                startActivity(new Intent(SplashActivity.this, CheckUserPhoneActivity.class));
                 SplashActivity.this.finish();
 
             });

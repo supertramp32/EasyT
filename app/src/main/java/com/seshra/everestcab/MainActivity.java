@@ -13,7 +13,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -47,12 +46,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -67,6 +64,7 @@ import com.seshra.everestcab.models.ModelCheckOut;
 import com.seshra.everestcab.models.ModelConfirm;
 import com.seshra.everestcab.models.ResultCheckHomeServices;
 import com.seshra.everestcab.notifications.NotificationsActivity;
+import com.seshra.everestcab.profile.ProfileActivity;
 import com.seshra.everestcab.rides.YourRideActivity;
 import com.seshra.everestcab.service.ApplyPromoCodeServcie;
 import com.seshra.everestcab.service.CheckActiveRideService;
@@ -352,17 +350,12 @@ View.OnClickListener,
 
                                     }
 
+                                    dropOffLocationLayout.setVisibility(View.GONE);
                                     confirmDropLayout.setVisibility(View.GONE);
                                     finalRequirementsLayout.setVisibility(View.VISIBLE);
                                     finalConfirmLayout.setVisibility(View.VISIBLE);
 
 
-                                    if (!sharedPreferences.getString(IntentKeys.PROMO_CODE, "null").equals("null")) {
-//                                        inputPromoCode.setText(sharedPreferences.getString(IntentKeys.PROMO_CODE, "null"));
-//                                        inputPromoCode.setImeActionLabel(getResources().getString(R.string.applying_promo), KeyEvent.KEYCODE_ENTER);
-//                                        viewModel.applyPromoCode(modelCheckOut.getData().getId(), inputPromoCode.getText().toString());
-
-                                    }
                                 } else {
 
                                     progressBar.setVisibility(View.GONE);
@@ -1778,6 +1771,7 @@ View.OnClickListener,
                         confirmDropBtn.setClickable(true);
                         moveMapto(dropMarker.getPosition());
                         removeDropMarker();
+                        dropOffLocationLayout.setVisibility(View.VISIBLE);
                         confirmDropLayout.setVisibility(View.VISIBLE);
                         finalRequirementsLayout.setVisibility(View.GONE);
                         finalConfirmLayout.setVisibility(View.GONE);

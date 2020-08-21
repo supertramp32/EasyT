@@ -1,4 +1,4 @@
-package com.seshra.everestcab;
+package com.seshra.everestcab.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
@@ -20,6 +20,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -28,18 +29,20 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.seshra.everestcab.models.ModelEditProfile;
-import com.seshra.everestcab.service.EditProfileService;
-import com.seshra.everestcab.utils.FileCompressor;
-import com.seshra.everestcab.utils.SessionManager;
-import com.seshra.everestcab.utils.SingletonGson;
-import com.seshra.everestcab.viewmodel.ProfileActivityViewModel;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.seshra.everestcab.BuildConfig;
+import com.seshra.everestcab.MainActivity;
+import com.seshra.everestcab.R;
+import com.seshra.everestcab.models.ModelEditProfile;
+import com.seshra.everestcab.service.EditProfileService;
+import com.seshra.everestcab.utils.FileCompressor;
+import com.seshra.everestcab.utils.SessionManager;
+import com.seshra.everestcab.utils.SingletonGson;
+import com.seshra.everestcab.viewmodel.EditProfileActivityViewModel;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,19 +52,15 @@ import java.util.List;
 
 import static android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION;
 
-public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
+public class EditProfileActivity extends AppCompatActivity {
+
+
+    Button gallery, camera;
 
     SessionManager sessionManager;
-    TextView username, email;
+    EditText username, email;
     ImageView userImage;
-    TextView phone;
-//    ImageView backBtn, save;
-
-    boolean firstLoad = true;
-
-//    Spinner genderSpinner;
-
-    BottomSheetDialog dialog;
+    EditText phone;
 
     static final int REQUEST_TAKE_PHOTO = 1;
     static final int REQUEST_GALLERY_PHOTO = 2;
@@ -71,20 +70,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private String mCurrentPhotoPath;
     private Uri mImageUri;
 
-//    RadioGroup genderGroup;
-//    RadioButton gender;
-
-    TextView totalTrips, walletBalance;
-
-//    ProgressBar progressBar;
-
-
-
-    ProfileActivityViewModel viewModel;
-
     int type=0;
 
+    Button saveChanges;
 
+    ProgressBar progressBar;
+
+    EditProfileActivityViewModel viewModel;
 
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -97,28 +89,25 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                     String result = intent.getStringExtra(EditProfileService.PROFILE_EDIT_MESSAGE_KEY);
                     if (!result.equals("0")) {
-//                        progressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE);
 
                         ModelEditProfile modelEditProfile = SingletonGson.getInstance()
                                 .fromJson("" + result, ModelEditProfile.class);
 
 
-                            if (modelEditProfile.getResult().equals("1")) {
-                                if(!firstLoad) {
-                                    startActivity(new Intent(ProfileActivity.this, MainActivity.class));
-                                    Toast.makeText(ProfileActivity.this, modelEditProfile.getMessage(), Toast.LENGTH_LONG).show();
-                                }else {
-                                    firstLoad = false;
-                                    populateViews();
-                                }
+                        if (modelEditProfile.getResult().equals("1")) {
 
-                            } else {
+                                startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
+                                Toast.makeText(EditProfileActivity.this, modelEditProfile.getMessage(), Toast.LENGTH_LONG).show();
+                                finish();
 
-//                                save.setClickable(true);
+                        } else {
 
-                                Toast.makeText(ProfileActivity.this, modelEditProfile.getMessage(), Toast.LENGTH_LONG).show();
+                                saveChanges.setClickable(true);
 
-                            }
+                            Toast.makeText(EditProfileActivity.this, modelEditProfile.getMessage(), Toast.LENGTH_LONG).show();
+
+                        }
 
 
 
@@ -127,9 +116,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 
                     } else {
-//                        progressBar.setVisibility(View.GONE);
-//                        save.setClickable(true);
-                        Toast.makeText(ProfileActivity.this, getResources().getString(R.string.error), Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
+                        saveChanges.setClickable(true);
+                        Toast.makeText(EditProfileActivity.this, getResources().getString(R.string.error), Toast.LENGTH_LONG).show();
                     }
 
                     break;
@@ -143,59 +132,80 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     };
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_edit_profile);
 
         sessionManager = new SessionManager(this);
+        mCompressor = new FileCompressor(this);
 
-        initViews();
-        initViewModel();
+        viewModel = ViewModelProviders.of(this).get(EditProfileActivityViewModel.class);
+
+        gallery = findViewById(R.id.uploadPhotoBtn);
+        camera = findViewById(R.id.takePhotoBtn);
+        username = findViewById(R.id.editProfileName);
+        email = findViewById(R.id.editProfileEmail);
+        phone = findViewById(R.id.editProfilePhone);
+        userImage = findViewById(R.id.profileUserImage);
+
+        saveChanges = findViewById(R.id.editProfileSave);
+        progressBar = findViewById(R.id.editProfileProgressBar);
 
 
         populateViews();
 
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestStoragePermission(false);
+            }
+        });
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestStoragePermission(true);
+            }
+        });
+
+
+        saveChanges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveChanges.setClickable(false);
+                if(validateFields()){
+
+
+                    progressBar.setVisibility(View.VISIBLE);
+
+                    if(mImageUri==null)
+                    viewModel.editProfile(username.getText().toString().trim(),
+                            email.getText().toString(),
+                            "Male","",type);
+                    else
+                        viewModel.editProfile(username.getText().toString(),
+                                email.getText().toString(),
+                                "Male",
+                                mImageUri.toString(),type);
+
+                    findViewById(R.id.root).requestFocus();
+
+                    hideKeyboard(EditProfileActivity.this);
+
+                }
+            }
+        });
+
+
     }
 
-    private void initViewModel() {
-        viewModel = ViewModelProviders.of(ProfileActivity.this).get(ProfileActivityViewModel.class);
 
-    }
-
-
-    private void initViews() {
-
-        username = findViewById(R.id.profileUserName);
-        phone = findViewById(R.id.profilePhone);
-        email= findViewById(R.id.profileEmail);
-        userImage = findViewById(R.id.profileUserImage);
-//        backBtn = findViewById(R.id.profileBackBtn);
-//        save = findViewById(R.id.profileSaveBtn);
-//        genderGroup = findViewById(R.id.genderGroup);
-        totalTrips = findViewById(R.id.profileTotalRides);
-        walletBalance = findViewById(R.id.profileTotalBalance);
-//        progressBar = findViewById(R.id.progressBar);
-//        genderSpinner = findViewById(R.id.profileGenderSpinner);
-
-
-//        //Creating the ArrayAdapter instance having the country list
-//        ArrayAdapter aa = new ArrayAdapter(ProfileActivity.this,android.R.layout.simple_spinner_item, gender);
-//        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        //Setting the ArrayAdapter data on the Spinner
-//        genderSpinner.setAdapter(aa);
-
-//
-//        backBtn.setOnClickListener(this);
-//        save.setOnClickListener(this);
-        mCompressor = new FileCompressor(this);
-        userImage.setOnClickListener(this);
-
-
-    }
 
     private void populateViews() {
-
 
 
         username.setText(sessionManager.getUserDetails().get(SessionManager.USER_FIRST_NAME)+" "
@@ -205,136 +215,16 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         String userImg = sessionManager.getUserDetails().get(SessionManager.USER_IMAGE);
         Log.d("UserImage:",userImg);
 
-        Glide.with(ProfileActivity.this).load(sessionManager.getUserDetails().get(SessionManager.USER_IMAGE))
+        Glide.with(EditProfileActivity.this).load(sessionManager.getUserDetails().get(SessionManager.USER_IMAGE))
                 .into(userImage);
 
         email.setText(sessionManager.getUserDetails().get(SessionManager.USER_EMAIL));
 
         phone.setText(sessionManager.getUserDetails().get(SessionManager.USER_PHONE));
 
-        totalTrips.setText(sessionManager.getUserDetails().get(SessionManager.TOTAL_TRIPS));
-        walletBalance.setText(sessionManager.getUserDetails().get(SessionManager.WALLET_BALANCE));
-
-//        int selectedId = genderGroup.getCheckedRadioButtonId();
-//        gender = findViewById(selectedId);
-
-
-        if(firstLoad)
-            viewModel.editProfile(username.getText().toString(),email.getText().toString(),
-                "Male","",
-                0);
 
 
 
-
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()){
-
-//            case R.id.profileBackBtn:
-//                onBackPressed();
-//                break;
-//
-//
-//            case R.id.profileSaveBtn:
-//
-//
-//                save.setClickable(false);
-//
-//                if(validateFields()){
-//
-//
-//                    progressBar.setVisibility(View.VISIBLE);
-//
-//
-////                    int selectedId = genderGroup.getCheckedRadioButtonId();
-////                    gender = findViewById(selectedId);
-//
-//
-////
-//                    if(mImageUri==null)
-//                    viewModel.editProfile(username.getText().toString().trim(),
-//                            email.getText().toString(),
-//                            "Male","",type);
-//                    else
-//                        viewModel.editProfile(username.getText().toString(),
-//                                email.getText().toString(),
-//                                "Male",mImageUri.toString(),type);
-//
-//                    findViewById(R.id.root).requestFocus();
-//
-//                    hideKeyboard(ProfileActivity.this);
-//
-//                }
-//                break;
-
-
-//            case R.id.profileUserImage:
-//
-//                openDialog();
-//                break;
-
-
-        }
-
-
-    }
-
-    private boolean validateFields() {
-        String[] splitStr = username.getText().toString().trim().split("\\s+");
-          if(splitStr.length<2) {
-              username.setError(getResources().getString(R.string.enter_full_name));
-              return false;
-            }
-
-
-//          if(email.getText().toString().isEmpty()){
-//              username.setError("Cannot be empty");
-//              return false;
-//          }
-
-
-        return true;
-    }
-
-
-    public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
-        View view = activity.getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
-        if (view == null) {
-            view = new View(activity);
-        }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
-
-
-    private void openDialog() {
-        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_camera, null);
-        dialog = new BottomSheetDialog(this);
-        dialog.setContentView(view);
-        TextView camera_sel = (TextView) view.findViewById(R.id.camera);
-        TextView gallery_sel = (TextView) view.findViewById(R.id.gallery);
-        camera_sel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requestStoragePermission(true);
-                dialog.dismiss();
-            }
-        });
-        gallery_sel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requestStoragePermission(false);
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
     }
 
 
@@ -507,9 +397,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private void populateImageFromCamera(File mPhotoFile) {
 
-            Glide.with(ProfileActivity.this).load(mPhotoFile.getAbsolutePath())
-                    .apply(new RequestOptions().placeholder(R.drawable.user))
-                    .into(userImage);
+        Glide.with(EditProfileActivity.this).load(mPhotoFile.getAbsolutePath())
+                .apply(new RequestOptions().placeholder(R.drawable.user))
+                .into(userImage);
 
 
 
@@ -519,14 +409,36 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private void populateImageFromGallery(Uri mImageUri) {
 
 
-            Glide.with(ProfileActivity.this).load(mImageUri)
-                    .apply
-                            (new RequestOptions().placeholder(R.drawable.user))
-                    .into(userImage);
+        Glide.with(EditProfileActivity.this).load(mImageUri)
+                .apply
+                        (new RequestOptions().placeholder(R.drawable.user))
+                .into(userImage);
 
     }
 
 
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+
+    private boolean validateFields() {
+        String[] splitStr = username.getText().toString().trim().split("\\s+");
+        if(splitStr.length<2) {
+            username.setError(getResources().getString(R.string.enter_full_name));
+            return false;
+        }
+
+
+        return true;
+    }
 
 
     @Override
@@ -549,7 +461,4 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
-
-
 }
-

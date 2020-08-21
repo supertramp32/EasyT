@@ -16,12 +16,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.seshra.everestcab.MainActivity;
 import com.seshra.everestcab.R;
 import com.seshra.everestcab.models.ModelResultCheck;
 import com.seshra.everestcab.models.ModelSpecificTripDetails;
@@ -51,6 +53,8 @@ public class TripDetailActivity extends AppCompatActivity {
     ShimmerFrameLayout shimmerFrameLayout;
 
     ImageView backBtn;
+
+    Button backToDashboard;
 
 
 
@@ -138,6 +142,7 @@ public class TripDetailActivity extends AppCompatActivity {
         billDuration = findViewById(R.id.tripDetailTotalDuration);
 
         backBtn = findViewById(R.id.backBtn);
+        backToDashboard = findViewById(R.id.tripBackDashBoard);
 
 
 //        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -149,6 +154,12 @@ public class TripDetailActivity extends AppCompatActivity {
 //            }
 //        });
 
+        backToDashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TripDetailActivity.this, MainActivity.class));
+            }
+        });
 
 
         backBtn.setOnClickListener(new View.OnClickListener() {
