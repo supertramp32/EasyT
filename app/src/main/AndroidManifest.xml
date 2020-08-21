@@ -20,7 +20,8 @@
         android:networkSecurityConfig="@xml/network_sequirity_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".profile.EditProfileActivity"></activity>
+        <activity android:name=".profile.EditProfileActivity"
+            android:parentActivityName=".profile.ProfileActivity"></activity>
         <!-- <service -->
         <!-- android:name=".service.FetchRecieptService" -->
         <!-- android:exported="false"></service> -->
@@ -81,7 +82,8 @@
             android:name=".service.EditProfileService"
             android:exported="false" />
 
-        <activity android:name=".profile.ProfileActivity" />
+        <activity android:name=".profile.ProfileActivity"
+            android:parentActivityName=".MainActivity"/>
 
         <service
             android:name=".service.FetchGeneralNotificationsService"

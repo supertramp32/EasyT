@@ -179,6 +179,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
                 startActivity(new Intent(SplashActivity.this, CheckUserPhoneActivity.class));
+                sharedPreferences.edit().putBoolean(IntentKeys.FIRST_TIME,false).apply();
                 SplashActivity.this.finish();
 
             });

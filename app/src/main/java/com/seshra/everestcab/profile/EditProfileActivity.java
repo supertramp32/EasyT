@@ -1,6 +1,7 @@
 package com.seshra.everestcab.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -78,6 +79,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
     EditProfileActivityViewModel viewModel;
 
+    Toolbar toolbar;
+
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -142,6 +145,12 @@ public class EditProfileActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
         mCompressor = new FileCompressor(this);
+
+
+        toolbar = findViewById(R.id.toolbarEditProfile);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         viewModel = ViewModelProviders.of(this).get(EditProfileActivityViewModel.class);
 
