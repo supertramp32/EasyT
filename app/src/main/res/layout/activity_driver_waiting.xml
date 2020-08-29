@@ -71,6 +71,7 @@
         android:drawableLeft="@drawable/ic_cancel_black"
         style="@style/raisedButton"
         android:enabled="false"
+        android:textColor="@color/colorPrimary"
         android:background="@drawable/oval_background_button_red"
         android:layout_marginLeft="@dimen/smallMargin"
         android:layout_marginRight="@dimen/mediumMargin"

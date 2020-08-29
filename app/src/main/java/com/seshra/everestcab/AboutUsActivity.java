@@ -166,7 +166,7 @@ public class AboutUsActivity extends AppCompatActivity implements OnMapReadyCall
         gMap.setMaxZoomPreference(16.0f);
         UiSettings uiSettings = gMap.getUiSettings();
         uiSettings.setTiltGesturesEnabled(false);
-        LatLng kathmandu = new LatLng(27.6831314,85.3479499);
+        LatLng kathmandu = new LatLng(27.7129007,85.3379754);
         gMap.addMarker(new MarkerOptions().position(kathmandu).title(getString(R.string.labe_easy_taxi)));
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(kathmandu, 15);
         gMap.animateCamera(cameraUpdate);
