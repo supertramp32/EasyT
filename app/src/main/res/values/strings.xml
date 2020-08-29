@@ -207,6 +207,8 @@
     <string name="take_photo">Take Photo</string>
     <string name="phone_number">Phone Number</string>
     <string name="save_changes">Save Changes</string>
+    <string name="add_stop">Add Stop</string>
+    <string name="confirm_stop">Confirm Stop Point</string>
 
 
 </resources>

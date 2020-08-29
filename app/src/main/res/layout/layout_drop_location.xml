@@ -7,6 +7,21 @@
         >
 
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addStopPoint"
+        android:layout_width="wrap_content"
+        android:text="@string/add_stop"
+        android:layout_height="match_parent"
+        style="@style/raisedButton"
+        android:drawableLeft="@drawable/ic_add"
+        android:textSize="@dimen/heading3"
+        android:padding="@dimen/smallMargin"
+        android:background="@drawable/oval_background_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
     <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,7 +30,8 @@
         android:id="@+id/confirmPickCard"
         app:cardCornerRadius="@dimen/cardRadius"
         android:elevation="@dimen/cardRadius"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/cardRadius"
+        app:layout_constraintTop_toBottomOf="@+id/addStopPoint"
         >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,6 +87,21 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/normalMargin">
 
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/stopPointLocationName"
+                android:gravity="center"
+                android:drawableLeft="@drawable/ic_stop"
+                android:layout_marginTop="@dimen/smallMargin"
+                style="@style/TitleText"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,9 +109,9 @@
             android:gravity="center"
             android:hint="@string/drop_text_hint"
             android:drawableLeft="@drawable/ic_loc_e"
-            android:layout_marginTop="@dimen/smallMargin"
+            android:layout_marginTop="@dimen/cardRadius"
             style="@style/TitleText"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/stopPointLocationName"
             app:layout_constraintLeft_toLeftOf="parent"
             />
 

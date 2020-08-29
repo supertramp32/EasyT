@@ -136,6 +136,8 @@ View.OnClickListener,
     private LocationSettingsRequest mLocationSettingsRequest;
     private LocationRequest mLocationRequest;
 
+    private final int ADD_STOP_ACTIVITY = 777;
+
 
     boolean confirmClicked = false;
 
@@ -151,6 +153,8 @@ View.OnClickListener,
 //    TextInputLayout promoCodeLayout;
 
 //    TextView estimatedTime;
+
+    TextView stopLocationName;
 
     TextView pickLocationName;
 
@@ -197,6 +201,7 @@ View.OnClickListener,
     String type = "";
 
 
+    Button addStop;
 
 
     List<Marker> driverMarker = new ArrayList<Marker>();
@@ -636,6 +641,7 @@ View.OnClickListener,
             pickUpLocationLayout = findViewById(R.id.pickUpLocationLayout);
             confirmDropLayout = findViewById(R.id.confirmDropLayout);
             dropOffLocationLayout = findViewById(R.id.dropUpLocationLayout);
+            stopLocationName = findViewById(R.id.stopPointLocationName);
 //            selectServiceLayout = findViewById(R.id.selectServiceLayout);
 
             yahoo = findViewById(R.id.finalConfirmBtn);
@@ -645,6 +651,8 @@ View.OnClickListener,
             finalRequirementsLayout = findViewById(R.id.finalRequirementLayout);
 
             serviceAvailability = findViewById(R.id.serviceAvailability);
+            addStop = findViewById(R.id.addStopPoint);
+
 //            estimatedTime = findViewById(R.id.serviceTypeEst);
 
             confirmBtn = findViewById(R.id.confirmPickupBtn);
@@ -702,7 +710,7 @@ View.OnClickListener,
             yahoo.setOnClickListener(this);
 //            rewardIcon.setOnClickListener(this);
             pickLocationName.setOnClickListener(this);
-
+            addStop.setOnClickListener(this);
 
 
 
@@ -1045,11 +1053,12 @@ View.OnClickListener,
                     break;
 
 
-//                case R.id.scheduler:
-//
-//                    // Show Date dialog
-//                    createDateDialog();
-//                    break;
+                case R.id.addStopPoint:
+
+                    Intent intent = new Intent(MainActivity.this, AddStopActivity.class);
+                    startActivityForResult(intent, ADD_STOP_ACTIVITY);
+
+                    break;
 
                 case R.id.detailsText:
                     openDialog(1);
@@ -1704,6 +1713,7 @@ View.OnClickListener,
                         pickUpPin.setVisibility(View.VISIBLE);
                         sharedPreferences.edit().putString("details", "null").apply();
 
+                        stopLocationName.setVisibility(View.GONE);
 
 //
                         confirmDropLayout.setVisibility(View.GONE);
@@ -1957,6 +1967,19 @@ View.OnClickListener,
                         }
                           break;
 
+
+                    case ADD_STOP_ACTIVITY:
+                        if (data != null) {
+                            stopLocationName.setVisibility(View.VISIBLE);
+                            stopLocationName.setText(data.getExtras().getString(IntentKeys.ADDRESS_NAME));
+                            double lattitude, longitude;
+                            lattitude = Double.parseDouble(data.getExtras().getString(IntentKeys.LATITUDE));
+                            longitude = Double.parseDouble(data.getExtras().getString(IntentKeys.LONGITUDE));
+
+//                            PICK_LOCATION = new LatLng(lattitude, longitude);
+
+                        }
+                        break;
 
 
 
