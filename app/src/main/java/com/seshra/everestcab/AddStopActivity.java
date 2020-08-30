@@ -25,6 +25,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.seshra.everestcab.service.CheckStopLocationService;
 import com.seshra.everestcab.service.GetCurrentLocationName;
 import com.seshra.everestcab.utils.IntentKeys;
 import com.seshra.everestcab.utils.LocationUtils;
@@ -79,6 +81,8 @@ public class AddStopActivity extends AppCompatActivity implements OnMapReadyCall
     Button confirmStopPoint;
 
     String confirmLat, confirmLong, confirmAddress;
+
+    ProgressBar progressBar;
 
 
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -116,6 +120,33 @@ public class AddStopActivity extends AppCompatActivity implements OnMapReadyCall
                     break;
 
 
+                case CheckStopLocationService.CHECK_STOP_LOCATION_MESSAGE:
+
+                    progressBar.setVisibility(View.GONE);
+
+                    try {
+                        String result = intent.getStringExtra(CheckStopLocationService.CHECK_STOP_LOCATION_MESSAGE_KEY);
+                        if (!result.equals("0")) {
+
+                            finalizeActivity(confirmAddress,confirmLat,confirmLong);
+
+                        } else {
+
+                            confirmStopPoint.setClickable(true);
+                            Toast.makeText(AddStopActivity.this,getResources().getString(R.string.error_occured),
+                                    Toast.LENGTH_LONG).show();
+
+                        }
+                    } catch (Exception e) {
+                        confirmStopPoint.setClickable(true);
+                        Toast.makeText(AddStopActivity.this,getResources().getString(R.string.error_occured),
+                                Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
+                    }
+                    break;
+
+
+
             }
         }
     };
@@ -136,6 +167,7 @@ public class AddStopActivity extends AppCompatActivity implements OnMapReadyCall
         pickUpPin = findViewById(R.id.stopPointPin);
         stopLocationName = findViewById(R.id.stopPointName);
         confirmStopPoint = findViewById(R.id.confirmStopPoint);
+        progressBar = findViewById(R.id.progressBarStopPoint);
 
         viewModel = ViewModelProviders.of(this).get(AddStopActivityViewModel.class);
 
@@ -149,7 +181,10 @@ public class AddStopActivity extends AppCompatActivity implements OnMapReadyCall
         confirmStopPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finalizeActivity(confirmAddress,confirmLat,confirmLong);
+
+                viewModel.checkStopLocation(confirmLat,confirmLong);
+                confirmStopPoint.setClickable(false);
+                progressBar.setVisibility(View.VISIBLE);
             }
         });
 
@@ -545,6 +580,10 @@ public class AddStopActivity extends AppCompatActivity implements OnMapReadyCall
         LocalBroadcastManager.getInstance(getApplicationContext())
                 .registerReceiver(broadcastReceiver,
                         new IntentFilter(GetCurrentLocationName.PLACE_SEARCH_MESSAGE));
+
+        LocalBroadcastManager.getInstance(getApplicationContext())
+                .registerReceiver(broadcastReceiver,
+                        new IntentFilter(CheckStopLocationService.CHECK_STOP_LOCATION_MESSAGE));
 
 
 

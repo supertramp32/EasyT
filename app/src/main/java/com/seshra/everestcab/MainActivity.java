@@ -1704,7 +1704,6 @@ View.OnClickListener,
                         confirmBtn.setClickable(true);
                         confirmPickLayout.setVisibility(View.VISIBLE);
                         finalRequirementsLayout.setVisibility(View.GONE);
-//                        selectServiceLayout.setVisibility(View.VISIBLE);
                         pickAddressText.setText(pickDropLocationNames.get(0));
                         pickDropLocationNames.remove(0);
                         dropOffPin.setVisibility(View.GONE);
@@ -1714,11 +1713,8 @@ View.OnClickListener,
                         sharedPreferences.edit().putString("details", "null").apply();
 
                         stopLocationName.setVisibility(View.GONE);
-
-//
                         confirmDropLayout.setVisibility(View.GONE);
                         dropOffLocationLayout.setVisibility(View.GONE);
-
 
 
                         if (polyline != null) {
@@ -1772,11 +1768,9 @@ View.OnClickListener,
 
                     case 3:
 
-
                         pickDropLocationNames.remove(2);
                         pickDropLocationNames.remove(1);
                         progressBar.setVisibility(View.GONE);
-
                         dropOffPin.setVisibility(View.VISIBLE);
                         confirmDropBtn.setClickable(true);
                         moveMapto(dropMarker.getPosition());
@@ -1785,6 +1779,7 @@ View.OnClickListener,
                         confirmDropLayout.setVisibility(View.VISIBLE);
                         finalRequirementsLayout.setVisibility(View.GONE);
                         finalConfirmLayout.setVisibility(View.GONE);
+
 
 //                        promoCodeLayout.setHint(getResources().getString(R.string.promo));
 //                        inputPromoCode.clearFocus();
@@ -1811,6 +1806,7 @@ View.OnClickListener,
                         }catch (Exception e){
                             e.printStackTrace();
                         }
+
                         break;
 
 

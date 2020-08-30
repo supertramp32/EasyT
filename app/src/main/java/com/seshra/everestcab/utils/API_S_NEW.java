@@ -70,6 +70,8 @@ public class API_S_NEW {
 
         String CHECK_STATUS = BaseConfig.BASE_URL+"api/checkBookingStatus";
         String POPULAR_LOCATIONS = BaseConfig.BASE_URL +"api/v2/user/popular/places";
+        String CHECK_STOP_LOCATION = BaseConfig.BASE_URL+"api/user/check-droplocation/area";
+
 
         String VIEW_FAVOURITE_DRIVER = BaseConfig.BASE_URL+"api/user/favourite/drivers";
         String ADD_FAVOURITE_DRIVER = BaseConfig.BASE_URL+"api/user/addfavourite/driver";

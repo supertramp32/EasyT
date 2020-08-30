@@ -19,4 +19,8 @@ public class AddStopActivityViewModel extends AndroidViewModel {
     public void getCurrentLocationName(Double lattitude, Double longitude){
         appRepository.getCurrentLocationName(lattitude,longitude);
     }
+
+    public void checkStopLocation(String confirmLat, String confirmLong) {
+        appRepository.checkStopLocation(confirmLat,confirmLong);
+    }
 }

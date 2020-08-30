@@ -20,7 +20,11 @@
         android:networkSecurityConfig="@xml/network_sequirity_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddStopActivity"></activity>
+        <service
+            android:name=".service.CheckStopLocationService"
+            android:exported="false"></service>
+
+        <activity android:name=".AddStopActivity" />
         <activity
             android:name=".profile.EditProfileActivity"
             android:parentActivityName=".profile.ProfileActivity" /> <!-- <service -->

@@ -13,6 +13,7 @@ import com.seshra.everestcab.service.CancelRideService;
 import com.seshra.everestcab.service.CheckOutService;
 import com.seshra.everestcab.service.CheckServiceAvailabilityService;
 import com.seshra.everestcab.service.CheckStatusService;
+import com.seshra.everestcab.service.CheckStopLocationService;
 import com.seshra.everestcab.service.CheckUserPhoneService;
 import com.seshra.everestcab.service.ConfirmRideService;
 import com.seshra.everestcab.service.EditProfileService;
@@ -213,6 +214,10 @@ public class AppRepository {
 
     public void getReciept(String bookingId) {
         FetchRecieptService.startActionFoo(context,bookingId);
+    }
+
+    public void checkStopLocation(String confirmLat, String confirmLong) {
+        CheckStopLocationService.startActionCheckStopLocation(context,confirmLat,confirmLong);
     }
 }
 
