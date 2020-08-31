@@ -2012,9 +2012,11 @@ View.OnClickListener,
 
                 try {
                     dropObject = new JSONObject();
+                    dropObject.put("stop",0);
                     dropObject.put("drop_latitude", "" + dropMarker.getPosition().latitude);
                     dropObject.put("drop_longitude", "" + dropMarker.getPosition().longitude);
                     dropObject.put("drop_location", "" + dDropLocationName.getText().toString());
+                    dropObject.put("status","1");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -2023,9 +2025,11 @@ View.OnClickListener,
 
                 try {
                     dropObject = new JSONObject();
+                    dropObject.put("stop",0);
                     dropObject.put("drop_latitude", "" + dropLat);
                     dropObject.put("drop_longitude", "" + dropLon);
                     dropObject.put("drop_location", "" + dropLoc);
+                    dropObject.put("status","1");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -2040,9 +2044,11 @@ View.OnClickListener,
 
             try {
                 stopObject = new JSONObject();
+                stopObject.put("stop",1);
                 stopObject.put("drop_latitude", "" + STOP_LOCATION.latitude);
                 stopObject.put("drop_longitude", "" + STOP_LOCATION.longitude);
                 stopObject.put("drop_location", "" + stopLocation);
+                stopObject.put("status","1");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
