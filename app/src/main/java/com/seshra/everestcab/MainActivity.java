@@ -988,7 +988,7 @@ View.OnClickListener,
                     if(serviceAvailability.getVisibility()!= View.VISIBLE) {
                         if (CURRENT_LOCATION != null && !pickAddressText.getText().toString().isEmpty()) {
 
-                            shakeItBaby();
+//                            shakeItBaby();
                             PICK_LOCATION = CURRENT_LOCATION;
 
                             pickDropLocationNames.add(pickAddressText.getText().toString());
@@ -1022,7 +1022,7 @@ View.OnClickListener,
                     if(serviceAvailability.getVisibility()!=View.VISIBLE) {
                         if (CURRENT_LOCATION != null && !dDropLocationName.getText().toString().isEmpty()) {
 
-                            shakeItBaby();
+//                            shakeItBaby();
                             DROP_LOCATION = CURRENT_LOCATION;
                             confirmDropBtn.setClickable(false);
 
@@ -1087,7 +1087,7 @@ View.OnClickListener,
 
                 case R.id.finalConfirmBtn:
                     progressBar.setVisibility(View.VISIBLE);
-                    shakeItBaby();
+//                    shakeItBaby();
                     confirmClicked = true;
                     confirmRideApi();
 
