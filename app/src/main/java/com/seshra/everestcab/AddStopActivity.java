@@ -472,10 +472,14 @@ public class AddStopActivity extends AppCompatActivity implements OnMapReadyCall
 
 
 
+
                 targetLocation = new Location("");//provider name is unnecessary
                 targetLocation.setLatitude(mGoogleMap.getCameraPosition().target.latitude);//your coords of course
                 targetLocation.setLongitude(mGoogleMap.getCameraPosition().target.longitude);
 
+
+                confirmLat = ""+targetLocation.getLatitude();
+                confirmLong = "" + targetLocation.getLongitude();
 
 
                 viewModel.getCurrentLocationName(targetLocation.getLatitude(),

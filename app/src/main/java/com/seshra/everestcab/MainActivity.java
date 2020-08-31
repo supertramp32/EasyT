@@ -162,6 +162,7 @@ View.OnClickListener,
     Animation slide_up, slide_down;
 
 
+    String stopLocation = "";
 
 
     DrawerLayout drawerLayout;
@@ -190,7 +191,7 @@ View.OnClickListener,
 //    ImageView rewardIcon;
 
     ArrayList<LatLng> markerPoints = new ArrayList<LatLng>();
-    Marker marker11;
+    Marker stopMarker;
 
     Marker pickMarker, dropMarker;
 
@@ -237,7 +238,7 @@ View.OnClickListener,
 
     ProgressBar progressBar;
 
-    JSONObject pickObject, dropObject;
+    JSONObject pickObject, dropObject,stopObject;
 
     private ModelCheckOut modelCheckOut;
 
@@ -248,6 +249,7 @@ View.OnClickListener,
     TextView estBillFixed, estBillMetered;
 
     private LatLng PICK_LOCATION, DROP_LOCATION, CURRENT_LOCATION;
+    private LatLng STOP_LOCATION;
 
     private final int DROP_PLACE_PICKER_ACTIVITY = 111,  PICK_PLACE_PICKER_ACTIVITY = 333;
 
@@ -1036,6 +1038,10 @@ View.OnClickListener,
 
                             createDropLocationObject();
                             createPickLocationObject();
+
+                            if(STOP_LOCATION!=null)
+                                createStopLocationObject();
+
                             callRideNowApi();
 
                             yahoo.setClickable(false);
@@ -1133,22 +1139,6 @@ View.OnClickListener,
         }
 
 
-//
-//        Point mappoint = mGoogleMap.getProjection().toScreenLocation(new LatLng(targetLocation.getLatitude(),
-//                targetLocation.getLongitude()));
-//        mappoint.set(mappoint.x, mappoint.y+64);
-
-
-        // Setting the position for the marker
-//        markerOptions.position(mGoogleMap.getProjection().fromScreenLocation(mappoint));
-
-
-        // Setting the position for the marker;
-//        markerOptions.position(new LatLng(targetLocation.getLatitude(), targetLocation.getLongitude()));
-
-        // Setting the title for the marker.
-        // This will be displayed on taping the marker
-//        markerOptions.title(pickDropLocationNames.get(1));
 
         Bitmap dropMarkerIcon = BitmapFactory.decodeResource(getResources(),
                 R.drawable.drop_marker_down);
@@ -1747,7 +1737,7 @@ View.OnClickListener,
                         mapFragment.getView().setVisibility(View.VISIBLE);
 
                         removeDropMarker();
-
+                        removeStopMarker();
 
 
                         if (polyline != null) {
@@ -1775,6 +1765,8 @@ View.OnClickListener,
                         confirmDropBtn.setClickable(true);
                         moveMapto(dropMarker.getPosition());
                         removeDropMarker();
+                        removeStopMarker();
+
                         dropOffLocationLayout.setVisibility(View.VISIBLE);
                         confirmDropLayout.setVisibility(View.VISIBLE);
                         finalRequirementsLayout.setVisibility(View.GONE);
@@ -1815,6 +1807,8 @@ View.OnClickListener,
 
         }
 
+
+
     private void showExitAppDialog() {
 
 
@@ -1854,6 +1848,17 @@ View.OnClickListener,
     private void removeDropMarker() {
 
         dropMarker.remove();
+
+    }
+
+    private void removeStopMarker() {
+
+            if(stopMarker!=null){
+                stopMarker.remove();
+                STOP_LOCATION = null;
+                stopObject = null;
+            }
+
 
     }
 
@@ -1967,12 +1972,13 @@ View.OnClickListener,
                     case ADD_STOP_ACTIVITY:
                         if (data != null) {
                             stopLocationName.setVisibility(View.VISIBLE);
+                            stopLocation = data.getExtras().getString(IntentKeys.ADDRESS_NAME);
                             stopLocationName.setText(data.getExtras().getString(IntentKeys.ADDRESS_NAME));
                             double lattitude, longitude;
                             lattitude = Double.parseDouble(data.getExtras().getString(IntentKeys.LATITUDE));
                             longitude = Double.parseDouble(data.getExtras().getString(IntentKeys.LONGITUDE));
 
-//                            PICK_LOCATION = new LatLng(lattitude, longitude);
+                            STOP_LOCATION = new LatLng(lattitude, longitude);
 
                         }
                         break;
@@ -2012,6 +2018,7 @@ View.OnClickListener,
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
             }else {
 
                 try {
@@ -2026,6 +2033,24 @@ View.OnClickListener,
 
             }
         }
+
+
+
+    private void createStopLocationObject() {
+
+            try {
+                stopObject = new JSONObject();
+                stopObject.put("drop_latitude", "" + STOP_LOCATION.latitude);
+                stopObject.put("drop_longitude", "" + STOP_LOCATION.longitude);
+                stopObject.put("drop_location", "" + stopLocation);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+    }
+
+
 
 
         private void createPickLocationObject() {
@@ -2055,7 +2080,11 @@ View.OnClickListener,
 
 
             try {
-                viewModel.rideNow(pickObject.toString(), dropObject.toString());
+                if(stopObject== null)
+                   viewModel.rideNow(pickObject.toString(), dropObject.toString(),"");
+                else
+                    viewModel.rideNow(pickObject.toString(), dropObject.toString(),stopObject.toString());
+
                 pickDropLocationNames.add("Checkout");
 
             } catch (Exception e) {
@@ -2224,12 +2253,12 @@ View.OnClickListener,
                 .inflate(R.layout.main_marker_layout, null);
 
         // Toast.makeText(mainActivity, "Marker", Toast.LENGTH_SHORT).show();
-        marker11 = mGoogleMap.addMarker(new MarkerOptions()
+        stopMarker = mGoogleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(latitude, longitude))
                 .title(address)
 //                .anchor(0.5f, 0.5f)
                 .icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(this, marker))));
-        return marker11;
+        return stopMarker;
     }
 //
 //
@@ -2537,33 +2566,6 @@ View.OnClickListener,
     }
 
 
-
-//    private void showErrorConfirmRideDialog(String dialog_message) {
-//
-//        new AlertDialog.Builder(MainActivity.this)
-//                .setTitle(getResources().getString(R.string.error_booking))
-//                .setMessage(dialog_message)
-//
-//                // Specifying a listener allows you to take an action before dismissing the dialog.
-//                // The dialog is automatically dismissed when a dialog button is clicked.
-//                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                        startActivity(new Intent(getApplicationContext(), MainActivity.class)
-//                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-//                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-//                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                        );
-//                    }
-//
-//                })
-//
-//                .setIcon(android.R.drawable.ic_dialog_alert)
-//                .setCancelable(false)
-//                .show();
-//
-//
-//    }
 
 
 

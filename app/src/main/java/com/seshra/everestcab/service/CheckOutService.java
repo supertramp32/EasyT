@@ -14,6 +14,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
+import com.google.gson.JsonObject;
 import com.seshra.everestcab.models.ModelResultCheck;
 import com.seshra.everestcab.utils.API_S_NEW;
 import com.seshra.everestcab.utils.Logout;
@@ -42,6 +43,7 @@ public class CheckOutService extends IntentService {
 
     private static  final String PICK_OBJECT = "com.seshra.user.service.extra.PICK_OBJECT";
     private static final String DROP_OBJECT = "com.seshra.user.service.extra.DROP_OBJECT";
+    private static final String STOP_OBJECT = "com.seshra.user.service.extra.STOP_OBJECT";
 
 
     private HashMap<String, String> data = new HashMap<>();
@@ -85,13 +87,15 @@ public class CheckOutService extends IntentService {
 
 
     public static void startActionRideNow(Context context,
-                                          String pickObject, String dropObject) {
+                                          String pickObject, String dropObject,
+                                          String stopObject) {
 
 
         Intent intent = new Intent(context, CheckOutService.class);
         intent.setAction(ACTION_RIDE_NOW);
         intent.putExtra(PICK_OBJECT, pickObject);
         intent.putExtra(DROP_OBJECT,dropObject);
+        intent.putExtra(STOP_OBJECT,stopObject);
         con = context;
         context.startService(intent);
     }
@@ -104,13 +108,14 @@ public class CheckOutService extends IntentService {
             if (ACTION_RIDE_NOW.equals(action)) {
                 final String pickObjc = intent.getStringExtra(PICK_OBJECT);
                 final String dropObj = intent.getStringExtra(DROP_OBJECT);
-                handleActionRideNow(pickObjc, dropObj);
+                final String stopObj = intent.getStringExtra(STOP_OBJECT);
+                handleActionRideNow(pickObjc, dropObj,stopObj);
             }
         }
     }
 
 
-    private void handleActionRideNow( String pickObj, String dropObj) {
+    private void handleActionRideNow( String pickObj, String dropObj,String stopObj) {
         // okHttpClient.networkInterceptors().add(REWRITE_CACHE_CONTROL_INTERCEPTOR);
 
         File httpCacheDirectory = new File(con.getCacheDir(), "responses");
@@ -131,8 +136,17 @@ public class CheckOutService extends IntentService {
             data.put("pick_up_location",pick.getString("placeName"));
             data.put( "total_drop_location","0");
 
+
+
             JSONObject drop = new JSONObject(dropObj);
             dropLocation.put(drop);
+
+            if(!stopObj.equals("")){
+                JSONObject stop = new JSONObject(stopObj);
+                dropLocation.put(stop);
+            }
+
+
 
             data.put("drop_location",dropLocation.toString());
 

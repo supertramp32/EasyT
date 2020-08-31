@@ -85,8 +85,8 @@ public class AppRepository {
         GooglePlacePickerService.startActionSearch(context, url,searchLocation);
     }
 
-    public void rideNow( String pickObj, String dropobj) {
-        CheckOutService.startActionRideNow(context, pickObj, dropobj);
+    public void rideNow( String pickObj, String dropobj, String stopObj) {
+        CheckOutService.startActionRideNow(context, pickObj, dropobj, stopObj);
     }
 
     public void getCurrentLocationName(Double lattitude, Double longitude) {

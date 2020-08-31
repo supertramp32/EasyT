@@ -17,8 +17,8 @@ public class MainActivityViewModel extends AndroidViewModel {
         appRepository = AppRepository.getOurInstance(application);
     }
 
-    public void rideNow(String pickObj, String dropObj) {
-        appRepository.rideNow(pickObj, dropObj);
+    public void rideNow(String pickObj, String dropObj,String stopObj) {
+        appRepository.rideNow(pickObj, dropObj,stopObj);
     }
 
 
