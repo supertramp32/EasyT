@@ -2155,9 +2155,9 @@ View.OnClickListener,
 
             try {
                 if(fixedRide.isChecked())
-                    viewModel.confirmBooking(modelCheckOut.getData().getId(), "Fixed Price");
+                    viewModel.confirmBooking(modelCheckOut.getData().getId(), "2");
                 else
-                    viewModel.confirmBooking(modelCheckOut.getData().getId(), "Variable");
+                    viewModel.confirmBooking(modelCheckOut.getData().getId(), "1");
             } catch (Exception e) {
                 e.printStackTrace();
             }
