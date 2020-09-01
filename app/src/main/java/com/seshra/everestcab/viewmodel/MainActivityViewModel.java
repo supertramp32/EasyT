@@ -26,8 +26,8 @@ public class MainActivityViewModel extends AndroidViewModel {
         appRepository.getCurrentLocationName(lattitude,longitude);
     }
 
-    public void confirmBooking( int checkOutId) {
-        appRepository.confirmBooking(checkOutId);
+    public void confirmBooking( int checkOutId, String rideType) {
+        appRepository.confirmBooking(checkOutId,rideType);
 
     }
 

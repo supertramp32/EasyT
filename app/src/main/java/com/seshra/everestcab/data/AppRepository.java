@@ -93,9 +93,9 @@ public class AppRepository {
         GetCurrentLocationName.startActionCurrentPlce(context,lattitude,longitude);
     }
 
-    public void confirmBooking( int checkOutId) {
+    public void confirmBooking( int checkOutId, String rideType) {
 
-        ConfirmRideService.startActionConfirmRide(context, checkOutId);
+        ConfirmRideService.startActionConfirmRide(context, checkOutId,rideType);
 
     }
 

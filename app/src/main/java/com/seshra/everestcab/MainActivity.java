@@ -52,6 +52,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -207,6 +208,8 @@ View.OnClickListener,
 
     List<Marker> driverMarker = new ArrayList<Marker>();
 
+
+    RadioButton fixedRide, meteredRide;
 
 
 
@@ -595,6 +598,9 @@ View.OnClickListener,
 
 
             pickLocationName = findViewById(R.id.pickLocationName);
+
+            fixedRide = findViewById(R.id.fixedRideBtn);
+            meteredRide = findViewById(R.id.meteredRideBtn);
 
             mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -2148,7 +2154,10 @@ View.OnClickListener,
         private void confirmRideApi() {
 
             try {
-                viewModel.confirmBooking(modelCheckOut.getData().getId());
+                if(fixedRide.isChecked())
+                    viewModel.confirmBooking(modelCheckOut.getData().getId(), "Fixed Price");
+                else
+                    viewModel.confirmBooking(modelCheckOut.getData().getId(), "Variable");
             } catch (Exception e) {
                 e.printStackTrace();
             }

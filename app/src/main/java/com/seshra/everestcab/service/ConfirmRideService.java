@@ -35,6 +35,8 @@ public class ConfirmRideService extends IntentService {
     private static final String ACTION_CONFIRM_RIDE = "com.seshra.user.service.action.CONFIRM_RIDE";
 
     private static final String CHECKOUT_ID = "com.seshra.user.service.extra.CHECKOUT_ID";
+    private static final String RIDE_TYPE = "com.seshra.user.service.extra.RIDE_TYPE";
+
 
     public ConfirmRideService() {
         super("ConfirmRideService");
@@ -46,10 +48,11 @@ public class ConfirmRideService extends IntentService {
 
     SessionManager sessionManager;
 
-    public static void startActionConfirmRide(Context context, int checkoutId) {
+    public static void startActionConfirmRide(Context context, int checkoutId, String rideType) {
         Intent intent = new Intent(context, ConfirmRideService.class);
         intent.setAction(ACTION_CONFIRM_RIDE);
         intent.putExtra(CHECKOUT_ID, checkoutId);
+        intent.putExtra(RIDE_TYPE, rideType);
         context.startService(intent);
     }
 
@@ -61,19 +64,21 @@ public class ConfirmRideService extends IntentService {
             final String action = intent.getAction();
             if (ACTION_CONFIRM_RIDE.equals(action)) {
                 final int checkoutId = intent.getIntExtra(CHECKOUT_ID,0);
-                handleActionConfirmRide(checkoutId);
+                final String rideType = intent.getStringExtra(RIDE_TYPE);
+                handleActionConfirmRide(checkoutId,rideType);
             }
         }
     }
 
 
-    private void handleActionConfirmRide(int checkoutId) {
+    private void handleActionConfirmRide(int checkoutId, String rideType) {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         sessionManager = new SessionManager(getApplicationContext());
 
         HashMap<String, String> data = new HashMap<>();
         data.put("checkout", "" + checkoutId);
+        data.put("billing_type", rideType);
 
 
         String additionalText = sharedPreferences.getString("details", "null");
