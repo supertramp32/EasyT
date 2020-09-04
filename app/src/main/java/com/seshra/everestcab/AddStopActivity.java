@@ -1,6 +1,7 @@
 package com.seshra.everestcab;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModelProviders;
@@ -38,6 +39,7 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -47,6 +49,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.seshra.everestcab.locations.SearchLocationActivity;
 import com.seshra.everestcab.service.CheckStopLocationService;
 import com.seshra.everestcab.service.GetCurrentLocationName;
 import com.seshra.everestcab.utils.IntentKeys;
@@ -83,6 +86,9 @@ public class AddStopActivity extends AppCompatActivity implements OnMapReadyCall
     String confirmLat, confirmLong, confirmAddress;
 
     ProgressBar progressBar;
+
+    private final int STOP_PLACE_PICKER_ACTIVITY = 111;
+
 
 
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -137,6 +143,8 @@ public class AddStopActivity extends AppCompatActivity implements OnMapReadyCall
                                     Toast.LENGTH_LONG).show();
 
                         }
+
+
                     } catch (Exception e) {
                         confirmStopPoint.setClickable(true);
                         Toast.makeText(AddStopActivity.this,getResources().getString(R.string.error_occured),
@@ -176,6 +184,14 @@ public class AddStopActivity extends AppCompatActivity implements OnMapReadyCall
         mSettingsClient = LocationServices.getSettingsClient(this);
         createLocationRequest();
         buildLocationSettingsRequest();
+
+
+        stopLocationName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startPlacePickerActivity(STOP_PLACE_PICKER_ACTIVITY);
+            }
+        });
 
 
         confirmStopPoint.setOnClickListener(new View.OnClickListener() {
@@ -612,5 +628,54 @@ public class AddStopActivity extends AppCompatActivity implements OnMapReadyCall
     }
 
 
+    private void startPlacePickerActivity(int requestCode) {
+
+        Intent intent = new Intent(AddStopActivity.this, SearchLocationActivity.class);
+        startActivityForResult(intent, requestCode);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            switch (requestCode) {
+
+
+                case STOP_PLACE_PICKER_ACTIVITY:
+                    if (data != null) {
+                        stopLocationName.setText(data.getExtras().getString(IntentKeys.ADDRESS_NAME));
+                        double lattitude, longitude;
+                        lattitude = Double.parseDouble(data.getExtras().getString(IntentKeys.LATITUDE));
+                        longitude = Double.parseDouble(data.getExtras().getString(IntentKeys.LONGITUDE));
+
+
+                        confirmLat = ""+lattitude;
+                        confirmLong = "" + longitude;
+
+                        LatLng STOP_LOCATION = new LatLng(lattitude, longitude);
+                        moveMapto(STOP_LOCATION);
+
+                    }
+                    break;
+
+
+
+
+
+            }
+        } catch (Exception e) {
+            //   Snackbar.make(drawerLayout, "" + e.getMessage(), Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+
+    public void moveMapto(LatLng location) {
+
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(location,17);
+        mGoogleMap.animateCamera(cameraUpdate);
+
+
+    }
 
 }
