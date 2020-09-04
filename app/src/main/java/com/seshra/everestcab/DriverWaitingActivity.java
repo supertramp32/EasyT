@@ -27,6 +27,7 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
@@ -85,6 +86,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.seshra.everestcab.MainActivity.createDrawableFromView;
+
 
 public class DriverWaitingActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -125,7 +128,7 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
     Handler trackingHandler = new Handler();
 
 
-    Marker pickMarker, dropMarker;
+    Marker pickMarker, dropMarker,stopMarker;
 
 
 
@@ -1491,6 +1494,25 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
 
 
 
+        try {
+            for (int i = 0; i < modelRideInfo.getData().getWaypoints().size(); i++) {
+
+                createStopMarker(Double.parseDouble(modelRideInfo.getData().getWaypoints().get(i).getDrop_latitude()),
+                        Double.parseDouble(modelRideInfo.getData().getWaypoints().get(i).getDrop_longitude()),
+                        modelRideInfo.getData().getWaypoints().get(i).getDrop_location());
+
+                point = new LatLng(Double.parseDouble(modelRideInfo.getData().getWaypoints().get(i).getDrop_latitude()),
+                        Double.parseDouble(modelRideInfo.getData().getWaypoints().get(i).getDrop_longitude()));
+
+                markerPoints.add(point);
+            }
+
+            Log.d("**** MarksSize==>", "" + markerPoints.size());
+        }catch (Exception e){
+
+            e.printStackTrace();
+        }
+
 
 
 
@@ -1498,6 +1520,22 @@ public class DriverWaitingActivity extends AppCompatActivity implements OnMapRea
         drawpathMethod();
 
 
+    }
+
+
+
+
+    protected Marker createStopMarker(double latitude, double longitude, String address) {
+        View marker = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+                .inflate(R.layout.main_marker_layout, null);
+
+        // Toast.makeText(mainActivity, "Marker", Toast.LENGTH_SHORT).show();
+        stopMarker = mGoogleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(latitude, longitude))
+                .title(address)
+//                .anchor(0.5f, 0.5f)
+                .icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(this, marker))));
+        return stopMarker;
     }
 
 

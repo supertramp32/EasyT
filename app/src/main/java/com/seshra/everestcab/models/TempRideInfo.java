@@ -1,6 +1,7 @@
 package com.seshra.everestcab.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TempRideInfo {
 
@@ -30,7 +31,16 @@ public class TempRideInfo {
         String share_able_link;
 
         Vehicle_Details vehicle_details;
+        private List<WaypointsBean> waypoints;
 
+
+        public List<WaypointsBean> getWaypoints() {
+            return waypoints;
+        }
+
+        public void setWaypoints(List<WaypointsBean> waypoints) {
+            this.waypoints = waypoints;
+        }
 
         public Vehicle_Details getVehicle_details() {
             return vehicle_details;
@@ -74,6 +84,63 @@ public class TempRideInfo {
             }
         }
 
+
+
+        public  class WaypointsBean {
+            /**
+             * stop : 1
+             * drop_latitude : 28.5245787
+             * drop_longitude : 77.206615
+             * drop_location : Saket, New Delhi, Delhi, India
+             * status : 1
+             */
+
+            private int stop;
+            private String drop_latitude;
+            private String drop_longitude;
+            private String drop_location;
+            private String status;
+
+            public int getStop() {
+                return stop;
+            }
+
+            public void setStop(int stop) {
+                this.stop = stop;
+            }
+
+            public String getDrop_latitude() {
+                return drop_latitude;
+            }
+
+            public void setDrop_latitude(String drop_latitude) {
+                this.drop_latitude = drop_latitude;
+            }
+
+            public String getDrop_longitude() {
+                return drop_longitude;
+            }
+
+            public void setDrop_longitude(String drop_longitude) {
+                this.drop_longitude = drop_longitude;
+            }
+
+            public String getDrop_location() {
+                return drop_location;
+            }
+
+            public void setDrop_location(String drop_location) {
+                this.drop_location = drop_location;
+            }
+
+            public String getStatus() {
+                return status;
+            }
+
+            public void setStatus(String status) {
+                this.status = status;
+            }
+        }
 
 
 
